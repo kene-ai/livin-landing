@@ -38,57 +38,70 @@ const Homepage = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1556911073-52527ac43761?w=1600')"
-          }}
-        />
-        
-        {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        
-        {/* Content */}
-        <div className="relative z-10 text-center max-w-4xl px-6 space-y-6">
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-            Your Personal Chef Does Everything
-          </h1>
-          
-          {/* Subheadline */}
-          <p className="text-2xl md:text-3xl text-white/90 font-medium">
-            Shop • Cook • Clean • Repeat
-          </p>
-          
-          {/* Description */}
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-            Chef comes to your home, buys all groceries, cooks multiple meals, and leaves your kitchen spotless
-          </p>
-          
-          {/* Pricing */}
-          <p className="text-xl md:text-2xl text-secondary font-bold">
-            Starting at $20 per plate
-          </p>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button size="lg">
-              Sign Up
-            </Button>
-            <Button variant="outline" size="lg" className="bg-transparent text-white border-white hover:bg-white hover:text-foreground">
-              Browse Menu
-            </Button>
+      <section className="py-12 md:py-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <div className="space-y-6">
+            {/* Main Headline */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+              Your Personal Chef Does Everything
+            </h1>
+            
+            {/* Subheadline */}
+            <p className="text-2xl md:text-3xl text-primary font-semibold">
+              Shop • Cook • Clean • Repeat
+            </p>
+            
+            {/* Description */}
+            <p className="text-lg text-muted-foreground">
+              Chef comes to your home, buys all groceries, cooks multiple meals, and leaves your kitchen spotless
+            </p>
+            
+            {/* Trust Badges with checkmarks */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 text-foreground">
+                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary text-sm">✓</span>
+                </div>
+                <span>All groceries included</span>
+              </div>
+              <div className="flex items-center gap-3 text-foreground">
+                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary text-sm">✓</span>
+                </div>
+                <span>Complete cleanup</span>
+              </div>
+              <div className="flex items-center gap-3 text-foreground">
+                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary text-sm">✓</span>
+                </div>
+                <span>No subscription required</span>
+              </div>
+            </div>
+            
+            {/* Pricing */}
+            <p className="text-2xl font-bold text-foreground">
+              Starting at <span className="text-primary">$20 per plate</span>
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button size="lg">
+                Get started
+              </Button>
+              <Button variant="outline" size="lg">
+                Browse Menu
+              </Button>
+            </div>
           </div>
           
-          {/* Trust Badges */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-white/90 text-sm md:text-base pt-4">
-            <span>✓ All groceries included</span>
-            <span className="hidden sm:inline">•</span>
-            <span>✓ Complete cleanup</span>
-            <span className="hidden sm:inline">•</span>
-            <span>✓ No subscription required</span>
+          {/* Right Column - Image */}
+          <div className="rounded-3xl overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=1600" 
+              alt="Chef cooking in home kitchen"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
