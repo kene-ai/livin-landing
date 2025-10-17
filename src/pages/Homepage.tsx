@@ -42,49 +42,36 @@ const Homepage = () => {
     },
   ];
 
-  const categories = ["All", "Poultry", "Beef", "Seafood", "Vegetarian", "⭐ Kid-Friendly"];
-  const dietaryOptions = ["Gluten-Free", "Dairy-Free", "Vegan"];
+  const categories = ["All", "Gluten Free", "Dairy Free", "Vegan", "Kid Friendly"];
 
   const menuItems = [
-    { name: "Lemon Herb Chicken with Roasted Vegetables", category: "Poultry", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
-    { name: "Beef & Broccoli Stir Fry", category: "Beef", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=800" },
-    { name: "Salmon with Asparagus", category: "Seafood", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800" },
-    { name: "Chicken Parmesan", category: "Poultry", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800" },
-    { name: "Mediterranean Quinoa Bowl", category: "Vegetarian", tags: ["V", "GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
-    { name: "Teriyaki Chicken Bowls", category: "Poultry", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800" },
-    { name: "Grilled Steak with Sweet Potato", category: "Beef", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800" },
-    { name: "Shrimp Tacos with Slaw", category: "Seafood", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800" },
-    { name: "Veggie Pasta Primavera", category: "Vegetarian", tags: ["V"], kidFriendly: true, image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800" },
-    { name: "Honey Mustard Chicken Thighs", category: "Poultry", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
-    { name: "Beef Tacos with Black Beans", category: "Beef", tags: ["GF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800" },
-    { name: "Baked Cod with Lemon Butter", category: "Seafood", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800" },
-    { name: "Chickpea Curry", category: "Vegetarian", tags: ["V", "GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" },
-    { name: "Turkey Meatballs with Marinara", category: "Poultry", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800" },
-    { name: "Grilled Fish Tacos", category: "Seafood", tags: ["DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800" },
-    { name: "Stuffed Bell Peppers", category: "Beef", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=800" },
-    { name: "Tofu Stir Fry", category: "Vegetarian", tags: ["V", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-eacef0df6022?w=800" },
-    { name: "BBQ Chicken Drumsticks", category: "Poultry", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
+    { name: "Greek Lemon Herbed Grilled Shrimp with Orzo Salad", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800" },
+    { name: "Asian Sesame Ginger Beef & Broccoli Stir Fry", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=800" },
+    { name: "Wild Caught Salmon with Garlic Roasted Asparagus", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800" },
+    { name: "Classic Italian Chicken Parmesan with Fresh Marinara", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800" },
+    { name: "Mediterranean Quinoa Bowl with Roasted Chickpeas and Tahini", tags: ["V", "GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
+    { name: "Honey Teriyaki Glazed Chicken Bowls with Steamed Vegetables", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800" },
+    { name: "Herb Marinated Grilled Steak with Rosemary Sweet Potato Wedges", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800" },
+    { name: "Baja Style Grilled Shrimp Tacos with Cilantro Lime Slaw", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800" },
+    { name: "Garden Fresh Veggie Pasta Primavera with Basil Pesto", tags: ["V"], kidFriendly: true, image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800" },
+    { name: "Dijon Honey Mustard Glazed Chicken Thighs with Green Beans", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
+    { name: "Tex-Mex Seasoned Beef Tacos with Cilantro Lime Black Beans", tags: ["GF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800" },
+    { name: "Oven Baked Herb Crusted Cod with Meyer Lemon Butter", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800" },
+    { name: "Aromatic Coconut Curry Chickpeas with Basmati Rice", tags: ["V", "GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" },
+    { name: "Italian Style Turkey Meatballs with San Marzano Marinara", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800" },
+    { name: "Baja Grilled Mahi Mahi Fish Tacos with Avocado Crema", tags: ["DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800" },
+    { name: "Cajun Spiced Ground Beef Stuffed Bell Peppers", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=800" },
+    { name: "Ginger Garlic Tofu Stir Fry with Snap Peas and Carrots", tags: ["V", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-eacef0df6022?w=800" },
+    { name: "Sweet & Smoky BBQ Glazed Chicken Drumsticks", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
   ];
 
-  const toggleDietary = (option: string) => {
-    setSelectedDietary(prev =>
-      prev.includes(option) ? prev.filter(o => o !== option) : [...prev, option]
-    );
-  };
-
   const filteredMenuItems = menuItems.filter(item => {
-    const categoryMatch = selectedCategory === "All" || 
-                         (selectedCategory === "⭐ Kid-Friendly" ? item.kidFriendly : item.category === selectedCategory);
-    
-    const dietaryMatch = selectedDietary.length === 0 || 
-                        selectedDietary.every(diet => {
-                          if (diet === "Gluten-Free") return item.tags.includes("GF");
-                          if (diet === "Dairy-Free") return item.tags.includes("DF");
-                          if (diet === "Vegan") return item.tags.includes("V");
-                          return false;
-                        });
-    
-    return categoryMatch && dietaryMatch;
+    if (selectedCategory === "All") return true;
+    if (selectedCategory === "Gluten Free") return item.tags.includes("GF");
+    if (selectedCategory === "Dairy Free") return item.tags.includes("DF");
+    if (selectedCategory === "Vegan") return item.tags.includes("V");
+    if (selectedCategory === "Kid Friendly") return item.kidFriendly;
+    return true;
   });
 
   return (
@@ -351,7 +338,7 @@ const Homepage = () => {
           </div>
 
           {/* Filter Bar */}
-          <div className="mb-8 space-y-4">
+          <div className="mb-8">
             {/* Category Pills */}
             <div className="flex flex-wrap gap-2 justify-center">
               {categories.map(category => (
@@ -366,21 +353,6 @@ const Homepage = () => {
                 >
                   {category}
                 </button>
-              ))}
-            </div>
-
-            {/* Dietary Checkboxes */}
-            <div className="flex flex-wrap gap-4 justify-center">
-              {dietaryOptions.map(option => (
-                <label key={option} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={selectedDietary.includes(option)}
-                    onChange={() => toggleDietary(option)}
-                    className="w-4 h-4 rounded border-border accent-primary"
-                  />
-                  <span className="text-sm text-foreground">{option}</span>
-                </label>
               ))}
             </div>
           </div>
