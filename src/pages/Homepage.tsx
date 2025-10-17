@@ -1,8 +1,10 @@
+import { useState } from "react";
 import NavigationBar from "@/components/library/NavigationBar";
 import Button from "@/components/library/Button";
 import Footer from "@/components/library/Footer";
 import SectionHeading from "@/components/library/SectionHeading";
 import TestimonialCard from "@/components/library/TestimonialCard";
+import MenuItemCard from "@/components/library/MenuItemCard";
 import {
   Carousel,
   CarouselContent,
@@ -12,6 +14,8 @@ import {
 } from "@/components/ui/carousel";
 
 const Homepage = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
   const navItems = [
     { label: "How It Works", href: "#how-it-works" },
     { label: "Menu", href: "#menu" },
@@ -37,6 +41,51 @@ const Homepage = () => {
       ],
     },
   ];
+
+  const categories = ["All", "Poultry", "Beef", "Seafood", "Vegetarian", "⭐ Kid-Friendly"];
+  const dietaryOptions = ["Gluten-Free", "Dairy-Free", "Vegan"];
+
+  const menuItems = [
+    { name: "Lemon Herb Chicken with Roasted Vegetables", category: "Poultry", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
+    { name: "Beef & Broccoli Stir Fry", category: "Beef", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=800" },
+    { name: "Salmon with Asparagus", category: "Seafood", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800" },
+    { name: "Chicken Parmesan", category: "Poultry", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800" },
+    { name: "Mediterranean Quinoa Bowl", category: "Vegetarian", tags: ["V", "GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
+    { name: "Teriyaki Chicken Bowls", category: "Poultry", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800" },
+    { name: "Grilled Steak with Sweet Potato", category: "Beef", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800" },
+    { name: "Shrimp Tacos with Slaw", category: "Seafood", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800" },
+    { name: "Veggie Pasta Primavera", category: "Vegetarian", tags: ["V"], kidFriendly: true, image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800" },
+    { name: "Honey Mustard Chicken Thighs", category: "Poultry", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
+    { name: "Beef Tacos with Black Beans", category: "Beef", tags: ["GF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800" },
+    { name: "Baked Cod with Lemon Butter", category: "Seafood", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800" },
+    { name: "Chickpea Curry", category: "Vegetarian", tags: ["V", "GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" },
+    { name: "Turkey Meatballs with Marinara", category: "Poultry", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800" },
+    { name: "Grilled Fish Tacos", category: "Seafood", tags: ["DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800" },
+    { name: "Stuffed Bell Peppers", category: "Beef", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=800" },
+    { name: "Tofu Stir Fry", category: "Vegetarian", tags: ["V", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-eacef0df6022?w=800" },
+    { name: "BBQ Chicken Drumsticks", category: "Poultry", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
+  ];
+
+  const toggleDietary = (option: string) => {
+    setSelectedDietary(prev =>
+      prev.includes(option) ? prev.filter(o => o !== option) : [...prev, option]
+    );
+  };
+
+  const filteredMenuItems = menuItems.filter(item => {
+    const categoryMatch = selectedCategory === "All" || 
+                         (selectedCategory === "⭐ Kid-Friendly" ? item.kidFriendly : item.category === selectedCategory);
+    
+    const dietaryMatch = selectedDietary.length === 0 || 
+                        selectedDietary.every(diet => {
+                          if (diet === "Gluten-Free") return item.tags.includes("GF");
+                          if (diet === "Dairy-Free") return item.tags.includes("DF");
+                          if (diet === "Vegan") return item.tags.includes("V");
+                          return false;
+                        });
+    
+    return categoryMatch && dietaryMatch;
+  });
 
   return (
     <div className="min-h-screen bg-[#FAFAF8] scroll-smooth">
@@ -286,6 +335,84 @@ const Homepage = () => {
                 <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2" />
               </Carousel>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Menu Section */}
+      <section className="py-16 px-8 md:px-12 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8 max-w-3xl mx-auto">
+            <SectionHeading
+              title="What's On the Menu?"
+              subtitle="Balanced meals with fresh ingredients—think lean protein, veggies, and grains. Don't love something? Swap it out or request your favorites. Menus update monthly, but you keep access to your top picks."
+              centered
+            />
+          </div>
+
+          {/* Filter Bar */}
+          <div className="mb-8 space-y-4">
+            {/* Category Pills */}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {categories.map(category => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    selectedCategory === category
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-accent text-accent-foreground hover:bg-accent/80"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+
+            {/* Dietary Checkboxes */}
+            <div className="flex flex-wrap gap-4 justify-center">
+              {dietaryOptions.map(option => (
+                <label key={option} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={selectedDietary.includes(option)}
+                    onChange={() => toggleDietary(option)}
+                    className="w-4 h-4 rounded border-border accent-primary"
+                  />
+                  <span className="text-sm text-foreground">{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Menu Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {filteredMenuItems.map((item, index) => (
+              <MenuItemCard
+                key={index}
+                name={item.name}
+                description=""
+                imageSrc={item.image}
+                dietaryTags={[...item.tags, ...(item.kidFriendly ? ["⭐ Kid Favorite"] : [])]}
+              />
+            ))}
+          </div>
+
+          {/* Info Text */}
+          <div className="text-center space-y-2 mb-6">
+            <p className="text-lg font-semibold text-foreground">
+              100+ rotating menu items • Fully customizable • New meals monthly
+            </p>
+            <p className="text-muted-foreground">
+              Chef buys all ingredients • Fresh, never frozen
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Button size="lg">
+              Explore Full Menu
+            </Button>
           </div>
         </div>
       </section>
