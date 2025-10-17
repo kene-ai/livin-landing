@@ -110,57 +110,90 @@ const Homepage = () => {
             />
           </div>
 
-          {/* Process Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {/* Step 1 */}
-            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-xl font-bold">1</span>
+            <div className="rounded-3xl bg-card border border-border overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800" 
+                  alt="Fresh healthy meal selection"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">Choose your meal</h3>
-                <p className="text-sm text-muted-foreground">
-                  Choose a date, time, and menu -- book with just 48 hours notice.
-                </p>
+              <div className="p-6 space-y-4">
+                <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                  <span className="text-xl font-bold">1</span>
+                </div>
+                <div className="text-center space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">Choose your meal</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Choose a date, time, and menu -- book with just 48 hours notice.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-xl font-bold">2</span>
+            <div className="rounded-3xl bg-card border border-border overflow-hidden">
+              <div className="aspect-[4/3] bg-muted flex items-center justify-center">
+                <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-5xl">🛒</span>
+                </div>
               </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">Chef Shops</h3>
-                <p className="text-sm text-muted-foreground">
-                  Chef buys ALL groceries for your meals
-                </p>
+              <div className="p-6 space-y-4">
+                <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                  <span className="text-xl font-bold">2</span>
+                </div>
+                <div className="text-center space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">Chef Shops</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Chef buys ALL groceries for your meals
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Step 3 */}
-            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-xl font-bold">3</span>
+            <div className="rounded-3xl bg-card border border-border overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800" 
+                  alt="Chef cooking in kitchen"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">Chef Cooks</h3>
-                <p className="text-sm text-muted-foreground">
-                  Chef cooks all your meals for the week right in your own kitchen
-                </p>
+              <div className="p-6 space-y-4">
+                <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                  <span className="text-xl font-bold">3</span>
+                </div>
+                <div className="text-center space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">Chef Cooks</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Chef cooks all your meals for the week right in your own kitchen
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Step 4 */}
-            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-xl font-bold">4</span>
+            <div className="rounded-3xl bg-card border border-border overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800" 
+                  alt="Clean organized kitchen"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">Chef Cleans</h3>
-                <p className="text-sm text-muted-foreground">
-                  Kitchen left spotless and meals labeled & stored in your fridge
-                </p>
+              <div className="p-6 space-y-4">
+                <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                  <span className="text-xl font-bold">4</span>
+                </div>
+                <div className="text-center space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">Chef Cleans</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Kitchen left spotless and meals labeled & stored in your fridge
+                  </p>
+                </div>
               </div>
             </div>
           </div>
