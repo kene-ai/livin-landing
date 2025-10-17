@@ -39,7 +39,7 @@ const Homepage = () => {
       
       {/* Hero Section */}
       <section className="py-8 md:py-16 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-stretch">
           {/* Left Column - Text Content */}
           <div className="space-y-4 flex flex-col justify-center py-8">
             {/* Main Headline */}
