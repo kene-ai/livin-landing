@@ -38,10 +38,10 @@ const Homepage = () => {
       />
       
       {/* Hero Section */}
-      <section className="py-8 md:py-16 px-6">
+      <section className="py-8 md:py-16 px-8 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-stretch">
           {/* Left Column - Text Content */}
-          <div className="space-y-4 flex flex-col justify-center py-8">
+          <div className="space-y-4 flex flex-col justify-center py-8 pl-8 md:pl-12 lg:pl-16">
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Your Personal Chef,<br />In Your Kitchen
