@@ -118,7 +118,7 @@ const Homepage = () => {
                 <span className="text-3xl font-bold">1</span>
               </div>
               <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">1. Choose your meal</h3>
+                <h3 className="text-xl font-bold text-foreground">Choose your meal</h3>
                 <ul className="text-sm text-muted-foreground space-y-1 text-left">
                   <li>• Choose date, time, and menu</li>
                   <li>• Book with just 48 hours notice</li>
@@ -132,7 +132,7 @@ const Homepage = () => {
                 <span className="text-3xl font-bold">2</span>
               </div>
               <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">2. Chef Shops</h3>
+                <h3 className="text-xl font-bold text-foreground">Chef Shops</h3>
                 <ul className="text-sm text-muted-foreground space-y-1 text-left">
                   <li>• Chef buys ALL groceries for your meals</li>
                   <li>• Standard or organic options</li>
@@ -146,7 +146,7 @@ const Homepage = () => {
                 <span className="text-3xl font-bold">3</span>
               </div>
               <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">3. Chef Cooks</h3>
+                <h3 className="text-xl font-bold text-foreground">Chef Cooks</h3>
                 <ul className="text-sm text-muted-foreground space-y-1 text-left">
                   <li>• Chef cooks all your meals for the week right in your own kitchen</li>
                 </ul>
@@ -159,7 +159,7 @@ const Homepage = () => {
                 <span className="text-3xl font-bold">4</span>
               </div>
               <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-foreground">4. Chef Cleans</h3>
+                <h3 className="text-xl font-bold text-foreground">Chef Cleans</h3>
                 <ul className="text-sm text-muted-foreground space-y-1 text-left">
                   <li>• Kitchen left spotless and meals labeled & stored in your fridge</li>
                 </ul>
