@@ -43,8 +43,8 @@ const Homepage = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-4 flex flex-col justify-center py-8">
             {/* Main Headline */}
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-snug">
-              Your Personal Chef, In Your Kitchen
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+              Your Personal Chef,<br />In Your Kitchen
             </h1>
             
             {/* Description */}
