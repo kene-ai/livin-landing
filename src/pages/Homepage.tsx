@@ -5,6 +5,7 @@ import Footer from "@/components/library/Footer";
 import SectionHeading from "@/components/library/SectionHeading";
 import TestimonialCard from "@/components/library/TestimonialCard";
 import MenuItemCard from "@/components/library/MenuItemCard";
+import ProfileCard from "@/components/library/ProfileCard";
 import {
   Carousel,
   CarouselContent,
@@ -384,6 +385,81 @@ const Homepage = () => {
           <div className="text-center">
             <Button size="lg">
               Explore Full Menu
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Chef Profiles Section */}
+      <section className="py-16 px-8 md:px-12 lg:px-16 bg-accent/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <SectionHeading
+              title="Vetted Chefs You Can Trust"
+              subtitle="Every chef is interviewed, background-checked, and personally reviewed by our Culinary Director."
+            />
+          </div>
+
+          <div className="relative">
+            <Carousel className="w-full">
+              <CarouselContent>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <ProfileCard
+                    name="Chef Maria Rodriguez"
+                    title="Italian & Mediterranean"
+                    bio="12 years professional experience. Mom of two. Expert at kid-friendly meals and kitchen organization."
+                    imageSrc="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=600&h=600&fit=crop"
+                  />
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <ProfileCard
+                    name="Chef David Kim"
+                    title="Asian Fusion & Healthy"
+                    bio="Former restaurant chef, specializes in dietary restrictions. Meticulous about kitchen cleanliness."
+                    imageSrc="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=600&fit=crop"
+                  />
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <ProfileCard
+                    name="Chef Amanda Williams"
+                    title="Southern Comfort & BBQ"
+                    bio="15 years experience in farm-to-table cooking. Passionate about seasonal ingredients and family-style meals."
+                    imageSrc="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&h=600&fit=crop"
+                  />
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <ProfileCard
+                    name="Chef Carlos Martinez"
+                    title="Mexican & Latin American"
+                    bio="Culinary school graduate with 10 years experience. Known for authentic flavors and perfectly balanced spices."
+                    imageSrc="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=600&h=600&fit=crop"
+                  />
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <ProfileCard
+                    name="Chef Emily Chen"
+                    title="Plant-Based & Vegan"
+                    bio="Certified nutritionist and chef. Specializes in creating delicious vegan meals that even meat-lovers enjoy."
+                    imageSrc="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&h=600&fit=crop"
+                  />
+                </CarouselItem>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <ProfileCard
+                    name="Chef James Thompson"
+                    title="French & European"
+                    bio="Trained in Paris, 14 years experience. Brings restaurant-quality techniques to home cooking with approachable results."
+                    imageSrc="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&h=600&fit=crop"
+                  />
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-12" />
+              <CarouselNext className="hidden md:flex -right-12" />
+            </Carousel>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg">
+              Sign Up
             </Button>
           </div>
         </div>
