@@ -6,6 +6,7 @@ import SectionHeading from "@/components/library/SectionHeading";
 import TestimonialCard from "@/components/library/TestimonialCard";
 import MenuItemCard from "@/components/library/MenuItemCard";
 import ProfileCard from "@/components/library/ProfileCard";
+import ServiceCard from "@/components/library/ServiceCard";
 import {
   Carousel,
   CarouselContent,
@@ -461,6 +462,77 @@ const Homepage = () => {
             <Button size="lg">
               Sign Up
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Cost Comparison Section */}
+      <section className="py-16 px-8 md:px-12 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Livin makes healthy, home-cooked meals affordable for your family
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Improve your health and save time and money -- all for less than you currently spend on food delivery. Starting at $150 per week.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="space-y-4">
+              <img 
+                src="https://images.unsplash.com/photo-1585759071429-0a3c19c58cbe?w=800&h=400&fit=crop" 
+                alt="Food delivery"
+                className="w-full h-48 object-cover rounded-2xl"
+              />
+              <ServiceCard
+                title="Food Delivery"
+                price="$25+ per serving"
+                features={[
+                  "Hidden fees",
+                  "Unreliable wait times",
+                  "Usually unhealthy"
+                ]}
+                ctaLabel="Sign Up"
+              />
+            </div>
+
+            <div className="space-y-4">
+              <img 
+                src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=400&fit=crop" 
+                alt="Home cooked meal by professional chef"
+                className="w-full h-48 object-cover rounded-2xl"
+              />
+              <ServiceCard
+                title="Livin"
+                price="$20+ per serving"
+                features={[
+                  "Healthy and balanced",
+                  "Cooked by a pro",
+                  "Customized to your needs"
+                ]}
+                ctaLabel="Sign Up"
+                highlighted={true}
+              />
+            </div>
+
+            <div className="space-y-4">
+              <img 
+                src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800&h=400&fit=crop" 
+                alt="Fast food"
+                className="w-full h-48 object-cover rounded-2xl"
+              />
+              <ServiceCard
+                title="Fast Food"
+                price="$8 - $10 per serving"
+                features={[
+                  "Unhealthy",
+                  "Artificial and highly processed",
+                  "Leaves a lot of trash"
+                ]}
+                ctaLabel="Sign Up"
+              />
+            </div>
           </div>
         </div>
       </section>
