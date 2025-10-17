@@ -49,7 +49,7 @@ const Homepage = () => {
             
             {/* Description */}
             <p className="text-lg text-muted-foreground">
-              Chef comes to your home, buys all groceries, cooks multiple meals, and leaves your kitchen spotless
+              Find a local chef who prepares customized, healthy meals in your kitchen
             </p>
             
             {/* Trust Badges with checkmarks */}
