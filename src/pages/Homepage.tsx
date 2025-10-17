@@ -38,50 +38,50 @@ const Homepage = () => {
       />
       
       {/* Hero Section */}
-      <section className="py-12 md:py-20 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-stretch">
+      <section className="py-8 md:py-16 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 flex flex-col justify-center">
+          <div className="space-y-4 flex flex-col justify-center py-8">
             {/* Main Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-snug">
               Your Personal Chef, In Your Kitchen
             </h1>
             
             {/* Description */}
-            <p className="text-lg text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               Find a local chef who prepares customized, healthy meals in your kitchen
             </p>
             
             {/* Trust Badges with checkmarks */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-foreground">
-                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary text-sm">✓</span>
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2.5 text-foreground">
+                <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary text-xs">✓</span>
                 </div>
-                <span>Select meals and your dietary preferences</span>
+                <span className="text-sm">Select meals and your dietary preferences</span>
               </div>
-              <div className="flex items-center gap-3 text-foreground">
-                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary text-sm">✓</span>
+              <div className="flex items-center gap-2.5 text-foreground">
+                <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary text-xs">✓</span>
                 </div>
-                <span>Your Chef prepares the meal in your kitchen</span>
+                <span className="text-sm">Your Chef prepares the meal in your kitchen</span>
               </div>
-              <div className="flex items-center gap-3 text-foreground">
-                <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary text-sm">✓</span>
+              <div className="flex items-center gap-2.5 text-foreground">
+                <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary text-xs">✓</span>
                 </div>
-                <span>Groceries and cleanup included</span>
+                <span className="text-sm">Groceries and cleanup included</span>
               </div>
             </div>
             
             {/* Pricing */}
-            <p className="text-2xl font-bold text-foreground">
+            <p className="text-lg font-bold text-foreground">
               Starting at <span className="text-primary">$20 per plate</span>
             </p>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button size="lg">
+            <div className="pt-2">
+              <Button size="md">
                 Get started
               </Button>
             </div>
