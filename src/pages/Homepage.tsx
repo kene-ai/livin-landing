@@ -45,13 +45,13 @@ const Homepage = () => {
   const categories = ["All", "Gluten Free", "Dairy Free", "Vegan", "Kid Friendly"];
 
   const menuItems = [
-    { name: "Greek Lemon Herbed Grilled Shrimp with Orzo Salad", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800" },
-    { name: "Asian Sesame Ginger Beef & Broccoli Stir Fry", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=800" },
-    { name: "Wild Caught Salmon with Garlic Roasted Asparagus", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800" },
+    { name: "Greek Lemon Herbed Grilled Shrimp with Orzo Salad", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1633504581786-316c8002b1b9?w=800" },
+    { name: "Asian Sesame Ginger Beef & Broccoli Stir Fry", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800" },
+    { name: "Wild Caught Salmon with Garlic Roasted Asparagus", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1485704686097-ed47f7263ca4?w=800" },
     { name: "Classic Italian Chicken Parmesan with Fresh Marinara", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800" },
-    { name: "Mediterranean Quinoa Bowl with Roasted Chickpeas and Tahini", tags: ["V", "GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
-    { name: "Honey Teriyaki Glazed Chicken Bowls with Steamed Vegetables", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=800" },
-    { name: "Herb Marinated Grilled Steak with Rosemary Sweet Potato Wedges", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800" },
+    { name: "Mediterranean Quinoa Bowl with Roasted Chickpeas and Tahini", tags: ["V", "GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800" },
+    { name: "Honey Teriyaki Glazed Chicken Bowls with Steamed Vegetables", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
+    { name: "Herb Marinated Grilled Steak with Rosemary Sweet Potato Wedges", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1558030006-450675393462?w=800" },
     { name: "Baja Style Grilled Shrimp Tacos with Cilantro Lime Slaw", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800" },
     { name: "Garden Fresh Veggie Pasta Primavera with Basil Pesto", tags: ["V"], kidFriendly: true, image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800" },
     { name: "Dijon Honey Mustard Glazed Chicken Thighs with Green Beans", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
@@ -60,9 +60,9 @@ const Homepage = () => {
     { name: "Aromatic Coconut Curry Chickpeas with Basmati Rice", tags: ["V", "GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" },
     { name: "Italian Style Turkey Meatballs with San Marzano Marinara", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800" },
     { name: "Baja Grilled Mahi Mahi Fish Tacos with Avocado Crema", tags: ["DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800" },
-    { name: "Cajun Spiced Ground Beef Stuffed Bell Peppers", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=800" },
+    { name: "Cajun Spiced Ground Beef Stuffed Bell Peppers", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=800" },
     { name: "Ginger Garlic Tofu Stir Fry with Snap Peas and Carrots", tags: ["V", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-eacef0df6022?w=800" },
-    { name: "Sweet & Smoky BBQ Glazed Chicken Drumsticks", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
+    { name: "Sweet & Smoky BBQ Glazed Chicken Drumsticks", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800" },
   ];
 
   const filteredMenuItems = menuItems.filter(item => {
