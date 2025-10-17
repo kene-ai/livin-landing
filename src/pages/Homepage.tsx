@@ -1,6 +1,8 @@
 import NavigationBar from "@/components/library/NavigationBar";
 import Button from "@/components/library/Button";
 import Footer from "@/components/library/Footer";
+import SectionHeading from "@/components/library/SectionHeading";
+import { Calendar, ShoppingCart, ChefHat, Sparkles } from "lucide-react";
 
 const Homepage = () => {
   const navItems = [
@@ -98,9 +100,87 @@ const Homepage = () => {
         </div>
       </section>
       
-      <main className="container mx-auto px-4 max-w-7xl py-12">
-        {/* Page content will go here */}
-      </main>
+      {/* How It Works Section */}
+      <section className="py-16 px-8 md:px-12 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <SectionHeading
+              title="How Livin Works"
+              subtitle="Your chef handles everything from grocery shopping to cleanup. You get healthy, customized meals without lifting a finger."
+              centered
+            />
+          </div>
+
+          {/* Process Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {/* Step 1 */}
+            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
+                <Calendar className="w-8 h-8 text-primary" />
+              </div>
+              <div className="text-center space-y-2">
+                <h3 className="text-xl font-bold text-foreground">1. Choose your meal</h3>
+                <ul className="text-sm text-muted-foreground space-y-1 text-left">
+                  <li>• Choose date, time, and menu</li>
+                  <li>• Book with just 48 hours notice</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
+                <ShoppingCart className="w-8 h-8 text-primary" />
+              </div>
+              <div className="text-center space-y-2">
+                <h3 className="text-xl font-bold text-foreground">2. Chef Shops</h3>
+                <ul className="text-sm text-muted-foreground space-y-1 text-left">
+                  <li>• Chef buys ALL groceries for your meals</li>
+                  <li>• Standard or organic options</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
+                <ChefHat className="w-8 h-8 text-primary" />
+              </div>
+              <div className="text-center space-y-2">
+                <h3 className="text-xl font-bold text-foreground">3. Chef Cooks</h3>
+                <ul className="text-sm text-muted-foreground space-y-1 text-left">
+                  <li>• Chef cooks all your meals for the week right in your own kitchen</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
+                <Sparkles className="w-8 h-8 text-primary" />
+              </div>
+              <div className="text-center space-y-2">
+                <h3 className="text-xl font-bold text-foreground">4. Chef Cleans</h3>
+                <ul className="text-sm text-muted-foreground space-y-1 text-left">
+                  <li>• Kitchen left spotless and meals labeled & stored in your fridge</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Callout */}
+          <div className="max-w-2xl mx-auto text-center space-y-6">
+            <div className="p-6 rounded-2xl border-2 border-primary bg-primary/5">
+              <p className="text-lg font-bold text-foreground">
+                ⭐ ONE CHEF VISIT = A FULL WEEK OF MEALS
+              </p>
+            </div>
+            <Button size="lg">
+              Sign Up
+            </Button>
+          </div>
+        </div>
+      </section>
 
       <Footer
         logo="livin"
