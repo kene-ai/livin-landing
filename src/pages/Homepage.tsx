@@ -30,7 +30,7 @@ const Homepage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white scroll-smooth">
+    <div className="min-h-screen bg-[#FAFAF8] scroll-smooth">
       <NavigationBar
         logo="livin"
         navItems={navItems}
