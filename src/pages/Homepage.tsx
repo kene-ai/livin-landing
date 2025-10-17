@@ -493,7 +493,7 @@ const Homepage = () => {
                   "Unreliable wait times",
                   "Usually unhealthy"
                 ]}
-                ctaLabel="Sign Up"
+                isNegative={true}
               />
             </div>
 
@@ -511,7 +511,6 @@ const Homepage = () => {
                   "Cooked by a pro",
                   "Customized to your needs"
                 ]}
-                ctaLabel="Sign Up"
                 highlighted={true}
               />
             </div>
@@ -530,7 +529,7 @@ const Homepage = () => {
                   "Artificial and highly processed",
                   "Leaves a lot of trash"
                 ]}
-                ctaLabel="Sign Up"
+                isNegative={true}
               />
             </div>
           </div>

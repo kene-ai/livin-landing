@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Button from "./Button";
+import { Check, X } from "lucide-react";
 
 export interface ServiceCardProps {
   title: string;
@@ -8,6 +9,7 @@ export interface ServiceCardProps {
   ctaLabel?: string;
   onCtaClick?: () => void;
   highlighted?: boolean;
+  isNegative?: boolean;
   className?: string;
 }
 
@@ -20,9 +22,10 @@ export default function ServiceCard({
   title,
   price,
   features,
-  ctaLabel = "Choose Plan",
+  ctaLabel,
   onCtaClick,
   highlighted = false,
+  isNegative = false,
   className,
 }: ServiceCardProps) {
   return (
@@ -42,18 +45,24 @@ export default function ServiceCard({
       <ul className="space-y-3">
         {features.map((feature, index) => (
           <li key={index} className={cn("flex items-start gap-2", highlighted ? "text-primary-foreground" : "text-foreground")}>
-            <span className="text-xl">✓</span>
+            {isNegative ? (
+              <X className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+            ) : (
+              <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+            )}
             <span>{feature}</span>
           </li>
         ))}
       </ul>
-      <Button 
-        onClick={onCtaClick} 
-        variant={highlighted ? "secondary" : "primary"}
-        className="w-full"
-      >
-        {ctaLabel}
-      </Button>
+      {ctaLabel && (
+        <Button 
+          onClick={onCtaClick} 
+          variant={highlighted ? "secondary" : "primary"}
+          className="w-full"
+        >
+          {ctaLabel}
+        </Button>
+      )}
     </div>
   );
 }
