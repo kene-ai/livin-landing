@@ -58,19 +58,19 @@ const Homepage = () => {
                 <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
                   <span className="text-primary text-sm">✓</span>
                 </div>
-                <span>All groceries included</span>
+                <span>Select meals and your dietary preferences</span>
               </div>
               <div className="flex items-center gap-3 text-foreground">
                 <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
                   <span className="text-primary text-sm">✓</span>
                 </div>
-                <span>Complete cleanup</span>
+                <span>Your Chef prepares the meal in your kitchen</span>
               </div>
               <div className="flex items-center gap-3 text-foreground">
                 <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
                   <span className="text-primary text-sm">✓</span>
                 </div>
-                <span>No subscription required</span>
+                <span>Groceries and cleanup included</span>
               </div>
             </div>
             
@@ -83,9 +83,6 @@ const Homepage = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button size="lg">
                 Get started
-              </Button>
-              <Button variant="outline" size="lg">
-                Browse Menu
               </Button>
             </div>
           </div>
