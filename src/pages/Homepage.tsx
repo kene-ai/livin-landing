@@ -59,9 +59,6 @@ const Homepage = () => {
     { name: "Oven Baked Herb Crusted Cod with Meyer Lemon Butter", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800" },
     { name: "Aromatic Coconut Curry Chickpeas with Basmati Rice", tags: ["V", "GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" },
     { name: "Italian Style Turkey Meatballs with San Marzano Marinara", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800" },
-    { name: "Baja Grilled Mahi Mahi Fish Tacos with Avocado Crema", tags: ["DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800" },
-    { name: "Cajun Spiced Ground Beef Stuffed Bell Peppers", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=800" },
-    { name: "Ginger Garlic Tofu Stir Fry with Snap Peas and Carrots", tags: ["V", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-eacef0df6022?w=800" },
     { name: "Sweet & Smoky BBQ Glazed Chicken Drumsticks", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800" },
   ];
 
@@ -358,7 +355,7 @@ const Homepage = () => {
           </div>
 
           {/* Menu Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
             {filteredMenuItems.map((item, index) => (
               <MenuItemCard
                 key={index}
