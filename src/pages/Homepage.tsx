@@ -88,7 +88,7 @@ const Homepage = () => {
           </div>
           
           {/* Right Column - Image */}
-          <div className="rounded-3xl overflow-hidden h-full min-h-[500px] md:min-h-[600px]">
+          <div className="rounded-3xl overflow-hidden h-full">
             <img 
               src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=1600" 
               alt="Chef cooking in home kitchen"
