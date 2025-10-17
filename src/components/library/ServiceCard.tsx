@@ -38,7 +38,7 @@ export default function ServiceCard({
         <h3 className={cn("text-2xl font-bold", highlighted ? "text-primary-foreground" : "text-foreground")}>
           {title}
         </h3>
-        <div className={cn("text-4xl font-bold", highlighted ? "text-primary-foreground" : "text-primary")}>
+        <div className={cn("text-xl font-bold", highlighted ? "text-primary-foreground" : "text-primary")}>
           {price}
         </div>
       </div>
