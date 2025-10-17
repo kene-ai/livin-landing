@@ -38,7 +38,7 @@ const Homepage = () => {
       />
       
       {/* Hero Section */}
-      <section className="py-8 md:py-16 px-8 md:px-12 lg:px-16">
+      <section className="py-8 md:py-16 px-8 md:px-12 lg:px-16 bg-[#F5F1E8]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-stretch">
           {/* Left Column - Text Content */}
           <div className="space-y-4 flex flex-col justify-start py-8 pl-8 md:pl-12 lg:pl-16">
