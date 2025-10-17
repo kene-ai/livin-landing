@@ -39,11 +39,11 @@ const Homepage = () => {
       
       {/* Hero Section */}
       <section className="py-12 md:py-20 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-stretch">
           {/* Left Column - Text Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 flex flex-col justify-center">
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Your Personal Chef, In Your Kitchen
             </h1>
             
@@ -88,7 +88,7 @@ const Homepage = () => {
           </div>
           
           {/* Right Column - Image */}
-          <div className="rounded-3xl overflow-hidden">
+          <div className="rounded-3xl overflow-hidden h-full min-h-[500px] md:min-h-[600px]">
             <img 
               src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=1600" 
               alt="Chef cooking in home kitchen"
