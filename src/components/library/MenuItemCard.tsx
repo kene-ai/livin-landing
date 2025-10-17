@@ -36,7 +36,7 @@ export default function MenuItemCard({
         </div>
       )}
       <div className="p-6 space-y-3">
-        <h3 className="text-base font-bold text-foreground leading-tight">{name}</h3>
+        <h3 className="text-sm font-semibold text-foreground leading-tight">{name}</h3>
         <p className="text-muted-foreground">{description}</p>
         {dietaryTags && dietaryTags.length > 0 && (
           <div className="flex flex-wrap gap-2">
