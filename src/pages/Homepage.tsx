@@ -7,6 +7,11 @@ import TestimonialCard from "@/components/library/TestimonialCard";
 import MenuItemCard from "@/components/library/MenuItemCard";
 import ProfileCard from "@/components/library/ProfileCard";
 import ServiceCard from "@/components/library/ServiceCard";
+import logoNorthside from "@/assets/logo-northside.webp";
+import logoEssence from "@/assets/logo-essence.webp";
+import logoAjc from "@/assets/logo-ajc.webp";
+import logoAbc from "@/assets/logo-abc.webp";
+import logoRoughDraft from "@/assets/logo-roughdraft.webp";
 import {
   Carousel,
   CarouselContent,
@@ -532,6 +537,22 @@ const Homepage = () => {
                 isNegative={true}
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Press/Media Section */}
+      <section className="py-16 px-8 md:px-12 lg:px-16 bg-accent/30">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+            Even more love for Livin...
+          </h2>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
+            <img src={logoNorthside} alt="Northside Neighbor" className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all" />
+            <img src={logoEssence} alt="Essence" className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all" />
+            <img src={logoAjc} alt="The Atlanta Journal-Constitution" className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all" />
+            <img src={logoAbc} alt="Atlanta Business Chronicle" className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all" />
+            <img src={logoRoughDraft} alt="Rough Draft Atlanta" className="h-12 md:h-16 object-contain grayscale hover:grayscale-0 transition-all" />
           </div>
         </div>
       </section>
