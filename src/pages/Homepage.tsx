@@ -114,8 +114,8 @@ const Homepage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {/* Step 1 */}
             <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-3xl font-bold">1</span>
+              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                <span className="text-xl font-bold">1</span>
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Choose your meal</h3>
@@ -128,8 +128,8 @@ const Homepage = () => {
 
             {/* Step 2 */}
             <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-3xl font-bold">2</span>
+              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                <span className="text-xl font-bold">2</span>
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Chef Shops</h3>
@@ -142,8 +142,8 @@ const Homepage = () => {
 
             {/* Step 3 */}
             <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-3xl font-bold">3</span>
+              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                <span className="text-xl font-bold">3</span>
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Chef Cooks</h3>
@@ -155,8 +155,8 @@ const Homepage = () => {
 
             {/* Step 4 */}
             <div className="p-6 rounded-3xl bg-card border border-border space-y-4">
-              <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
-                <span className="text-3xl font-bold">4</span>
+              <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mx-auto">
+                <span className="text-xl font-bold">4</span>
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Chef Cleans</h3>
