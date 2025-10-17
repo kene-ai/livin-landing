@@ -102,7 +102,7 @@ const Homepage = () => {
       {/* How It Works Section */}
       <section className="py-16 px-8 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
             <SectionHeading
               title="How Livin Works"
               subtitle="Your chef handles everything from grocery shopping to cleanup. You get healthy, customized meals without lifting a finger."
@@ -132,10 +132,9 @@ const Homepage = () => {
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Chef Shops</h3>
-                <div className="text-sm text-muted-foreground space-y-1">
-                  <p>Chef buys ALL groceries for your meals</p>
-                  <p>Standard or organic options</p>
-                </div>
+                <p className="text-sm text-muted-foreground">
+                  Chef buys ALL groceries for your meals
+                </p>
               </div>
             </div>
 
