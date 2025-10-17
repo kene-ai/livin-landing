@@ -47,11 +47,6 @@ const Homepage = () => {
               Your Personal Chef, In Your Kitchen
             </h1>
             
-            {/* Subheadline */}
-            <p className="text-2xl md:text-3xl text-primary font-semibold">
-              Shop • Cook • Clean • Repeat
-            </p>
-            
             {/* Description */}
             <p className="text-lg text-muted-foreground">
               Chef comes to your home, buys all groceries, cooks multiple meals, and leaves your kitchen spotless
