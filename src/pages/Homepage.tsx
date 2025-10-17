@@ -216,7 +216,7 @@ const Homepage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 px-8 md:px-12 lg:px-16 bg-accent/30">
+      <section className="py-16 px-12 md:px-16 lg:px-24 bg-accent/30">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column - Results */}
@@ -235,19 +235,19 @@ const Homepage = () => {
                     <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-primary-foreground text-xs">✓</span>
                     </div>
-                    <span className="text-foreground">Saves $800/month</span>
+                    <span className="text-foreground text-base">Saves $800/month</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-primary-foreground text-xs">✓</span>
                     </div>
-                    <span className="text-foreground">Saves 10 hrs/week on grocery shopping, cooking and cleanup</span>
+                    <span className="text-foreground text-base">Saves 10 hrs/week on grocery shopping, cooking and cleanup</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-primary-foreground text-xs">✓</span>
                     </div>
-                    <span className="text-foreground">Increased health and nutrition</span>
+                    <span className="text-foreground text-base">Increased health and nutrition</span>
                   </li>
                 </ul>
               </div>
