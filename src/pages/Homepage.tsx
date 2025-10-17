@@ -119,10 +119,9 @@ const Homepage = () => {
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Choose your meal</h3>
-                <ul className="text-sm text-muted-foreground space-y-1 text-left">
-                  <li>• Choose date, time, and menu</li>
-                  <li>• Book with just 48 hours notice</li>
-                </ul>
+                <p className="text-sm text-muted-foreground">
+                  Choose a date, time, and menu -- book with just 48 hours notice.
+                </p>
               </div>
             </div>
 
@@ -133,10 +132,10 @@ const Homepage = () => {
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Chef Shops</h3>
-                <ul className="text-sm text-muted-foreground space-y-1 text-left">
-                  <li>• Chef buys ALL groceries for your meals</li>
-                  <li>• Standard or organic options</li>
-                </ul>
+                <div className="text-sm text-muted-foreground space-y-1">
+                  <p>Chef buys ALL groceries for your meals</p>
+                  <p>Standard or organic options</p>
+                </div>
               </div>
             </div>
 
@@ -147,9 +146,9 @@ const Homepage = () => {
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Chef Cooks</h3>
-                <ul className="text-sm text-muted-foreground space-y-1 text-left">
-                  <li>• Chef cooks all your meals for the week right in your own kitchen</li>
-                </ul>
+                <p className="text-sm text-muted-foreground">
+                  Chef cooks all your meals for the week right in your own kitchen
+                </p>
               </div>
             </div>
 
@@ -160,9 +159,9 @@ const Homepage = () => {
               </div>
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-foreground">Chef Cleans</h3>
-                <ul className="text-sm text-muted-foreground space-y-1 text-left">
-                  <li>• Kitchen left spotless and meals labeled & stored in your fridge</li>
-                </ul>
+                <p className="text-sm text-muted-foreground">
+                  Kitchen left spotless and meals labeled & stored in your fridge
+                </p>
               </div>
             </div>
           </div>
