@@ -199,12 +199,7 @@ const Homepage = () => {
           </div>
 
           {/* Callout */}
-          <div className="max-w-2xl mx-auto text-center space-y-6">
-            <div className="p-6 rounded-2xl border-2 border-primary bg-primary/5">
-              <p className="text-lg font-bold text-foreground">
-                ⭐ ONE CHEF VISIT = A FULL WEEK OF MEALS
-              </p>
-            </div>
+          <div className="max-w-2xl mx-auto text-center">
             <Button size="lg">
               Sign Up
             </Button>
