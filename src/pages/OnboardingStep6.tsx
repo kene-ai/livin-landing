@@ -19,40 +19,35 @@ export default function OnboardingStep6() {
       deliveryApps: "$25-40",
       diningOut: "$15-30",
       cooking: "$12 + time",
-      livin: "~$20",
-      livinHighlight: true
+      livin: "~$20"
     },
     {
       category: "Healthy options",
       deliveryApps: "Limited",
       diningOut: "Hit or miss",
       cooking: "Yes",
-      livin: "Always",
-      livinCheckmark: true
+      livin: "Yes"
     },
     {
       category: "Your time",
       deliveryApps: "0 min",
       diningOut: "60-90 min",
       cooking: "120+ min",
-      livin: "0 min",
-      livinHighlight: true
+      livin: "0 min"
     },
     {
       category: "Cleanup",
       deliveryApps: "Trash",
       diningOut: "None",
       cooking: "30+ min",
-      livin: "Included",
-      livinCheckmark: true
+      livin: "Included"
     },
     {
       category: "Quality",
       deliveryApps: "Reheated",
       diningOut: "Variable",
       cooking: "Depends",
-      livin: "Chef-made",
-      livinCheckmark: true
+      livin: "Chef-made"
     }
   ];
 
@@ -104,15 +99,7 @@ export default function OnboardingStep6() {
                       "p-4 text-center font-semibold bg-primary/10",
                       index === comparisonData.length - 1 && "rounded-b-xl"
                     )}>
-                      {row.livinCheckmark ? (
-                        <div className="flex justify-center">
-                          <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
-                            <Check className="w-4 h-4 text-primary-foreground" strokeWidth={3} />
-                          </div>
-                        </div>
-                      ) : (
-                        <span className="text-foreground">{row.livin}</span>
-                      )}
+                      <span className="text-foreground">{row.livin}</span>
                     </td>
                     <td className="p-4 text-center text-muted-foreground">{row.deliveryApps}</td>
                     <td className="p-4 text-center text-muted-foreground">{row.diningOut}</td>
