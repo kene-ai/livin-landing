@@ -26,7 +26,7 @@ export default function Checkout() {
   const handleSubscribe = () => {
     if (email && phone && agreeToTerms) {
       console.log("Processing subscription...", { email, phone, paymentMethod, saveInfo });
-      // Navigate to success page or next step
+      navigate("/onboarding/success");
     }
   };
 
