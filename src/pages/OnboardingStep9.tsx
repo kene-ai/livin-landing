@@ -58,9 +58,7 @@ export default function OnboardingStep9() {
   };
 
   const handleNext = () => {
-    // TODO: Navigate to next step
-    console.log("Continuing to final step...");
-    // navigate("/onboarding/complete");
+    navigate("/onboarding/step-10");
   };
 
   return (
