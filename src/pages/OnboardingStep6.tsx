@@ -16,43 +16,43 @@ export default function OnboardingStep6() {
   const comparisonData = [
     {
       category: "Cost per meal",
-      deliveryApps: "$15-25",
-      diningOut: "$20-35",
-      cooking: "$8-12",
-      livin: "$10-15",
+      deliveryApps: "$25-40",
+      diningOut: "$15-30",
+      cooking: "$12 + time",
+      livin: "~$20",
       livinHighlight: true
     },
     {
       category: "Healthy options",
       deliveryApps: "Limited",
-      diningOut: "Limited",
+      diningOut: "Hit or miss",
       cooking: "Yes",
-      livin: "Yes",
+      livin: "Always",
       livinCheckmark: true
     },
     {
       category: "Your time",
-      deliveryApps: "30+ min wait",
-      diningOut: "2+ hours",
-      cooking: "2+ hours",
-      livin: "Zero",
+      deliveryApps: "0 min",
+      diningOut: "60-90 min",
+      cooking: "120+ min",
+      livin: "0 min",
       livinHighlight: true
     },
     {
       category: "Cleanup",
-      deliveryApps: "Minimal",
+      deliveryApps: "Trash",
       diningOut: "None",
       cooking: "30+ min",
-      livin: "Zero",
+      livin: "Included",
       livinCheckmark: true
     },
     {
       category: "Quality",
-      deliveryApps: "Variable",
-      diningOut: "Good",
-      cooking: "Variable",
-      livin: "Chef-quality",
-      livinHighlight: true
+      deliveryApps: "Reheated",
+      diningOut: "Variable",
+      cooking: "Depends",
+      livin: "Chef-made",
+      livinCheckmark: true
     }
   ];
 
