@@ -29,7 +29,7 @@ export default function OnboardingStep6() {
       livin: "100+ meals"
     },
     {
-      category: "Your time",
+      category: "Cooking time",
       deliveryApps: "0 min",
       diningOut: "60-90 min",
       cooking: "120+ min",
