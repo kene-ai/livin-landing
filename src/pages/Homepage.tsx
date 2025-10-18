@@ -7,6 +7,7 @@ import TestimonialCard from "@/components/library/TestimonialCard";
 import MenuMarquee from "@/components/library/MenuMarquee";
 import ProfileCard from "@/components/library/ProfileCard";
 import ServiceCard from "@/components/library/ServiceCard";
+import FAQSection from "@/components/library/FAQSection";
 import logoNorthside from "@/assets/logo-northside.webp";
 import logoEssence from "@/assets/logo-essence.webp";
 import logoAjc from "@/assets/logo-ajc.webp";
@@ -539,6 +540,9 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       <Footer
         logo="livin"
