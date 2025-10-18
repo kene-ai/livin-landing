@@ -133,15 +133,16 @@ export default function OnboardingStep2() {
             </p>
           </div>
 
-          {/* Continue Button */}
-          <Button 
-            variant="primary" 
-            size="lg"
-            onClick={handleContinue}
-            className="w-full"
-          >
-            Continue
-          </Button>
+          {/* Next Button */}
+          <div className="flex justify-end">
+            <Button 
+              variant="primary" 
+              size="md"
+              onClick={handleContinue}
+            >
+              Next
+            </Button>
+          </div>
         </div>
       </div>
     </div>
