@@ -78,7 +78,7 @@ export default function OnboardingStep16() {
   const handleContinue = () => {
     if (selectedPlan) {
       console.log("Selected plan:", { plan: selectedPlan, frequency, groceryType });
-      // navigate("/onboarding/checkout");
+      navigate("/checkout");
     }
   };
 
