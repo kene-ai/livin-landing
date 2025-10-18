@@ -16,13 +16,13 @@ export interface MissionSectionProps {
 export default function MissionSection({ className }: MissionSectionProps) {
   return (
     <section className={cn("py-16 px-8 md:px-12 lg:px-16", className)}>
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
         {/* Left Column - Image */}
-        <div className="rounded-3xl overflow-hidden">
+        <div className="rounded-3xl overflow-hidden h-full">
           <img 
             src={missionImage} 
             alt="Family with personal chef in kitchen"
-            className="w-full h-full object-cover aspect-[4/3]"
+            className="w-full h-full object-cover"
           />
         </div>
         
