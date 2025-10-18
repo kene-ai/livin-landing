@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import Button from "./Button";
 import missionImage from "@/assets/mission-family-chef.webp";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export interface MissionSectionProps {
   className?: string;
@@ -15,25 +16,25 @@ export interface MissionSectionProps {
  */
 export default function MissionSection({ className }: MissionSectionProps) {
   return (
-    <section className={cn("py-6 md:py-8 px-8 md:px-12 lg:px-16", className)}>
+    <section className={cn("py-4 md:py-6 px-8 md:px-12 lg:px-16", className)}>
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-stretch overflow-hidden rounded-3xl">
         {/* Left Column - Image */}
-        <div className="h-[320px] md:h-[380px] lg:h-[420px]">
+        <AspectRatio ratio={2} className="w-full">
           <img 
             src={missionImage} 
             alt="Family with personal chef in kitchen"
             className="w-full h-full object-cover"
           />
-        </div>
+        </AspectRatio>
         
         {/* Right Column - Mission Card */}
-        <div className="bg-secondary border-2 border-primary px-6 md:px-8 py-4 md:py-6 flex flex-col justify-center md:h-[380px] lg:h-[420px]">
-          <div className="space-y-3">
+        <div className="bg-secondary border-2 border-primary px-5 md:px-7 py-3 md:py-4 flex flex-col justify-start">
+          <div className="space-y-2">
             <h2 className="text-primary font-bold text-2xl">
               livin
             </h2>
             
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
               The missing ingredient from your support system: a personal chef.
             </h3>
             
