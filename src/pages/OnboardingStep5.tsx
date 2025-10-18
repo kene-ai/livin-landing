@@ -31,9 +31,7 @@ export default function OnboardingStep5() {
   };
 
   const handleNext = () => {
-    // TODO: Navigate to final step or completion
-    console.log("Selected services:", selectedServices);
-    // navigate("/onboarding/complete", { state: { selectedServices } });
+    navigate("/onboarding/step-6", { state: { selectedServices } });
   };
 
   return (

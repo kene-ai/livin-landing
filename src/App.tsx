@@ -9,6 +9,7 @@ import OnboardingStep2 from "./pages/OnboardingStep2";
 import OnboardingStep3 from "./pages/OnboardingStep3";
 import OnboardingStep4 from "./pages/OnboardingStep4";
 import OnboardingStep5 from "./pages/OnboardingStep5";
+import OnboardingStep6 from "./pages/OnboardingStep6";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/onboarding/step-3" element={<OnboardingStep3 />} />
           <Route path="/onboarding/step-4" element={<OnboardingStep4 />} />
           <Route path="/onboarding/step-5" element={<OnboardingStep5 />} />
+          <Route path="/onboarding/step-6" element={<OnboardingStep6 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
