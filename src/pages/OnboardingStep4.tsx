@@ -77,7 +77,7 @@ export default function OnboardingStep4() {
           </h1>
 
           {/* Image */}
-          <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden">
+          <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md mx-auto">
             <img 
               src={chefCookingImage} 
               alt="Chef cooking in home kitchen" 
