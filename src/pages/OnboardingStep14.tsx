@@ -24,8 +24,7 @@ export default function OnboardingStep14() {
     setSelectedTiming(value);
     // Navigate to next step after a brief delay
     setTimeout(() => {
-      console.log("Selected timing:", value);
-      // navigate("/onboarding/complete", { state: { selectedTiming: value } });
+      navigate("/onboarding/step-15", { state: { selectedTiming: value } });
     }, 300);
   };
 
