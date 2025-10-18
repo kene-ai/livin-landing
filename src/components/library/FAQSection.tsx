@@ -56,7 +56,7 @@ const FAQSection = () => {
         <div className="grid md:grid-cols-[400px_1fr] gap-12 md:gap-16 items-start">
           {/* Left Column - Heading and CTA */}
           <div className="space-y-6 md:sticky md:top-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Frequently asked questions
             </h2>
             <Button size="lg" className="w-full md:w-auto">
