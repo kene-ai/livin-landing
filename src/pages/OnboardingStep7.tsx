@@ -13,26 +13,16 @@ import { Input } from "@/components/ui/input";
 export default function OnboardingStep7() {
   const navigate = useNavigate();
   const [zipCode, setZipCode] = useState("");
-  const [status, setStatus] = useState<"initial" | "checking" | "in-service" | "not-in-service">("initial");
-  const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
+  const [status, setStatus] = useState<"initial" | "checking" | "in-service">("initial");
 
-  // Mock service area check - replace with actual API call
+  // Check service area - always returns in-service
   const checkServiceArea = async (zip: string) => {
     setStatus("checking");
     
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 500));
     
-    // Mock logic: zip codes starting with 3 are in service
-    const inService = zip.startsWith("3");
-    
-    if (inService) {
-      setStatus("in-service");
-    } else {
-      setCity("Atlanta"); // Mock city name - would come from API
-      setStatus("not-in-service");
-    }
+    setStatus("in-service");
   };
 
   const handleCheckZip = () => {
@@ -45,12 +35,6 @@ export default function OnboardingStep7() {
     // TODO: Navigate to next step
     console.log("Continuing to next step...");
     // navigate("/onboarding/step-8");
-  };
-
-  const handleJoinWaitlist = () => {
-    // TODO: Submit waitlist email
-    console.log("Joining waitlist with email:", email);
-    // Show success message or navigate
   };
 
   return (
@@ -134,42 +118,6 @@ export default function OnboardingStep7() {
             </>
           )}
 
-          {status === "not-in-service" && (
-            <>
-              {/* Not in Service Message */}
-              <div className="mb-8">
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-6">
-                  We're not in {city} yet, but we're expanding!
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Join our waitlist to be first to know when we launch in your area.
-                </p>
-
-                {/* Email Input */}
-                <div className="mb-6">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="h-16 text-lg rounded-2xl border-2 border-primary/30 focus:border-primary"
-                  />
-                </div>
-
-                {/* Join Waitlist Button */}
-                <div className="flex justify-end">
-                  <Button 
-                    variant="primary" 
-                    size="lg"
-                    onClick={handleJoinWaitlist}
-                    disabled={!email || !email.includes("@")}
-                  >
-                    Join Waitlist
-                  </Button>
-                </div>
-              </div>
-            </>
-          )}
         </div>
       </div>
     </div>
