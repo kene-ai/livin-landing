@@ -36,7 +36,7 @@ export default function OnboardingStep6() {
       livin: "0 min"
     },
     {
-      category: "Cleanup",
+      category: "Cleanup time",
       deliveryApps: "Trash",
       diningOut: "None",
       cooking: "30+ min",
