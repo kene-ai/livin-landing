@@ -339,18 +339,11 @@ const Homepage = () => {
             />
           </div>
 
-          {/* Category Pills (non-functional, just for display) */}
+          {/* Category Terms */}
           <div className="mb-10">
-            <div className="flex flex-wrap gap-2 justify-center">
-              {categories.map(category => (
-                <span
-                  key={category}
-                  className="px-4 py-2 rounded-full text-sm font-medium bg-accent text-accent-foreground"
-                >
-                  {category}
-                </span>
-              ))}
-            </div>
+            <p className="text-center text-muted-foreground text-sm">
+              Poultry • Beef • Seafood • Dairy Free • Vegan • Kid Friendly
+            </p>
           </div>
 
           {/* Scrolling Menu Rows */}
