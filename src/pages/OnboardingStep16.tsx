@@ -138,21 +138,16 @@ export default function OnboardingStep16() {
             <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
               <OnboardingOption
                 value="standard"
-                label="Standard groceries (included)"
+                label="Standard groceries"
                 selected={groceryType === "standard"}
                 onClick={() => setGroceryType("standard")}
               />
-              <div>
-                <OnboardingOption
-                  value="organic"
-                  label="Organic groceries (+$30)"
-                  selected={groceryType === "organic"}
-                  onClick={() => setGroceryType("organic")}
-                />
-                <p className="text-sm text-muted-foreground mt-2 px-2">
-                  *Premium organic from Whole Foods, Sprouts*
-                </p>
-              </div>
+              <OnboardingOption
+                value="organic"
+                label="Organic groceries (+$30)"
+                selected={groceryType === "organic"}
+                onClick={() => setGroceryType("organic")}
+              />
             </div>
           </div>
 
