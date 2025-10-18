@@ -14,6 +14,7 @@ import logoAjc from "@/assets/logo-ajc.webp";
 import logoAbc from "@/assets/logo-abc.webp";
 import logoRoughDraft from "@/assets/logo-roughdraft.webp";
 import SignupProcess from "@/components/library/SignupProcess";
+import MissionSection from "@/components/library/MissionSection";
 import {
   Carousel,
   CarouselContent,
@@ -253,6 +254,9 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* Mission Section */}
+      <MissionSection />
 
       {/* Testimonials Section */}
       <section className="py-16 px-12 md:px-16 lg:px-24 bg-accent/30">
