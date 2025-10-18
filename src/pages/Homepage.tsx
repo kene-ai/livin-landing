@@ -4,7 +4,7 @@ import Button from "@/components/library/Button";
 import Footer from "@/components/library/Footer";
 import SectionHeading from "@/components/library/SectionHeading";
 import TestimonialCard from "@/components/library/TestimonialCard";
-import MenuItemCard from "@/components/library/MenuItemCard";
+import MenuMarquee from "@/components/library/MenuMarquee";
 import ProfileCard from "@/components/library/ProfileCard";
 import ServiceCard from "@/components/library/ServiceCard";
 import logoNorthside from "@/assets/logo-northside.webp";
@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/carousel";
 
 const Homepage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
   const navItems = [
     { label: "How It Works", href: "#how-it-works" },
@@ -72,14 +71,9 @@ const Homepage = () => {
     { name: "Sweet & Smoky BBQ Glazed Chicken Drumsticks", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800" },
   ];
 
-  const filteredMenuItems = menuItems.filter(item => {
-    if (selectedCategory === "All") return true;
-    if (selectedCategory === "Gluten Free") return item.tags.includes("GF");
-    if (selectedCategory === "Dairy Free") return item.tags.includes("DF");
-    if (selectedCategory === "Vegan") return item.tags.includes("V");
-    if (selectedCategory === "Kid Friendly") return item.kidFriendly;
-    return true;
-  });
+  // Split menu items into two rows
+  const row1Items = menuItems.slice(0, 9);
+  const row2Items = menuItems.slice(9, 18);
 
   return (
     <div className="min-h-screen bg-[#FAFAF8] scroll-smooth">
@@ -334,7 +328,7 @@ const Homepage = () => {
       </section>
 
       {/* Menu Section */}
-      <section className="py-16 px-8 md:px-12 lg:px-16">
+      <section className="py-16 px-8 md:px-12 lg:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 max-w-3xl mx-auto">
             <SectionHeading
@@ -344,37 +338,27 @@ const Homepage = () => {
             />
           </div>
 
-          {/* Filter Bar */}
-          <div className="mb-8">
-            {/* Category Pills */}
+          {/* Category Pills (non-functional, just for display) */}
+          <div className="mb-10">
             <div className="flex flex-wrap gap-2 justify-center">
               {categories.map(category => (
-                <button
+                <span
                   key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedCategory === category
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-accent text-accent-foreground hover:bg-accent/80"
-                  }`}
+                  className="px-4 py-2 rounded-full text-sm font-medium bg-accent text-accent-foreground"
                 >
                   {category}
-                </button>
+                </span>
               ))}
             </div>
           </div>
 
-          {/* Menu Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {filteredMenuItems.map((item, index) => (
-              <MenuItemCard
-                key={index}
-                name={item.name}
-                description=""
-                imageSrc={item.image}
-                dietaryTags={[...item.tags, ...(item.kidFriendly ? ["⭐ Kid Favorite"] : [])]}
-              />
-            ))}
+          {/* Scrolling Menu Rows */}
+          <div className="space-y-6 mb-10">
+            {/* Row 1 - Scrolling Right */}
+            <MenuMarquee items={row1Items} direction="right" />
+            
+            {/* Row 2 - Scrolling Left */}
+            <MenuMarquee items={row2Items} direction="left" />
           </div>
 
           {/* Info Text */}
