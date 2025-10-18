@@ -4,7 +4,7 @@ import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
 import { Input } from "@/components/ui/input";
-import { Package, CreditCard, Calendar, Utensils, PauseCircle } from "lucide-react";
+import { Package, CreditCard, Calendar, Utensils } from "lucide-react";
 
 /**
  * Onboarding Step 16
@@ -51,15 +51,6 @@ export default function OnboardingStep16() {
         "Pick your meals & chef before each service",
         "Dietary preferences & allergies respected"
       ]
-    },
-    {
-      icon: PauseCircle,
-      title: "Pause or Cancel Anytime",
-      points: [
-        "No long-term commitment",
-        "Pause your subscription if life gets busy",
-        "Cancel with zero fees"
-      ]
     }
   ];
 
@@ -98,22 +89,22 @@ export default function OnboardingStep16() {
           </div>
 
           {/* Subscription Sections */}
-          <div className="space-y-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
             {subscriptionSections.map((section, index) => {
               const IconComponent = section.icon;
               return (
-                <div key={index}>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                      <IconComponent className="w-5 h-5 text-primary" />
+                <div key={index} className="bg-card border border-border rounded-3xl p-8 space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-primary" />
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground pt-1">
+                    <h3 className="text-xl font-bold text-foreground">
                       {section.title}
                     </h3>
                   </div>
-                  <ul className="space-y-2 ml-14">
+                  <ul className="space-y-2">
                     {section.points.map((point, pointIndex) => (
-                      <li key={pointIndex} className="text-base md:text-lg text-foreground">
+                      <li key={pointIndex} className="text-sm md:text-base text-muted-foreground">
                         • {point}
                       </li>
                     ))}
