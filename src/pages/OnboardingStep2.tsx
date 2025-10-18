@@ -76,9 +76,7 @@ export default function OnboardingStep2() {
   const content = contentMap[selectedReason] || contentMap["save-time"];
 
   const handleContinue = () => {
-    // TODO: Navigate to next step
-    console.log("Continuing to step 3...");
-    // navigate("/onboarding/step-3", { state: { selectedReason } });
+    navigate("/onboarding/step-3");
   };
 
   return (
