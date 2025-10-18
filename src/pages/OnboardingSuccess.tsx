@@ -36,9 +36,9 @@ export default function OnboardingSuccess() {
           {/* Success Message */}
           <div className="text-center space-y-12 py-16">
             {/* Emoji & Header */}
-            <div className="space-y-6">
-              <div className="text-8xl md:text-9xl">🎉</div>
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground" style={{ fontFamily: 'Georgia, serif' }}>
+            <div className="space-y-4">
+              <div className="text-5xl md:text-6xl">🎉</div>
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground" style={{ fontFamily: 'Georgia, serif' }}>
                 Welcome to Livin!
               </h1>
             </div>
