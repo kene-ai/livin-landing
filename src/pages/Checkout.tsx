@@ -33,7 +33,7 @@ export default function Checkout() {
   return (
     <div className="min-h-screen bg-background pb-24">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={19} totalSteps={20} />
+      <OnboardingProgress currentStep={6} totalSteps={6} />
 
       {/* Main Content */}
       <div className="pt-8 px-6 md:px-8">
