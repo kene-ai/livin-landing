@@ -101,7 +101,7 @@ export default function OnboardingStep17() {
 
           {/* Header */}
           <div className="mb-10">
-            <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">
+            <h1 className="text-base md:text-lg lg:text-xl font-bold text-foreground mb-3">
               Choose your plan
             </h1>
             <p className="text-lg text-muted-foreground">

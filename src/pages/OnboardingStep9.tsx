@@ -79,7 +79,7 @@ export default function OnboardingStep9() {
           </div>
 
           {/* Dynamic Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-12 md:mb-16 text-center leading-tight">
+          <h1 className="text-base md:text-lg lg:text-xl font-serif font-bold text-foreground mb-12 md:mb-16 text-center leading-tight">
             {getHeaderText()}
           </h1>
 
