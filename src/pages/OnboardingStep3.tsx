@@ -30,9 +30,7 @@ export default function OnboardingStep3() {
   };
 
   const handleNext = () => {
-    // TODO: Navigate to next step
-    console.log("Selected occasions:", selectedOccasions);
-    // navigate("/onboarding/step-4", { state: { selectedOccasions } });
+    navigate("/onboarding/step-4", { state: { selectedOccasions } });
   };
 
   return (
