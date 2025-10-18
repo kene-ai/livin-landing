@@ -137,7 +137,7 @@ export default function OnboardingStep2() {
           <div className="flex justify-end">
             <Button 
               variant="primary" 
-              size="md"
+              size="lg"
               onClick={handleContinue}
             >
               Next
