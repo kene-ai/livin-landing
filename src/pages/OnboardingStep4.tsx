@@ -36,9 +36,7 @@ export default function OnboardingStep4() {
   };
 
   const handleNext = () => {
-    // TODO: Navigate to next step
-    console.log("Continuing to step 5...");
-    // navigate("/onboarding/step-5");
+    navigate("/onboarding/step-5");
   };
 
   const benefits = [
