@@ -549,7 +549,6 @@ const Homepage = () => {
           </h2>
           <div className="flex flex-wrap justify-between items-center gap-8">
             <img src={logoNorthside} alt="Northside Neighbor" className="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all" />
-            <img src={logoEssence} alt="Essence" className="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all" />
             <img src={logoAjc} alt="The Atlanta Journal-Constitution" className="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all" />
             <img src={logoAbc} alt="Atlanta Business Chronicle" className="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all" />
             <img src={logoRoughDraft} alt="Rough Draft Atlanta" className="h-16 md:h-20 object-contain grayscale hover:grayscale-0 transition-all" />
