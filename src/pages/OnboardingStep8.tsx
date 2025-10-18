@@ -79,9 +79,7 @@ export default function OnboardingStep8() {
   };
 
   const handleNext = () => {
-    // TODO: Navigate to next step
-    console.log("Household:", { adults, kids, kidAges, dietaryRestrictions: selectedRestrictions });
-    // navigate("/onboarding/step-9");
+    navigate("/onboarding/step-9", { state: { adults, kids, kidAges, dietaryRestrictions: selectedRestrictions } });
   };
 
   const totalPeople = adults + kids;
