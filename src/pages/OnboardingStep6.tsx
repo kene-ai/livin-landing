@@ -17,7 +17,7 @@ export default function OnboardingStep6() {
     {
       category: "Cost per meal",
       deliveryApps: "$25-40",
-      diningOut: "$15-30",
+      diningOut: "$30+",
       cooking: "$12 + time",
       livin: "~$20"
     },
