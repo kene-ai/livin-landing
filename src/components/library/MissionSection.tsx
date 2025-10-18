@@ -34,15 +34,15 @@ export default function MissionSection({ className }: MissionSectionProps) {
               livin
             </h2>
             
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mt-4 md:mt-5">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mt-6 md:mt-8">
               The missing ingredient from your support system: a personal chef.
             </h3>
             
-            <p className="text-lg text-foreground mt-4 md:mt-5">
+            <p className="text-lg text-foreground mt-6 md:mt-7">
               We started Livin because everyone should have access to healthy, tasty homemade meals, regardless of our available time or skill. So we've made it possible for as low as $20 a plate.
             </p>
             
-            <div className="mt-5 md:mt-6">
+            <div className="mt-7 md:mt-8">
               <Button variant="primary" size="lg">
                 Sign Up
               </Button>
