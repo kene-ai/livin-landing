@@ -119,8 +119,8 @@ export default function OnboardingStep16() {
 
           {/* Email Capture Section */}
           <div className="bg-secondary/30 rounded-3xl p-8 md:p-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
-              Get $20 off your first month
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+              Enter your email to get $20 off of your first month
             </h2>
 
             {/* Email Input */}
@@ -135,13 +135,12 @@ export default function OnboardingStep16() {
             </div>
 
             {/* Continue Button */}
-            <div className="mb-4">
+            <div className="flex justify-end mb-4">
               <Button 
                 variant="primary" 
                 size="lg"
                 onClick={handleContinue}
                 disabled={!email || !email.includes("@")}
-                className="w-full"
               >
                 Continue
               </Button>
