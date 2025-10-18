@@ -16,9 +16,9 @@ export interface MissionSectionProps {
 export default function MissionSection({ className }: MissionSectionProps) {
   return (
     <section className={cn("py-16 px-8 md:px-12 lg:px-16", className)}>
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-stretch overflow-hidden rounded-3xl">
         {/* Left Column - Image */}
-        <div className="rounded-3xl overflow-hidden h-full">
+        <div className="h-full">
           <img 
             src={missionImage} 
             alt="Family with personal chef in kitchen"
@@ -27,7 +27,7 @@ export default function MissionSection({ className }: MissionSectionProps) {
         </div>
         
         {/* Right Column - Mission Card */}
-        <div className="bg-secondary rounded-3xl border-2 border-primary p-8 md:p-12 space-y-6">
+        <div className="bg-secondary border-2 border-primary p-6 md:p-8 lg:p-10 space-y-4 flex flex-col justify-center">
           <h2 className="text-primary font-bold text-2xl">
             livin
           </h2>
