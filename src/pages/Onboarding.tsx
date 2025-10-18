@@ -23,11 +23,13 @@ export default function Onboarding() {
     { value: "special-event", label: "Create a unique moment for a special event or occasion" },
   ];
 
-  const handleContinue = () => {
-    if (selectedReason) {
-      // TODO: Navigate to next step
-      console.log("Selected reason:", selectedReason);
-    }
+  const handleSelect = (value: string) => {
+    setSelectedReason(value);
+    // TODO: Navigate to next step after a brief delay
+    setTimeout(() => {
+      console.log("Selected reason:", value);
+      // navigate("/onboarding/step-2");
+    }, 300);
   };
 
   return (
@@ -53,28 +55,17 @@ export default function Onboarding() {
           </h1>
 
           {/* Options */}
-          <div className="space-y-4 mb-8">
+          <div className="space-y-4">
             {reasons.map((reason) => (
               <OnboardingOption
                 key={reason.value}
                 value={reason.value}
                 label={reason.label}
                 selected={selectedReason === reason.value}
-                onClick={() => setSelectedReason(reason.value)}
+                onClick={() => handleSelect(reason.value)}
               />
             ))}
           </div>
-
-          {/* Continue Button */}
-          <Button 
-            variant="primary" 
-            size="lg"
-            onClick={handleContinue}
-            disabled={!selectedReason}
-            className="w-full"
-          >
-            Continue
-          </Button>
         </div>
       </div>
     </div>

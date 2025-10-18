@@ -33,19 +33,9 @@ export default function OnboardingOption({
         className
       )}
     >
-      <div className="flex items-center gap-4">
-        <div className={cn(
-          "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0",
-          selected ? "border-primary" : "border-muted-foreground"
-        )}>
-          {selected && (
-            <div className="w-3 h-3 rounded-full bg-primary" />
-          )}
-        </div>
-        <span className="text-base md:text-lg text-foreground font-medium">
-          {label}
-        </span>
-      </div>
+      <span className="text-base md:text-lg text-foreground font-medium">
+        {label}
+      </span>
     </button>
   );
 }
