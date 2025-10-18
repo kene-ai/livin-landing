@@ -217,7 +217,7 @@ export default function OnboardingStep16() {
 
           {/* Fine Print */}
           <p className="text-sm text-muted-foreground text-center mb-8">
-            This is just a preference—you can change anytime
+            You can change your mealplan at any time
           </p>
 
           {/* Continue Button */}
