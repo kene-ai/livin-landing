@@ -145,8 +145,7 @@ export default function OnboardingStep11() {
   };
 
   const handleContinue = () => {
-    console.log("Favorited meals:", Array.from(favoritedMeals));
-    // navigate("/onboarding/step-12", { state: { favoritedMeals: Array.from(favoritedMeals) } });
+    navigate("/onboarding/step-12", { state: { favoritedMeals: Array.from(favoritedMeals) } });
   };
 
   const favoritedCount = favoritedMeals.size;

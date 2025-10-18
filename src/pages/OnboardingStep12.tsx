@@ -1,0 +1,90 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import OnboardingProgress from "@/components/library/OnboardingProgress";
+import OnboardingCheckbox from "@/components/library/OnboardingCheckbox";
+import Button from "@/components/library/Button";
+import livinLogo from "@/assets/livin-logo.webp";
+
+/**
+ * Onboarding Step 12
+ * 
+ * Chef preferences selection
+ */
+export default function OnboardingStep12() {
+  const navigate = useNavigate();
+  const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
+
+  const preferences = [
+    { value: "background-checked", label: "Background-checked & insured" },
+    { value: "high-ratings", label: "High ratings and reviews" },
+    { value: "cooking-specialties", label: "Specific cooking specialties" },
+    { value: "personality", label: "Personality & communication" },
+    { value: "flexibility", label: "Flexibility with schedule" },
+    { value: "respectful", label: "Respectful of my home" },
+  ];
+
+  const handleToggle = (value: string) => {
+    setSelectedPreferences(prev => 
+      prev.includes(value)
+        ? prev.filter(v => v !== value)
+        : [...prev, value]
+    );
+  };
+
+  const handleNext = () => {
+    // TODO: Navigate to next step
+    console.log("Selected preferences:", selectedPreferences);
+    // navigate("/onboarding/step-13", { state: { selectedPreferences } });
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Progress Bar */}
+      <OnboardingProgress currentStep={5} totalSteps={5} />
+
+      {/* Main Content */}
+      <div className="pt-8 pb-12 px-6 md:px-8">
+        <div className="max-w-2xl mx-auto">
+          {/* Logo */}
+          <div className="mb-8 md:mb-12">
+            <img 
+              src={livinLogo} 
+              alt="Livin" 
+              className="h-8 md:h-10"
+            />
+          </div>
+
+          {/* Header */}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
+            What do you look for in a personal chef to come cook in your home?
+          </h1>
+
+          {/* Checkbox Options */}
+          <div className="space-y-4 mb-10">
+            {preferences.map((preference) => (
+              <OnboardingCheckbox
+                key={preference.value}
+                value={preference.value}
+                label={preference.label}
+                selected={selectedPreferences.includes(preference.value)}
+                onClick={() => handleToggle(preference.value)}
+              />
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-end">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+              disabled={selectedPreferences.length === 0}
+            >
+              Next
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
