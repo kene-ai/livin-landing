@@ -42,7 +42,7 @@ export default function MissionSection({ className }: MissionSectionProps) {
               We started Livin because everyone should have access to healthy, tasty homemade meals, regardless of our available time or skill. So we've made it possible for as low as $20 a plate.
             </p>
             
-            <div className="mt-7 md:mt-8">
+            <div className="mt-7 md:mt-8 mb-4 md:mb-5">
               <Button variant="primary" size="lg">
                 Sign Up
               </Button>
