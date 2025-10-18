@@ -31,7 +31,7 @@ export default function SignupProcess({ className }: SignupProcessProps) {
     },
     {
       icon: <Calendar className="w-8 h-8" />,
-      title: "Select the date for your first meal service",
+      title: "Schedule your first meal service",
       description: "Pick a convenient time for your chef to cook in your home",
     },
     {
@@ -72,7 +72,7 @@ export default function SignupProcess({ className }: SignupProcessProps) {
         </div>
 
         {/* Bottom text */}
-        <p className="text-muted-foreground max-w-3xl">
+        <p className="text-lg text-muted-foreground max-w-3xl">
           Book your first meal service within 48 hours. Every week you'll have the chance to customize your meals, chef, and service day.
         </p>
       </div>
