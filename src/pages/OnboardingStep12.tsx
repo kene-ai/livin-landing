@@ -32,9 +32,7 @@ export default function OnboardingStep12() {
   };
 
   const handleNext = () => {
-    // TODO: Navigate to next step
-    console.log("Selected preferences:", selectedPreferences);
-    // navigate("/onboarding/step-13", { state: { selectedPreferences } });
+    navigate("/onboarding/step-13", { state: { selectedPreferences } });
   };
 
   return (
