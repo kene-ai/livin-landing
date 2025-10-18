@@ -36,7 +36,7 @@ export default function OnboardingCheckbox({
     >
       <div className="flex items-center gap-4">
         <div className={cn(
-          "w-6 h-6 rounded-md border-2 flex items-center justify-center flex-shrink-0",
+          "w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0",
           selected ? "border-primary bg-primary" : "border-muted-foreground"
         )}>
           {selected && (
