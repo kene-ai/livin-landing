@@ -13,6 +13,7 @@ import logoEssence from "@/assets/logo-essence.webp";
 import logoAjc from "@/assets/logo-ajc.webp";
 import logoAbc from "@/assets/logo-abc.webp";
 import logoRoughDraft from "@/assets/logo-roughdraft.webp";
+import SignupProcess from "@/components/library/SignupProcess";
 import {
   Carousel,
   CarouselContent,
@@ -518,6 +519,9 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+
+      {/* Signup Process Section */}
+      <SignupProcess />
 
       {/* Press/Media Section */}
       <section className="py-16 px-8 md:px-12 lg:px-16 bg-accent/30">
