@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import missionImage from "@/assets/mission-family-chef.webp";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -15,6 +16,8 @@ export interface MissionSectionProps {
  * - Right: Mission statement with CTA
  */
 export default function MissionSection({ className }: MissionSectionProps) {
+  const navigate = useNavigate();
+  
   return (
     <section className={cn("py-4 md:py-6 px-8 md:px-12 lg:px-16", className)}>
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-stretch overflow-hidden rounded-3xl">
@@ -43,7 +46,7 @@ export default function MissionSection({ className }: MissionSectionProps) {
             </p>
             
             <div className="mt-7 md:mt-8 mb-4 md:mb-5">
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" onClick={() => navigate("/onboarding")}>
                 Sign Up
               </Button>
             </div>

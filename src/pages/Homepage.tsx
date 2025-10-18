@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import NavigationBar from "@/components/library/NavigationBar";
 import Button from "@/components/library/Button";
 import Footer from "@/components/library/Footer";
@@ -24,6 +25,7 @@ import {
 } from "@/components/ui/carousel";
 
 const Homepage = () => {
+  const navigate = useNavigate();
   const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
   const navItems = [
     { label: "How It Works", href: "#how-it-works" },
@@ -84,6 +86,7 @@ const Homepage = () => {
         logo="livin"
         navItems={navItems}
         ctaLabel="Sign Up"
+        onCtaClick={() => navigate("/onboarding")}
       />
       
       {/* Hero Section */}
@@ -248,7 +251,7 @@ const Homepage = () => {
 
           {/* Callout */}
           <div className="max-w-2xl mx-auto text-center">
-            <Button size="lg">
+            <Button size="lg" onClick={() => navigate("/onboarding")}>
               Sign Up
             </Button>
           </div>
@@ -447,7 +450,7 @@ const Homepage = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg">
+            <Button size="lg" onClick={() => navigate("/onboarding")}>
               Sign Up
             </Button>
           </div>
