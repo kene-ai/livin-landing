@@ -91,7 +91,7 @@ export default function OnboardingStep16() {
       <div className="pt-8 px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Logo */}
-          <div className="mb-8 md:mb-12">
+          <div className="mb-12">
             <img 
               src={livinLogo} 
               alt="Livin" 
@@ -100,11 +100,11 @@ export default function OnboardingStep16() {
           </div>
 
           {/* Header */}
-          <div className="mb-8 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-4">
+          <div className="mb-10">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               Choose your plan
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
+            <p className="text-lg text-muted-foreground">
               All plans include: Chef service • Groceries • Cleanup • Storage containers
             </p>
           </div>
