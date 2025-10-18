@@ -40,7 +40,7 @@ export default function OnboardingStep6() {
       deliveryApps: "Trash",
       diningOut: "None",
       cooking: "30+ min",
-      livin: "Included"
+      livin: "0 min"
     },
     {
       category: "Quality",
