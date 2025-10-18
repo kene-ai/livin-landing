@@ -113,8 +113,7 @@ export default function OnboardingStep13() {
   };
 
   const handleNext = () => {
-    console.log("Favorited chefs:", Array.from(favoritedChefs));
-    // navigate("/onboarding/complete", { state: { favoritedChefs: Array.from(favoritedChefs) } });
+    navigate("/onboarding/step-14", { state: { favoritedChefs: Array.from(favoritedChefs) } });
   };
 
   const favoritedCount = favoritedChefs.size;
