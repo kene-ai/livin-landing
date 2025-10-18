@@ -26,8 +26,7 @@ export default function OnboardingStep10() {
     setSelectedChallenge(value);
     // Navigate to next step after a brief delay
     setTimeout(() => {
-      console.log("Selected challenge:", value);
-      // navigate("/onboarding/step-11", { state: { selectedChallenge: value } });
+      navigate("/onboarding/step-11", { state: { selectedChallenge: value } });
     }, 300);
   };
 
