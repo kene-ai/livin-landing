@@ -90,19 +90,16 @@ export default function OnboardingStep6() {
               <thead>
                 <tr>
                   <th className="p-4 text-left font-semibold text-foreground border-b-2 border-muted"></th>
+                  <th className="p-4 text-center font-bold text-primary-foreground bg-primary border-b-2 border-primary rounded-t-xl">Livin</th>
                   <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Delivery Apps</th>
                   <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Dining Out</th>
                   <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Cooking</th>
-                  <th className="p-4 text-center font-bold text-primary-foreground bg-primary border-b-2 border-primary rounded-t-xl">Livin</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonData.map((row, index) => (
                   <tr key={index} className="border-b border-muted">
                     <td className="p-4 font-semibold text-foreground">{row.category}</td>
-                    <td className="p-4 text-center text-muted-foreground">{row.deliveryApps}</td>
-                    <td className="p-4 text-center text-muted-foreground">{row.diningOut}</td>
-                    <td className="p-4 text-center text-muted-foreground">{row.cooking}</td>
                     <td className={cn(
                       "p-4 text-center font-semibold bg-primary/10",
                       index === comparisonData.length - 1 && "rounded-b-xl"
@@ -117,6 +114,9 @@ export default function OnboardingStep6() {
                         <span className="text-foreground">{row.livin}</span>
                       )}
                     </td>
+                    <td className="p-4 text-center text-muted-foreground">{row.deliveryApps}</td>
+                    <td className="p-4 text-center text-muted-foreground">{row.diningOut}</td>
+                    <td className="p-4 text-center text-muted-foreground">{row.cooking}</td>
                   </tr>
                 ))}
               </tbody>
