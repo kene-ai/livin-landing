@@ -172,8 +172,8 @@ export default function OnboardingStep16() {
                 )}
 
                 {/* Plan Name */}
-                <h3 className="text-2xl font-bold text-foreground uppercase">
-                  {plan.name} Plan
+                <h3 className="text-2xl font-bold text-foreground">
+                  {plan.name}
                 </h3>
 
                 {/* Price */}
