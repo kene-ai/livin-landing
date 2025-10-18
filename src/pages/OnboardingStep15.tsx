@@ -24,9 +24,7 @@ export default function OnboardingStep15() {
   ];
 
   const handleNext = () => {
-    // TODO: Navigate to final step or account creation
-    console.log("Continuing to account creation...");
-    // navigate("/onboarding/signup");
+    navigate("/onboarding/step-16");
   };
 
   return (
