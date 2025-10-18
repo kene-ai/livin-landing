@@ -157,7 +157,7 @@ export default function OnboardingStep16() {
               <div
                 key={plan.id}
                 className={cn(
-                  "relative rounded-3xl border-2 p-6 space-y-4 transition-all duration-200 cursor-pointer hover:shadow-lg",
+                  "relative rounded-3xl border-2 p-6 space-y-4 transition-all duration-200 cursor-pointer hover:shadow-lg text-center",
                   selectedPlan === plan.id
                     ? "border-primary bg-primary/5"
                     : "border-border bg-card hover:border-primary/50"
