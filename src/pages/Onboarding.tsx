@@ -25,10 +25,9 @@ export default function Onboarding() {
 
   const handleSelect = (value: string) => {
     setSelectedReason(value);
-    // TODO: Navigate to next step after a brief delay
+    // Navigate to next step after a brief delay
     setTimeout(() => {
-      console.log("Selected reason:", value);
-      // navigate("/onboarding/step-2");
+      navigate("/onboarding/step-2", { state: { selectedReason: value } });
     }, 300);
   };
 
