@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Button from "./Button";
+import missionImage from "@/assets/mission-family-chef.webp";
 
 export interface MissionSectionProps {
   className?: string;
@@ -19,7 +20,7 @@ export default function MissionSection({ className }: MissionSectionProps) {
         {/* Left Column - Image */}
         <div className="rounded-3xl overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200" 
+            src={missionImage} 
             alt="Family with personal chef in kitchen"
             className="w-full h-full object-cover aspect-[4/3]"
           />
