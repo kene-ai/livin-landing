@@ -27,8 +27,8 @@ export default function MissionSection({ className }: MissionSectionProps) {
         </div>
         
         {/* Right Column - Mission Card */}
-        <div className="bg-secondary border-2 border-primary p-8 md:p-12 flex flex-col justify-center">
-          <div className="space-y-4">
+        <div className="bg-secondary border-2 border-primary p-6 md:p-8 flex flex-col justify-center">
+          <div className="space-y-3">
             <h2 className="text-primary font-bold text-2xl">
               livin
             </h2>
