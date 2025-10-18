@@ -27,22 +27,24 @@ export default function MissionSection({ className }: MissionSectionProps) {
         </div>
         
         {/* Right Column - Mission Card */}
-        <div className="bg-secondary border-2 border-primary p-6 md:p-8 space-y-3 flex flex-col">
-          <h2 className="text-primary font-bold text-2xl">
-            livin
-          </h2>
-          
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-            The missing ingredient from your support system: a personal chef.
-          </h3>
-          
-          <p className="text-lg text-foreground">
-            We started Livin because everyone should have access to healthy, tasty homemade meals, regardless of our available time or skill. So we've made it possible for as low as $20 a plate.
-          </p>
-          
-          <Button variant="primary" size="lg">
-            Sign Up
-          </Button>
+        <div className="bg-secondary border-2 border-primary p-8 md:p-12 flex flex-col justify-center">
+          <div className="space-y-4">
+            <h2 className="text-primary font-bold text-2xl">
+              livin
+            </h2>
+            
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+              The missing ingredient from your support system: a personal chef.
+            </h3>
+            
+            <p className="text-lg text-foreground">
+              We started Livin because everyone should have access to healthy, tasty homemade meals, regardless of our available time or skill. So we've made it possible for as low as $20 a plate.
+            </p>
+            
+            <Button variant="primary" size="lg">
+              Sign Up
+            </Button>
+          </div>
         </div>
       </div>
     </section>
