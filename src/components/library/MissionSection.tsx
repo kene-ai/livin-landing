@@ -18,7 +18,7 @@ export default function MissionSection({ className }: MissionSectionProps) {
     <section className={cn("py-8 md:py-12 px-8 md:px-12 lg:px-16", className)}>
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-stretch overflow-hidden rounded-3xl">
         {/* Left Column - Image */}
-        <div className="h-full">
+        <div className="h-[400px] md:h-[450px]">
           <img 
             src={missionImage} 
             alt="Family with personal chef in kitchen"
