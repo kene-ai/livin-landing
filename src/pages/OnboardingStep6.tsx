@@ -26,7 +26,7 @@ export default function OnboardingStep6() {
       deliveryApps: "Limited",
       diningOut: "Hit or miss",
       cooking: "Yes",
-      livin: "Yes"
+      livin: "100+ meals"
     },
     {
       category: "Your time",
