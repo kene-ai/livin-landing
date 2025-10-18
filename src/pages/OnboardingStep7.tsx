@@ -32,9 +32,7 @@ export default function OnboardingStep7() {
   };
 
   const handleContinue = () => {
-    // TODO: Navigate to next step
-    console.log("Continuing to next step...");
-    // navigate("/onboarding/step-8");
+    navigate("/onboarding/step-8");
   };
 
   return (
