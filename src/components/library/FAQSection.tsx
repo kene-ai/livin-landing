@@ -52,7 +52,7 @@ const FAQSection = () => {
 
   return (
     <section className="py-16 px-8 md:px-12 lg:px-16">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-[400px_1fr] gap-12 md:gap-16 items-start">
           {/* Left Column - Heading and CTA */}
           <div className="space-y-6 md:sticky md:top-8">
