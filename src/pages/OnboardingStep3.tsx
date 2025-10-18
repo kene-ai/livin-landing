@@ -51,7 +51,7 @@ export default function OnboardingStep3() {
           </div>
 
           {/* Header - Serif Font */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
             What occasions would a personal chef help you and your family?
           </h1>
 

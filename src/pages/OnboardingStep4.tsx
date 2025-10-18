@@ -72,7 +72,7 @@ export default function OnboardingStep4() {
           </div>
 
           {/* Header */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
             Livin chefs show up whenever you need them most
           </h1>
 

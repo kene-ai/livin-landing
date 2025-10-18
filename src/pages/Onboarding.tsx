@@ -49,7 +49,7 @@ export default function Onboarding() {
           </div>
 
           {/* Header */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8 md:mb-10">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-8 md:mb-10">
             What is your top reason for hiring a personal chef?
           </h1>
 

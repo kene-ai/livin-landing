@@ -45,7 +45,7 @@ export default function OnboardingStep15() {
           </div>
 
           {/* Header */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-12 md:mb-16 leading-tight">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-12 md:mb-16 leading-tight">
             Great news! We have chefs available this week in Atlanta
           </h1>
 

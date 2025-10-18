@@ -169,7 +169,7 @@ export default function OnboardingStep11() {
 
           {/* Header */}
           <div className="mb-8 md:mb-10">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4 leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-4 leading-tight">
               Meet your new healthy menu
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
