@@ -1,64 +1,43 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Input } from "@/components/ui/input";
-import { Package, CreditCard, Calendar, Utensils } from "lucide-react";
+import { Calendar, Utensils, ShoppingBasket } from "lucide-react";
 
 /**
  * Onboarding Step 16
  * 
- * Subscription details and email capture
+ * Subscription customization overview
  */
 export default function OnboardingStep16() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
 
-  const subscriptionSections = [
+  const customizationOptions = [
     {
-      icon: Package,
-      title: "What's Included",
-      points: [
-        "Chef service: shopping, cooking, cleanup",
-        "All groceries",
-        "Storage containers & labeling"
-      ]
-    },
-    {
-      icon: CreditCard,
-      title: "Simple Monthly Billing",
-      points: [
-        "Pay monthly—cancel anytime",
-        "First charge today, then monthly on the 15th",
-        "No hidden fees or penalties"
-      ]
-    },
-    {
+      number: "1️⃣",
       icon: Calendar,
-      title: "Flexible Scheduling",
-      points: [
-        "Book services with 48 hours notice",
-        "Choose weekly, bi-weekly, or one-time services",
-        "Reschedule or skip anytime"
-      ]
+      title: "Choose your frequency",
+      question: "How often do you want Livin to come?",
+      description: "Weekly, monthly, or book as needed—totally up to you."
     },
     {
+      number: "2️⃣",
       icon: Utensils,
-      title: "Full Customization",
-      points: [
-        "New menu every week",
-        "Pick your meals & chef before each service",
-        "Dietary preferences & allergies respected"
-      ]
+      title: "Choose the number of plates",
+      question: "How many plates do you want per meal?",
+      description: "We'll recommend the right amount based on your family size."
+    },
+    {
+      number: "3️⃣",
+      icon: ShoppingBasket,
+      title: "Choose your grocery tier",
+      question: "Standard or organic?",
+      description: "Your chef shops for everything included in your plan."
     }
   ];
 
-  const handleContinue = () => {
-    if (email && email.includes("@")) {
-      console.log("Email captured:", email);
-      navigate("/onboarding/step-17");
-    }
+  const handleNext = () => {
+    navigate("/onboarding/step-17");
   };
 
   return (
@@ -68,7 +47,7 @@ export default function OnboardingStep16() {
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
             <img 
@@ -81,75 +60,57 @@ export default function OnboardingStep16() {
           {/* Header */}
           <div className="mb-10 md:mb-12">
             <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
-              How Livin Subscriptions Work
+              Here's how Livin Subscriptions Work
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              Livin subscriptions start at $150 per week. No long-term commitments—cancel anytime.
+              Livin subscriptions start at $150 per week. Here's how you can customize them.
             </p>
           </div>
 
-          {/* Subscription Sections */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {subscriptionSections.map((section, index) => {
-              const IconComponent = section.icon;
+          {/* Customization Cards */}
+          <div className="space-y-6 mb-12">
+            {customizationOptions.map((option, index) => {
+              const IconComponent = option.icon;
               return (
-                <div key={index} className="bg-card border border-border rounded-3xl p-8 space-y-4">
+                <div key={index} className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-4">
                   <div className="flex items-center gap-4">
+                    <span className="text-3xl">{option.number}</span>
                     <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
                       <IconComponent className="w-6 h-6 text-primary" />
                     </div>
                     <h3 className="text-xl font-bold text-foreground">
-                      {section.title}
+                      {option.title}
                     </h3>
                   </div>
-                  <ul className="space-y-2">
-                    {section.points.map((point, pointIndex) => (
-                      <li key={pointIndex} className="text-sm md:text-base text-muted-foreground">
-                        • {point}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-2 pl-16 md:pl-20">
+                    <p className="text-base md:text-lg text-foreground font-medium">
+                      {option.question}
+                    </p>
+                    <p className="text-sm md:text-base text-muted-foreground">
+                      {option.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Visual Divider */}
-          <div className="h-px bg-muted my-12" />
-
-          {/* Email Capture Section */}
-          <div className="bg-secondary/30 rounded-3xl p-8 md:p-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Enter your email to get $20 off of your first month
-            </h2>
-
-            {/* Email Input */}
-            <div className="mb-6">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-16 text-lg rounded-2xl border-2 border-primary/30 focus:border-primary"
-              />
-            </div>
-
-            {/* Continue Button */}
-            <div className="flex justify-end mb-4">
-              <Button 
-                variant="primary" 
-                size="lg"
-                onClick={handleContinue}
-                disabled={!email || !email.includes("@")}
-              >
-                Continue
-              </Button>
-            </div>
-
-            {/* Fine Print */}
-            <p className="text-sm text-muted-foreground text-center">
-              By continuing, you agree to receive updates about your Livin service. You can unsubscribe anytime.
+          {/* Bottom Note */}
+          <div className="bg-accent/30 rounded-3xl p-6 md:p-8 mb-8">
+            <p className="text-base md:text-lg text-foreground text-center">
+              You'll always have the opportunity to choose your menu and chef selection every time you book a Livin service.
             </p>
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-end">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+            >
+              Next
+            </Button>
           </div>
         </div>
       </div>
