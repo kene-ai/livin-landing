@@ -20,7 +20,7 @@ export default function OnboardingStep16() {
     },
     {
       icon: Utensils,
-      title: "Choose the number of plates",
+      title: "Custom number of servings",
       description: "We'll recommend the right amount based on your family size."
     },
     {
