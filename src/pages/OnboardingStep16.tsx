@@ -84,7 +84,7 @@ export default function OnboardingStep16() {
               How Livin Subscriptions Work
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              Livin subscriptions start at $150 per month. No long-term commitments—cancel anytime.
+              Livin subscriptions start at $150 per week. No long-term commitments—cancel anytime.
             </p>
           </div>
 
