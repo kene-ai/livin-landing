@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import OnboardingOption from "@/components/library/OnboardingOption";
 import livinLogo from "@/assets/livin-logo.webp";
 import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PricingPlan {
@@ -27,6 +30,15 @@ export default function OnboardingStep18() {
   const [frequency, setFrequency] = useState<"weekly" | "monthly">("weekly");
   const [groceryType, setGroceryType] = useState<"standard" | "organic">("standard");
   const [selectedPlan, setSelectedPlan] = useState<string>("");
+  const [numAdults, setNumAdults] = useState<number>(2);
+  const [numChildren, setNumChildren] = useState<number>(0);
+  const [platesPerServing, setPlatesPerServing] = useState<number>(4);
+
+  // Calculate recommended plates based on family size
+  useEffect(() => {
+    const recommended = Math.ceil((numAdults * 2) + (numChildren * 0.5));
+    setPlatesPerServing(recommended);
+  }, [numAdults, numChildren]);
 
   const plans: PricingPlan[] = [
     {
@@ -77,10 +89,30 @@ export default function OnboardingStep18() {
 
   const handleContinue = () => {
     if (selectedPlan) {
-      console.log("Selected plan:", { plan: selectedPlan, frequency, groceryType });
+      console.log("Selected plan:", { 
+        plan: selectedPlan, 
+        frequency, 
+        groceryType, 
+        numAdults, 
+        numChildren, 
+        platesPerServing 
+      });
       navigate("/checkout");
     }
   };
+
+  // Generate plate options for dropdown
+  const recommendedPlates = Math.ceil((numAdults * 2) + (numChildren * 0.5));
+  const plateOptions = [];
+  for (let i = recommendedPlates; i <= 30; i += 2) {
+    plateOptions.push(i);
+  }
+  if (!plateOptions.includes(recommendedPlates)) {
+    plateOptions.unshift(recommendedPlates);
+  }
+
+  // Filter plans based on selected plates per serving
+  const filteredPlans = plans.filter(plan => plan.plates >= platesPerServing);
 
   return (
     <div className="min-h-screen bg-background pb-24">
@@ -131,7 +163,7 @@ export default function OnboardingStep18() {
           </div>
 
           {/* Grocery Type Selection */}
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
               What kind of groceries would you like?
             </h2>
@@ -151,9 +183,100 @@ export default function OnboardingStep18() {
             </div>
           </div>
 
+          {/* Family Size Selection */}
+          <div className="mb-10">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+              Family Size
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 max-w-2xl">
+              {/* Adults */}
+              <div className="space-y-2">
+                <Label htmlFor="adults" className="text-base text-foreground">
+                  Adults (12 and over)
+                </Label>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setNumAdults(Math.max(1, numAdults - 1))}
+                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    aria-label="Decrease adults"
+                  >
+                    <Minus className="h-4 w-4" />
+                  </button>
+                  <div className="flex-1 text-center">
+                    <span className="text-2xl font-semibold text-foreground">{numAdults}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setNumAdults(Math.min(10, numAdults + 1))}
+                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    aria-label="Increase adults"
+                  >
+                    <Plus className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Children */}
+              <div className="space-y-2">
+                <Label htmlFor="children" className="text-base text-foreground">
+                  Children (under 12)
+                </Label>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setNumChildren(Math.max(0, numChildren - 1))}
+                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    aria-label="Decrease children"
+                  >
+                    <Minus className="h-4 w-4" />
+                  </button>
+                  <div className="flex-1 text-center">
+                    <span className="text-2xl font-semibold text-foreground">{numChildren}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setNumChildren(Math.min(10, numChildren + 1))}
+                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    aria-label="Increase children"
+                  >
+                    <Plus className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Recommended Plates per Serving */}
+          <div className="mb-12">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+              Recommended Plates per serving
+            </h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              We recommend {recommendedPlates} plates based on your family size
+            </p>
+            <div className="max-w-xs">
+              <Select 
+                value={platesPerServing.toString()} 
+                onValueChange={(value) => setPlatesPerServing(parseInt(value))}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select plates per serving" />
+                </SelectTrigger>
+                <SelectContent>
+                  {plateOptions.map((option) => (
+                    <SelectItem key={option} value={option.toString()}>
+                      {option} plates
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {plans.map((plan) => (
+            {filteredPlans.map((plan) => (
               <div
                 key={plan.id}
                 className={cn(
@@ -192,7 +315,7 @@ export default function OnboardingStep18() {
                 {/* Details */}
                 <div className="space-y-1 text-foreground">
                   <p className="text-base">
-                    {plan.dishes} different dishes • {plan.plates} total plates per {frequency === "weekly" ? "week" : "month"}
+                    {plan.dishes} different dishes • {plan.plates} total plates
                   </p>
                   <p className="text-sm text-muted-foreground">
                     ~${getPricePerPlate(plan)}/plate
