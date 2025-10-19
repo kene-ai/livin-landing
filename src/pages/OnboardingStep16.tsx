@@ -16,7 +16,7 @@ export default function OnboardingStep16() {
     {
       icon: Calendar,
       title: "Choose your frequency",
-      description: "Weekly, monthly, or book as needed—totally up to you."
+      description: "Livin chefs can come weekly or monthly"
     },
     {
       icon: Utensils,
