@@ -330,7 +330,7 @@ export default function OnboardingStep18() {
                 {/* Details */}
                 <div className="space-y-1 text-foreground">
                   <p className="text-lg">
-                    {plan.meals} different meals • {plan.plates} total plates
+                    {plan.meals} meals • {plan.plates} total plates
                   </p>
                   <p className="text-sm text-muted-foreground">
                     ~${getPricePerPlate(plan)}/plate
