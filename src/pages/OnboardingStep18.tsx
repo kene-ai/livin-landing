@@ -15,7 +15,7 @@ interface PricingPlan {
   name: string;
   weeklyPrice: number;
   monthlyPrice: number;
-  dishes: number;
+  meals: number;
   plates: number;
   popular?: boolean;
 }
@@ -46,7 +46,7 @@ export default function OnboardingStep18() {
       name: "Lite",
       weeklyPrice: 185,
       monthlyPrice: 185,
-      dishes: 2,
+      meals: 2,
       plates: 4,
     },
     {
@@ -54,7 +54,7 @@ export default function OnboardingStep18() {
       name: "Plus",
       weeklyPrice: 248,
       monthlyPrice: 248,
-      dishes: 3,
+      meals: 3,
       plates: 6,
     },
     {
@@ -62,7 +62,7 @@ export default function OnboardingStep18() {
       name: "Core",
       weeklyPrice: 301,
       monthlyPrice: 301,
-      dishes: 4,
+      meals: 4,
       plates: 8,
       popular: true,
     },
@@ -71,7 +71,7 @@ export default function OnboardingStep18() {
       name: "Premier",
       weeklyPrice: 590,
       monthlyPrice: 590,
-      dishes: 10,
+      meals: 10,
       plates: 20,
     },
   ];
@@ -330,7 +330,7 @@ export default function OnboardingStep18() {
                 {/* Details */}
                 <div className="space-y-1 text-foreground">
                   <p className="text-base">
-                    {plan.dishes} different dishes • {plan.plates} total plates
+                    {plan.meals} different meals • {plan.plates} total plates
                   </p>
                   <p className="text-sm text-muted-foreground">
                     ~${getPricePerPlate(plan)}/plate
