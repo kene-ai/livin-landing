@@ -246,9 +246,12 @@ export default function OnboardingStep18() {
 
           {/* Frequency Selection */}
           <div className="mb-6">
-            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
-              How often would you like your Livin service?
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+              Frequency
             </h2>
+            <p className="text-xs text-muted-foreground mb-3">
+              Livin chefs will cook for your family once a {frequency === "weekly" ? "week" : "month"}
+            </p>
             <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
               <OnboardingOption
                 value="weekly"
