@@ -25,8 +25,8 @@ export default function OnboardingStep16() {
     },
     {
       icon: ShoppingBasket,
-      title: "Choose your grocery tier",
-      description: "Your chef shops for everything included in your plan."
+      title: "Standard or organic groceries",
+      description: "The cost of groceries is included in your plan"
     }
   ];
 
