@@ -15,7 +15,7 @@ export default function OnboardingStep16() {
   const customizationOptions = [
     {
       icon: Calendar,
-      title: "Weekly or monthly",
+      title: "Weekly or monthly visits",
       description: "Livin chefs can come to your house once a week or once a month"
     },
     {
