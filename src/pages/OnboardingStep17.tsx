@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import Button from "@/components/library/Button";
+import { Button } from "@/components/ui/button";
 import livinLogo from "@/assets/livin-logo.webp";
 import { Input } from "@/components/ui/input";
 import { Package, CreditCard, Calendar, Utensils } from "lucide-react";
@@ -137,7 +137,7 @@ export default function OnboardingStep17() {
             {/* Continue Button */}
             <div className="flex justify-end mb-4">
               <Button 
-                variant="primary" 
+                variant="default" 
                 size="lg"
                 onClick={handleContinue}
                 disabled={!email || !email.includes("@")}
