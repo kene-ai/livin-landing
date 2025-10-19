@@ -329,7 +329,7 @@ export default function OnboardingStep18() {
 
                 {/* Details */}
                 <div className="space-y-1 text-foreground">
-                  <p className="text-base">
+                  <p className="text-lg font-semibold">
                     {plan.meals} different meals • {plan.plates} total plates
                   </p>
                   <p className="text-sm text-muted-foreground">
