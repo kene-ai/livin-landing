@@ -148,58 +148,62 @@ export default function OnboardingStep18() {
             </h2>
             <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
               {/* Adults */}
-              <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
-                <Label htmlFor="adults" className="text-sm text-foreground mb-2 block">
+              <div className="space-y-2">
+                <Label htmlFor="adults" className="text-sm text-foreground">
                   Adults (12 and over)
                 </Label>
-                <div className="flex items-center gap-1 justify-center">
-                  <button
-                    type="button"
-                    onClick={() => setNumAdults(Math.max(1, numAdults - 1))}
-                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                    aria-label="Decrease adults"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <div className="w-16 text-center">
-                    <span className="text-xl font-semibold text-foreground">{numAdults}</span>
+                <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
+                  <div className="flex items-center gap-1 justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setNumAdults(Math.max(1, numAdults - 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Decrease adults"
+                    >
+                      <Minus className="h-4 w-4" />
+                    </button>
+                    <div className="w-16 text-center">
+                      <span className="text-xl font-semibold text-foreground">{numAdults}</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setNumAdults(Math.min(10, numAdults + 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Increase adults"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setNumAdults(Math.min(10, numAdults + 1))}
-                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                    aria-label="Increase adults"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
                 </div>
               </div>
 
               {/* Children */}
-              <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
-                <Label htmlFor="children" className="text-sm text-foreground mb-2 block">
+              <div className="space-y-2">
+                <Label htmlFor="children" className="text-sm text-foreground">
                   Children (under 12)
                 </Label>
-                <div className="flex items-center gap-1 justify-center">
-                  <button
-                    type="button"
-                    onClick={() => setNumChildren(Math.max(0, numChildren - 1))}
-                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                    aria-label="Decrease children"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <div className="w-16 text-center">
-                    <span className="text-xl font-semibold text-foreground">{numChildren}</span>
+                <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
+                  <div className="flex items-center gap-1 justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setNumChildren(Math.max(0, numChildren - 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Decrease children"
+                    >
+                      <Minus className="h-4 w-4" />
+                    </button>
+                    <div className="w-16 text-center">
+                      <span className="text-xl font-semibold text-foreground">{numChildren}</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setNumChildren(Math.min(10, numChildren + 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Increase children"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setNumChildren(Math.min(10, numChildren + 1))}
-                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                    aria-label="Increase children"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
                 </div>
               </div>
             </div>
