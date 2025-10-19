@@ -25,7 +25,7 @@ export default function OnboardingOption({
       type="button"
       onClick={onClick}
       className={cn(
-        "w-full text-left px-6 py-5 rounded-2xl border-2 transition-all duration-200",
+        "w-full text-left px-5 py-3.5 rounded-2xl border-2 transition-all duration-200",
         "hover:border-primary/60 hover:bg-primary/5",
         selected 
           ? "border-primary bg-primary/10" 
@@ -33,7 +33,7 @@ export default function OnboardingOption({
         className
       )}
     >
-      <span className="text-base md:text-lg text-foreground font-medium">
+      <span className="text-sm md:text-base text-foreground font-medium">
         {label}
       </span>
     </button>

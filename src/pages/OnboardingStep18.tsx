@@ -142,32 +142,32 @@ export default function OnboardingStep18() {
           </div>
 
           {/* Family Size Selection */}
-          <div className="mb-10">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+          <div className="mb-6">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
               Family Size
             </h2>
-            <div className="grid md:grid-cols-2 gap-6 max-w-2xl">
+            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
               {/* Adults */}
-              <div className="space-y-2">
-                <Label htmlFor="adults" className="text-base text-foreground">
+              <div className="space-y-1.5">
+                <Label htmlFor="adults" className="text-sm text-foreground">
                   Adults (12 and over)
                 </Label>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setNumAdults(Math.max(1, numAdults - 1))}
-                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
                     aria-label="Decrease adults"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
                   <div className="flex-1 text-center">
-                    <span className="text-2xl font-semibold text-foreground">{numAdults}</span>
+                    <span className="text-xl font-semibold text-foreground">{numAdults}</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setNumAdults(Math.min(10, numAdults + 1))}
-                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
                     aria-label="Increase adults"
                   >
                     <Plus className="h-4 w-4" />
@@ -176,26 +176,26 @@ export default function OnboardingStep18() {
               </div>
 
               {/* Children */}
-              <div className="space-y-2">
-                <Label htmlFor="children" className="text-base text-foreground">
+              <div className="space-y-1.5">
+                <Label htmlFor="children" className="text-sm text-foreground">
                   Children (under 12)
                 </Label>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setNumChildren(Math.max(0, numChildren - 1))}
-                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
                     aria-label="Decrease children"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
                   <div className="flex-1 text-center">
-                    <span className="text-2xl font-semibold text-foreground">{numChildren}</span>
+                    <span className="text-xl font-semibold text-foreground">{numChildren}</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setNumChildren(Math.min(10, numChildren + 1))}
-                    className="h-10 w-10 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
                     aria-label="Increase children"
                   >
                     <Plus className="h-4 w-4" />
@@ -206,11 +206,11 @@ export default function OnboardingStep18() {
           </div>
 
           {/* Recommended Plates per Serving */}
-          <div className="mb-10">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+          <div className="mb-6">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-2">
               Recommended Plates per serving
             </h2>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-xs text-muted-foreground mb-3">
               We recommend {recommendedPlates} plates based on your family size
             </p>
             <div className="max-w-xs">
@@ -218,7 +218,7 @@ export default function OnboardingStep18() {
                 value={platesPerServing.toString()} 
                 onValueChange={(value) => setPlatesPerServing(parseInt(value))}
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full h-9">
                   <SelectValue placeholder="Select plates per serving" />
                 </SelectTrigger>
                 <SelectContent>
@@ -233,11 +233,11 @@ export default function OnboardingStep18() {
           </div>
 
           {/* Frequency Selection */}
-          <div className="mb-10">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+          <div className="mb-6">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
               How often would you like your Livin service?
             </h2>
-            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
+            <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
               <OnboardingOption
                 value="weekly"
                 label="Once a week"
@@ -254,11 +254,11 @@ export default function OnboardingStep18() {
           </div>
 
           {/* Grocery Type Selection */}
-          <div className="mb-12">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+          <div className="mb-10">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
               What kind of groceries would you like?
             </h2>
-            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
+            <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
               <OnboardingOption
                 value="standard"
                 label="Standard groceries"
