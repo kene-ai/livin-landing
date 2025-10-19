@@ -88,7 +88,7 @@ export default function OnboardingStep16() {
           {/* Bottom Note */}
           <div className="bg-accent/30 rounded-3xl p-6 md:p-8 mb-8">
             <p className="text-base md:text-lg text-foreground text-center">
-              You'll always have the opportunity to choose your menu and chef selection every time you book a Livin service.
+              You'll always be able to choose your menu and chef each time you book a Livin service
             </p>
           </div>
 
