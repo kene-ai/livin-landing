@@ -141,48 +141,6 @@ export default function OnboardingStep18() {
             </p>
           </div>
 
-          {/* Frequency Selection */}
-          <div className="mb-10">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
-              How often would you like your Livin service?
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
-              <OnboardingOption
-                value="weekly"
-                label="Once a week"
-                selected={frequency === "weekly"}
-                onClick={() => setFrequency("weekly")}
-              />
-              <OnboardingOption
-                value="monthly"
-                label="Once a month"
-                selected={frequency === "monthly"}
-                onClick={() => setFrequency("monthly")}
-              />
-            </div>
-          </div>
-
-          {/* Grocery Type Selection */}
-          <div className="mb-10">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
-              What kind of groceries would you like?
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
-              <OnboardingOption
-                value="standard"
-                label="Standard groceries"
-                selected={groceryType === "standard"}
-                onClick={() => setGroceryType("standard")}
-              />
-              <OnboardingOption
-                value="organic"
-                label="Organic groceries (+$30)"
-                selected={groceryType === "organic"}
-                onClick={() => setGroceryType("organic")}
-              />
-            </div>
-          </div>
-
           {/* Family Size Selection */}
           <div className="mb-10">
             <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
@@ -248,7 +206,7 @@ export default function OnboardingStep18() {
           </div>
 
           {/* Recommended Plates per Serving */}
-          <div className="mb-12">
+          <div className="mb-10">
             <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
               Recommended Plates per serving
             </h2>
@@ -271,6 +229,48 @@ export default function OnboardingStep18() {
                   ))}
                 </SelectContent>
               </Select>
+            </div>
+          </div>
+
+          {/* Frequency Selection */}
+          <div className="mb-10">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+              How often would you like your Livin service?
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
+              <OnboardingOption
+                value="weekly"
+                label="Once a week"
+                selected={frequency === "weekly"}
+                onClick={() => setFrequency("weekly")}
+              />
+              <OnboardingOption
+                value="monthly"
+                label="Once a month"
+                selected={frequency === "monthly"}
+                onClick={() => setFrequency("monthly")}
+              />
+            </div>
+          </div>
+
+          {/* Grocery Type Selection */}
+          <div className="mb-12">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
+              What kind of groceries would you like?
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
+              <OnboardingOption
+                value="standard"
+                label="Standard groceries"
+                selected={groceryType === "standard"}
+                onClick={() => setGroceryType("standard")}
+              />
+              <OnboardingOption
+                value="organic"
+                label="Organic groceries (+$30)"
+                selected={groceryType === "organic"}
+                onClick={() => setGroceryType("organic")}
+              />
             </div>
           </div>
 
