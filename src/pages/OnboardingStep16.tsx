@@ -16,19 +16,16 @@ export default function OnboardingStep16() {
     {
       icon: Calendar,
       title: "Choose your frequency",
-      question: "How often do you want Livin to come?",
       description: "Weekly, monthly, or book as needed—totally up to you."
     },
     {
       icon: Utensils,
       title: "Choose the number of plates",
-      question: "How many plates do you want per meal?",
       description: "We'll recommend the right amount based on your family size."
     },
     {
       icon: ShoppingBasket,
       title: "Choose your grocery tier",
-      question: "Standard or organic?",
       description: "Your chef shops for everything included in your plan."
     }
   ];
@@ -79,9 +76,6 @@ export default function OnboardingStep16() {
                     </h3>
                   </div>
                   <div className="space-y-2 text-center">
-                    <p className="text-base md:text-lg text-foreground font-medium">
-                      {option.question}
-                    </p>
                     <p className="text-sm md:text-base text-muted-foreground">
                       {option.description}
                     </p>
