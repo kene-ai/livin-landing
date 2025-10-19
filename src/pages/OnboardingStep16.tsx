@@ -54,7 +54,7 @@ export default function OnboardingStep16() {
           {/* Header */}
           <div className="mb-10 md:mb-12">
             <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
-              Here's how Livin Subscriptions Work
+              How Livin subscriptions work
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
               Livin subscriptions start at $150 per week. Here's how you can customize them.
