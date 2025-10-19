@@ -102,7 +102,7 @@ export default function OnboardingStep2() {
           </h1>
 
           {/* Image */}
-          <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md mx-auto">
+          <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md">
             <img 
               src={healthyEatingImage} 
               alt="Person enjoying healthy meal" 
