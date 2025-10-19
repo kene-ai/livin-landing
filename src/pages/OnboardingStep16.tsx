@@ -14,21 +14,18 @@ export default function OnboardingStep16() {
 
   const customizationOptions = [
     {
-      number: "1️⃣",
       icon: Calendar,
       title: "Choose your frequency",
       question: "How often do you want Livin to come?",
       description: "Weekly, monthly, or book as needed—totally up to you."
     },
     {
-      number: "2️⃣",
       icon: Utensils,
       title: "Choose the number of plates",
       question: "How many plates do you want per meal?",
       description: "We'll recommend the right amount based on your family size."
     },
     {
-      number: "3️⃣",
       icon: ShoppingBasket,
       title: "Choose your grocery tier",
       question: "Standard or organic?",
@@ -68,13 +65,12 @@ export default function OnboardingStep16() {
           </div>
 
           {/* Customization Cards */}
-          <div className="space-y-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
             {customizationOptions.map((option, index) => {
               const IconComponent = option.icon;
               return (
                 <div key={index} className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-4">
-                  <div className="flex items-center gap-4">
-                    <span className="text-3xl">{option.number}</span>
+                  <div className="flex flex-col items-center text-center gap-4">
                     <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
                       <IconComponent className="w-6 h-6 text-primary" />
                     </div>
@@ -82,7 +78,7 @@ export default function OnboardingStep16() {
                       {option.title}
                     </h3>
                   </div>
-                  <div className="space-y-2 pl-16 md:pl-20">
+                  <div className="space-y-2 text-center">
                     <p className="text-base md:text-lg text-foreground font-medium">
                       {option.question}
                     </p>
