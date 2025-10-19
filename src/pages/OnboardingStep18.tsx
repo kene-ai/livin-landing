@@ -327,11 +327,6 @@ export default function OnboardingStep18() {
                   </span>
                 </div>
 
-                {/* Description */}
-                <p className="text-sm text-foreground">
-                  Livin chef cooks in your home once a {frequency === "weekly" ? "week" : "month"}
-                </p>
-
                 {/* Details */}
                 <div className="space-y-1 text-foreground">
                   <p className="text-base">
