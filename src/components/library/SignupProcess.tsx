@@ -10,6 +10,7 @@ interface SignupStep {
 
 export interface SignupProcessProps {
   className?: string;
+  onGetStarted?: () => void;
 }
 
 /**
@@ -17,7 +18,7 @@ export interface SignupProcessProps {
  * 
  * Displays the signup process steps in a horizontal layout
  */
-export default function SignupProcess({ className }: SignupProcessProps) {
+export default function SignupProcess({ className, onGetStarted }: SignupProcessProps) {
   const steps: SignupStep[] = [
     {
       icon: <UserPlus className="w-8 h-8" />,
@@ -49,7 +50,7 @@ export default function SignupProcess({ className }: SignupProcessProps) {
           <h2 className="text-4xl md:text-5xl font-bold">
             Signup Process
           </h2>
-          <Button variant="primary" size="lg">
+          <Button variant="primary" size="lg" onClick={onGetStarted}>
             Get started today
           </Button>
         </div>

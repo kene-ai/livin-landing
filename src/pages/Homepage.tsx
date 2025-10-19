@@ -133,7 +133,7 @@ const Homepage = () => {
             
             {/* CTA Buttons */}
             <div className="pt-2">
-              <Button size="md">
+              <Button size="md" onClick={() => navigate("/onboarding")}>
                 Get started
               </Button>
             </div>
@@ -375,7 +375,7 @@ const Homepage = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <Button size="lg">
+            <Button size="lg" onClick={() => navigate("/onboarding")}>
               Explore Full Menu
             </Button>
           </div>
@@ -528,7 +528,7 @@ const Homepage = () => {
       </section>
 
       {/* Signup Process Section */}
-      <SignupProcess />
+      <SignupProcess onGetStarted={() => navigate("/onboarding")} />
 
       {/* Press/Media Section */}
       <section className="py-16 px-8 md:px-12 lg:px-16 bg-accent/30">
