@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
@@ -27,11 +26,10 @@ interface Chef {
 /**
  * Onboarding Step 13
  * 
- * Chef browsing and favoriting
+ * Chef browsing
  */
 export default function OnboardingStep13() {
   const navigate = useNavigate();
-  const [favoritedChefs, setFavoritedChefs] = useState<Set<string>>(new Set());
 
   const chefs: Chef[] = [
     {
@@ -100,23 +98,9 @@ export default function OnboardingStep13() {
     "Shop for groceries, cook, clean, and package meals"
   ];
 
-  const toggleFavorite = (chefId: string) => {
-    setFavoritedChefs(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(chefId)) {
-        newSet.delete(chefId);
-      } else if (newSet.size < 3) {
-        newSet.add(chefId);
-      }
-      return newSet;
-    });
-  };
-
   const handleNext = () => {
-    navigate("/onboarding/step-14", { state: { favoritedChefs: Array.from(favoritedChefs) } });
+    navigate("/onboarding/step-14");
   };
-
-  const favoritedCount = favoritedChefs.size;
 
   return (
     <div className="min-h-screen bg-background">
@@ -141,7 +125,7 @@ export default function OnboardingStep13() {
               Meet our trusted chefs
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Select 3 chefs to add to your rotation. You'll be able to choose your chef before scheduling your first service.
+              Livin has great chefs who are background-checked, insured, and passionate about cooking. You'll be able to choose which chef you want each time you book.
             </p>
           </div>
 
@@ -163,8 +147,6 @@ export default function OnboardingStep13() {
                       title={chef.title}
                       bio={chef.bio}
                       imageSrc={chef.imageSrc}
-                      favorited={favoritedChefs.has(chef.id)}
-                      onToggleFavorite={() => toggleFavorite(chef.id)}
                     />
                   </CarouselItem>
                 ))}
@@ -190,23 +172,12 @@ export default function OnboardingStep13() {
             </div>
           </div>
 
-          {/* Progress and Next Button */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <span className="text-lg md:text-xl font-semibold text-foreground">
-                {favoritedCount}/3 chefs favorited
-              </span>
-              {favoritedCount === 3 && (
-                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary">
-                  <Check className="w-4 h-4 text-primary-foreground" strokeWidth={3} />
-                </div>
-              )}
-            </div>
+          {/* Next Button */}
+          <div className="flex justify-end">
             <Button 
               variant="primary" 
               size="lg"
               onClick={handleNext}
-              disabled={favoritedCount !== 3}
             >
               Next
             </Button>
