@@ -146,13 +146,13 @@ export default function OnboardingStep18() {
             <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
               Family Size
             </h2>
-            <div className="grid md:grid-cols-2 gap-4 max-w-2xl">
+            <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
               {/* Adults */}
-              <div className="space-y-1.5">
-                <Label htmlFor="adults" className="text-sm text-foreground">
+              <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
+                <Label htmlFor="adults" className="text-sm text-foreground mb-2 block">
                   Adults (12 and over)
                 </Label>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 justify-center">
                   <button
                     type="button"
                     onClick={() => setNumAdults(Math.max(1, numAdults - 1))}
@@ -161,7 +161,7 @@ export default function OnboardingStep18() {
                   >
                     <Minus className="h-4 w-4" />
                   </button>
-                  <div className="flex-1 text-center">
+                  <div className="w-16 text-center">
                     <span className="text-xl font-semibold text-foreground">{numAdults}</span>
                   </div>
                   <button
@@ -176,11 +176,11 @@ export default function OnboardingStep18() {
               </div>
 
               {/* Children */}
-              <div className="space-y-1.5">
-                <Label htmlFor="children" className="text-sm text-foreground">
+              <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
+                <Label htmlFor="children" className="text-sm text-foreground mb-2 block">
                   Children (under 12)
                 </Label>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 justify-center">
                   <button
                     type="button"
                     onClick={() => setNumChildren(Math.max(0, numChildren - 1))}
@@ -189,7 +189,7 @@ export default function OnboardingStep18() {
                   >
                     <Minus className="h-4 w-4" />
                   </button>
-                  <div className="flex-1 text-center">
+                  <div className="w-16 text-center">
                     <span className="text-xl font-semibold text-foreground">{numChildren}</span>
                   </div>
                   <button
