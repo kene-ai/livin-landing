@@ -36,7 +36,7 @@ export default function OnboardingStep18() {
 
   // Calculate recommended plates based on family size
   useEffect(() => {
-    const recommended = Math.ceil((numAdults * 2) + (numChildren * 0.5));
+    const recommended = Math.ceil(numAdults + (numChildren * 0.5));
     setPlatesPerServing(recommended);
   }, [numAdults, numChildren]);
 
@@ -102,7 +102,7 @@ export default function OnboardingStep18() {
   };
 
   // Generate plate options for dropdown
-  const recommendedPlates = Math.ceil((numAdults * 2) + (numChildren * 0.5));
+  const recommendedPlates = Math.ceil(numAdults + (numChildren * 0.5));
   const plateOptions = [];
   for (let i = recommendedPlates; i <= 30; i += 2) {
     plateOptions.push(i);
