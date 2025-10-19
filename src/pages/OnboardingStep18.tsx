@@ -209,10 +209,10 @@ export default function OnboardingStep18() {
             </div>
           </div>
 
-          {/* Recommended Plates per Serving */}
+          {/* Plates per Meal */}
           <div className="mb-6">
             <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
-              Recommended Plates per serving
+              Plates per meal
             </h2>
             <div className="max-w-xs">
               <p className="text-xs text-muted-foreground mb-2">
