@@ -211,28 +211,36 @@ export default function OnboardingStep18() {
 
           {/* Recommended Plates per Serving */}
           <div className="mb-6">
-            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
               Recommended Plates per serving
             </h2>
-            <p className="text-xs text-muted-foreground mb-3">
-              We recommend {recommendedPlates} plates based on your family size
-            </p>
             <div className="max-w-xs">
-              <Select 
-                value={platesPerServing.toString()} 
-                onValueChange={(value) => setPlatesPerServing(parseInt(value))}
-              >
-                <SelectTrigger className="w-full h-9">
-                  <SelectValue placeholder="Select plates per serving" />
-                </SelectTrigger>
-                <SelectContent>
-                  {plateOptions.map((option) => (
-                    <SelectItem key={option} value={option.toString()}>
-                      {option} plates
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <p className="text-xs text-muted-foreground mb-2">
+                We recommend {recommendedPlates} plates based on your family size
+              </p>
+              <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
+                <div className="flex items-center gap-1 justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setPlatesPerServing(Math.max(recommendedPlates, platesPerServing - 2))}
+                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    aria-label="Decrease plates"
+                  >
+                    <Minus className="h-4 w-4" />
+                  </button>
+                  <div className="w-16 text-center">
+                    <span className="text-xl font-semibold text-foreground">{platesPerServing}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setPlatesPerServing(Math.min(30, platesPerServing + 2))}
+                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                    aria-label="Increase plates"
+                  >
+                    <Plus className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
