@@ -271,7 +271,7 @@ export default function OnboardingStep18() {
           {/* Grocery Type Selection */}
           <div className="mb-10">
             <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
-              What kind of groceries would you like?
+              Grocery tier
             </h2>
             <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
               <OnboardingOption
