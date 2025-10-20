@@ -76,7 +76,7 @@ export default function OnboardingStep2() {
   const content = contentMap[selectedReason] || contentMap["save-time"];
 
   const handleContinue = () => {
-    navigate("/onboarding/step-3");
+    navigate("/onboarding/step-5");
   };
 
   return (
