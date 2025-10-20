@@ -1,30 +1,23 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import Button from "@/components/library/Button";
+import { Button } from "@/components/ui/button";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Rocket, Calendar } from "lucide-react";
-
+import { Input } from "@/components/ui/input";
 /**
  * Onboarding Step 14
  * 
- * Availability confirmation screen
+ * Email capture for discount
  */
 export default function OnboardingStep14() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
 
-  const benefits = [
-    {
-      icon: Rocket,
-      text: "Book with as little as 48 hours notice"
-    },
-    {
-      icon: Calendar,
-      text: "You'll pick your exact date & time after signup"
+  const handleContinue = () => {
+    if (email && email.includes("@")) {
+      console.log("Email captured:", email);
+      navigate("/onboarding/step-15");
     }
-  ];
-
-  const handleNext = () => {
-    navigate("/onboarding/step-15");
   };
 
   return (
@@ -34,7 +27,7 @@ export default function OnboardingStep14() {
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
             <img 
@@ -44,37 +37,34 @@ export default function OnboardingStep14() {
             />
           </div>
 
-          {/* Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-12 md:mb-16 leading-tight">
-            Great news! We have chefs available this week in Atlanta
-          </h1>
+          {/* Email Capture Section */}
+          <div className="rounded-3xl p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+              Enter your email to get 20% off of your first month
+            </h2>
 
-          {/* Benefits with Icons */}
-          <div className="space-y-8 mb-12">
-            {benefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
-              return (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                    <IconComponent className="w-6 h-6 text-primary" />
-                  </div>
-                  <span className="text-xl md:text-2xl text-foreground font-medium pt-2">
-                    {benefit.text}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+            {/* Email Input */}
+            <div className="mb-6">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-16 text-lg rounded-2xl border-2 border-primary/30 focus:border-primary"
+              />
+            </div>
 
-          {/* Next Button */}
-          <div className="flex justify-end">
-            <Button 
-              variant="primary" 
-              size="lg"
-              onClick={handleNext}
-            >
-              Next
-            </Button>
+            {/* Continue Button */}
+            <div className="flex justify-end">
+              <Button 
+                variant="default" 
+                size="lg"
+                onClick={handleContinue}
+                disabled={!email || !email.includes("@")}
+              >
+                Continue
+              </Button>
+            </div>
           </div>
         </div>
       </div>

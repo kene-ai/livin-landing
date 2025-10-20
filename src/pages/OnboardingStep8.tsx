@@ -1,68 +1,94 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
+import CategoryCard from "@/components/library/CategoryCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Minus, Plus } from "lucide-react";
-import { cn } from "@/lib/utils";
+
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+}
 
 /**
  * Onboarding Step 8
  * 
- * Household size and dietary preferences
+ * Menu category carousel
  */
 export default function OnboardingStep8() {
   const navigate = useNavigate();
-  const [adults, setAdults] = useState(2);
-  const [kids, setKids] = useState(1);
-  const [selectedRestrictions, setSelectedRestrictions] = useState<string[]>([]);
 
-  const dietaryRestrictions = [
-    "Vegetarian",
-    "Vegan",
-    "Gluten-free",
-    "Dairy-free",
-    "Nut allergy",
-    "Pescatarian",
-    "Keto",
-    "Paleo",
-    "Low-carb",
-    "Halal",
-    "Kosher",
+  const categories: Category[] = [
+    {
+      id: "1",
+      name: "High Protein",
+      description: "30 grams of protein or more per serving",
+      image: "https://images.unsplash.com/photo-1485704686097-ed47f7263ca4?w=800"
+    },
+    {
+      id: "2",
+      name: "Carb Conscious",
+      description: "Low carb, high fat meals",
+      image: "https://images.unsplash.com/photo-1508170754725-6e9a5cfbcabf?w=800"
+    },
+    {
+      id: "3",
+      name: "Kid Friendly",
+      description: "Family favorites kids will actually eat",
+      image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800"
+    },
+    {
+      id: "4",
+      name: "Mediterranean",
+      description: "Fresh, flavorful Mediterranean-inspired dishes",
+      image: "https://images.unsplash.com/photo-1633504581786-316c8002b1b9?w=800"
+    },
+    {
+      id: "5",
+      name: "Vegetarian",
+      description: "Plant-based meals packed with nutrition",
+      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800"
+    },
+    {
+      id: "6",
+      name: "Fiber Filled",
+      description: "High fiber meals for digestive health",
+      image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800"
+    },
+    {
+      id: "7",
+      name: "Calorie Conscious",
+      description: "550kcal or less per serving",
+      image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800"
+    },
+    {
+      id: "8",
+      name: "GLP-1 Balanced",
+      description: "Optimized for GLP-1 medication users",
+      image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800"
+    },
   ];
 
-  const handleAdultsChange = (delta: number) => {
-    const newValue = Math.max(0, adults + delta);
-    setAdults(newValue);
+  const handleContinue = () => {
+    navigate("/onboarding/step-9");
   };
-
-  const handleKidsChange = (delta: number) => {
-    const newValue = Math.max(0, kids + delta);
-    setKids(newValue);
-  };
-
-  const toggleRestriction = (restriction: string) => {
-    setSelectedRestrictions(prev =>
-      prev.includes(restriction)
-        ? prev.filter(r => r !== restriction)
-        : [...prev, restriction]
-    );
-  };
-
-  const handleNext = () => {
-    navigate("/onboarding/step-9", { state: { adults, kids, dietaryRestrictions: selectedRestrictions } });
-  };
-
-  const totalPeople = adults + kids;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24">
       {/* Progress Bar */}
       <OnboardingProgress currentStep={5} totalSteps={5} />
 
       {/* Main Content */}
-      <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-2xl mx-auto">
+      <div className="pt-8 px-6 md:px-8">
+        <div className="max-w-7xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
             <img 
@@ -73,88 +99,51 @@ export default function OnboardingStep8() {
           </div>
 
           {/* Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-            Tell us whose eating
-          </h1>
-
-          {/* Adults Counter */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between p-6 rounded-2xl border-2 border-muted">
-              <span className="text-lg md:text-xl font-semibold text-foreground">Adults (12 or over)</span>
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => handleAdultsChange(-1)}
-                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={adults === 0}
-                >
-                  <Minus className="w-5 h-5 text-primary" />
-                </button>
-                <span className="text-2xl font-bold text-foreground w-12 text-center">{adults}</span>
-                <button
-                  onClick={() => handleAdultsChange(1)}
-                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors"
-                >
-                  <Plus className="w-5 h-5 text-primary" />
-                </button>
-              </div>
-            </div>
+          <div className="mb-8 md:mb-10">
+            <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
+              Meet your new healthy menu
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Livin features 30+ meal options, rotating weekly.
+            </p>
+            <p className="text-base md:text-lg text-muted-foreground mt-2">
+              You'll be able to customize your meals every week. Below is a preview of our menu.
+            </p>
           </div>
 
-          {/* Kids Counter */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between p-6 rounded-2xl border-2 border-muted">
-              <span className="text-lg md:text-xl font-semibold text-foreground">Kids (Under 12)</span>
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => handleKidsChange(-1)}
-                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={kids === 0}
-                >
-                  <Minus className="w-5 h-5 text-primary" />
-                </button>
-                <span className="text-2xl font-bold text-foreground w-12 text-center">{kids}</span>
-                <button
-                  onClick={() => handleKidsChange(1)}
-                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors"
-                >
-                  <Plus className="w-5 h-5 text-primary" />
-                </button>
-              </div>
-            </div>
+          {/* Category Carousel */}
+          <div className="mb-12 px-12 md:px-16">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {categories.map((category) => (
+                  <CarouselItem key={category.id} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      name={category.name}
+                      description={category.description}
+                      image={category.image}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="-left-12 md:-left-16" />
+              <CarouselNext className="-right-12 md:-right-16" />
+            </Carousel>
           </div>
 
-          {/* Dietary Restrictions */}
-          <div className="mb-10">
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              Any allergies or dietary restrictions?
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {dietaryRestrictions.map((restriction) => (
-                <button
-                  key={restriction}
-                  onClick={() => toggleRestriction(restriction)}
-                  className={cn(
-                    "px-5 py-2.5 rounded-full border-2 transition-all font-medium",
-                    selectedRestrictions.includes(restriction)
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-background text-foreground border-muted hover:border-primary/50"
-                  )}
-                >
-                  {restriction}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Next Button */}
+          {/* Continue Button */}
           <div className="flex justify-end">
             <Button 
               variant="primary" 
               size="lg"
-              onClick={handleNext}
-              disabled={totalPeople === 0}
+              onClick={handleContinue}
             >
-              Next
+              Continue
             </Button>
           </div>
         </div>

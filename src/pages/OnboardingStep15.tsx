@@ -1,64 +1,120 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
+import OnboardingOption from "@/components/library/OnboardingOption";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Calendar, Utensils, ShoppingBasket, ShoppingCart, ChefHat, RotateCcw } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Plus, Minus } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface PricingPlan {
+  id: string;
+  name: string;
+  weeklyPrice: number;
+  monthlyPrice: number;
+  meals: number;
+  plates: number;
+  popular?: boolean;
+}
 
 /**
  * Onboarding Step 15
  * 
- * Subscription customization overview
+ * Pricing plan selection
  */
 export default function OnboardingStep15() {
   const navigate = useNavigate();
+  const [frequency, setFrequency] = useState<"weekly" | "monthly">("weekly");
+  const [groceryType, setGroceryType] = useState<"standard" | "organic">("standard");
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+  const [numAdults, setNumAdults] = useState<number>(2);
+  const [numChildren, setNumChildren] = useState<number>(0);
+  const [platesPerServing, setPlatesPerServing] = useState<number>(4);
 
-  const customizationOptions = [
+  // Calculate recommended plates based on family size
+  useEffect(() => {
+    const recommended = Math.ceil(numAdults + (numChildren * 0.5));
+    setPlatesPerServing(recommended);
+  }, [numAdults, numChildren]);
+
+  const plans: PricingPlan[] = [
     {
-      icon: Calendar,
-      title: "Weekly or monthly service",
-      description: "Livin chefs can come to your house once a week or once a month"
+      id: "lite",
+      name: "2 meal plan",
+      weeklyPrice: 185,
+      monthlyPrice: 185,
+      meals: 2,
+      plates: 4,
     },
     {
-      icon: Utensils,
-      title: "Number of meals",
-      description: "We'll recommend the right amount based on your family size."
+      id: "plus",
+      name: "3 meal plan",
+      weeklyPrice: 248,
+      monthlyPrice: 248,
+      meals: 3,
+      plates: 6,
     },
     {
-      icon: ShoppingBasket,
-      title: "Standard or organic groceries",
-      description: "The cost of groceries is included in your plan"
-    }
+      id: "core",
+      name: "4 meal plan",
+      weeklyPrice: 301,
+      monthlyPrice: 301,
+      meals: 4,
+      plates: 8,
+      popular: true,
+    },
+    {
+      id: "premier",
+      name: "10 meal plan",
+      weeklyPrice: 590,
+      monthlyPrice: 590,
+      meals: 10,
+      plates: 20,
+    },
   ];
 
-  const subscriptionBenefits = [
-    {
-      icon: ShoppingCart,
-      text: "All groceries included in the price of subscription"
-    },
-    {
-      icon: ChefHat,
-      text: "Livin chef does grocery shopping, cooking and cleaning"
-    },
-    {
-      icon: RotateCcw,
-      text: "Change your plan or cancel at anytime"
-    }
-  ];
-
-  const handleNext = () => {
-    navigate("/onboarding/step-16");
+  const getPrice = (plan: PricingPlan) => {
+    const basePrice = frequency === "weekly" ? plan.weeklyPrice : plan.monthlyPrice;
+    const groceryCost = groceryType === "organic" ? 30 : 0;
+    return basePrice + groceryCost;
   };
 
+  const getPricePerPlate = (plan: PricingPlan) => {
+    const totalPrice = getPrice(plan);
+    return Math.round(totalPrice / plan.plates);
+  };
+
+  const handleContinue = () => {
+    if (selectedPlan) {
+      console.log("Selected plan:", { 
+        plan: selectedPlan, 
+        frequency, 
+        groceryType, 
+        numAdults, 
+        numChildren, 
+        platesPerServing 
+      });
+      navigate("/checkout");
+    }
+  };
+
+
+  // Filter plans based on selected plates per serving
+  const filteredPlans = plans.filter(plan => plan.plates >= platesPerServing);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={5} totalSteps={5} />
+      <OnboardingProgress currentStep={6} totalSteps={6} />
 
       {/* Main Content */}
-      <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-3xl mx-auto">
+      <div className="pt-8 px-6 md:px-8">
+        <div className="max-w-7xl mx-auto">
           {/* Logo */}
-          <div className="mb-8 md:mb-12">
+          <div className="mb-12">
             <img 
               src={livinLogo} 
               alt="Livin" 
@@ -67,70 +123,205 @@ export default function OnboardingStep15() {
           </div>
 
           {/* Header */}
-          <div className="mb-10 md:mb-12">
-            <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
-              How Livin subscriptions work
+          <div className="mb-10">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
+              Choose your Livin subscription
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
-              Livin subscriptions start at $185 per month. Here's how you can customize them.
-            </p>
           </div>
 
-          {/* Customization Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {customizationOptions.map((option, index) => {
-              const IconComponent = option.icon;
-              return (
-                <div key={index} className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-4">
-                  <div className="flex flex-col items-center text-center gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-primary" />
+          {/* Family Size Selection */}
+          <div className="mb-6">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
+              Family Size
+            </h2>
+            <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
+              {/* Adults */}
+              <div className="space-y-2">
+                <Label htmlFor="adults" className="text-sm text-foreground">
+                  Adults (12 and over)
+                </Label>
+                <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
+                  <div className="flex items-center gap-1 justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setNumAdults(Math.max(1, numAdults - 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Decrease adults"
+                    >
+                      <Minus className="h-4 w-4" />
+                    </button>
+                    <div className="w-16 text-center">
+                      <span className="text-xl font-semibold text-foreground">{numAdults}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground">
-                      {option.title}
-                    </h3>
-                  </div>
-                  <div className="space-y-2 text-center">
-                    <p className="text-sm md:text-base text-muted-foreground">
-                      {option.description}
-                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setNumAdults(Math.min(10, numAdults + 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Increase adults"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
 
-          {/* Subscription Benefits */}
-          <div className="mb-10">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-6">
-              Every Livin subscription also includes:
-            </h2>
-            
-            <div className="space-y-6">
-              {subscriptionBenefits.map((benefit, index) => {
-                const IconComponent = benefit.icon;
-                return (
-                  <div key={index} className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-primary" />
+              {/* Children */}
+              <div className="space-y-2">
+                <Label htmlFor="children" className="text-sm text-foreground">
+                  Children (under 12)
+                </Label>
+                <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
+                  <div className="flex items-center gap-1 justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setNumChildren(Math.max(0, numChildren - 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Decrease children"
+                    >
+                      <Minus className="h-4 w-4" />
+                    </button>
+                    <div className="w-16 text-center">
+                      <span className="text-xl font-semibold text-foreground">{numChildren}</span>
                     </div>
-                    <span className="text-lg md:text-xl text-foreground font-medium pt-0.5">
-                      {benefit.text}
-                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setNumChildren(Math.min(10, numChildren + 1))}
+                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
+                      aria-label="Increase children"
+                    >
+                      <Plus className="h-4 w-4" />
+                    </button>
                   </div>
-                );
-              })}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Next Button */}
-          <div className="flex justify-end">
-            <Button 
-              variant="primary" 
+
+          {/* Frequency Selection */}
+          <div className="mb-6">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+              Frequency
+            </h2>
+            <p className="text-xs text-muted-foreground mb-3">
+              Livin chefs will cook for your family once a {frequency === "weekly" ? "week" : "month"}
+            </p>
+            <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
+              <OnboardingOption
+                value="weekly"
+                label="Once a week"
+                selected={frequency === "weekly"}
+                onClick={() => setFrequency("weekly")}
+              />
+              <OnboardingOption
+                value="monthly"
+                label="Once a month"
+                selected={frequency === "monthly"}
+                onClick={() => setFrequency("monthly")}
+              />
+            </div>
+          </div>
+
+          {/* Grocery Type Selection */}
+          <div className="mb-10">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-2">
+              Grocery tier
+            </h2>
+            {groceryType === "organic" && (
+              <p className="text-xs text-muted-foreground mb-3">
+                Livin chefs will purchase organic groceries from premium stores like Whole Foods.
+              </p>
+            )}
+            <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
+              <OnboardingOption
+                value="standard"
+                label="Standard groceries"
+                selected={groceryType === "standard"}
+                onClick={() => setGroceryType("standard")}
+              />
+              <OnboardingOption
+                value="organic"
+                label="Organic groceries (+$30)"
+                selected={groceryType === "organic"}
+                onClick={() => setGroceryType("organic")}
+              />
+            </div>
+          </div>
+
+          {/* Pricing Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {filteredPlans.map((plan) => (
+              <div
+                key={plan.id}
+                className={cn(
+                  "relative rounded-3xl border-2 p-6 space-y-4 transition-all duration-200 cursor-pointer hover:shadow-lg text-center",
+                  selectedPlan === plan.id
+                    ? "border-primary bg-primary/5"
+                    : "border-border bg-card hover:border-primary/50"
+                )}
+                onClick={() => setSelectedPlan(plan.id)}
+              >
+                {/* Popular Badge */}
+                {plan.popular && (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
+                    ⭐ MOST POPULAR
+                  </Badge>
+                )}
+
+                {/* Plan Name */}
+                <h3 className="text-2xl font-bold text-foreground">
+                  {plan.name}
+                </h3>
+
+                {/* Price */}
+                <div className="text-xl font-bold text-primary">
+                  ${getPrice(plan)}
+                  <span className="text-base text-muted-foreground font-normal">
+                    {" "}per {frequency === "weekly" ? "week" : "month"}
+                  </span>
+                </div>
+
+                {/* Details */}
+                <div className="space-y-1 text-foreground">
+                  <p className="text-lg">
+                    {plan.meals} meals • {plan.plates} total plates
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    ~${getPricePerPlate(plan)}/plate
+                  </p>
+                </div>
+
+                {/* Select Button */}
+                <Button
+                  variant={selectedPlan === plan.id ? "primary" : "outline"}
+                  size="md"
+                  className="w-full"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedPlan(plan.id);
+                  }}
+                >
+                  Select Plan
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          {/* Fine Print */}
+          <p className="text-sm text-muted-foreground text-center mb-8">
+            You can change your mealplan at any time
+          </p>
+
+          {/* Continue Button */}
+          <div className="flex justify-center">
+            <Button
+              variant="primary"
               size="lg"
-              onClick={handleNext}
+              onClick={handleContinue}
+              disabled={!selectedPlan}
+              className="px-12"
             >
-              Next
+              Continue to Checkout
             </Button>
           </div>
         </div>

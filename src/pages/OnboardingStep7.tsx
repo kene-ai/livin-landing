@@ -1,38 +1,33 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import Button from "@/components/library/Button";
+import OnboardingOption from "@/components/library/OnboardingOption";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Input } from "@/components/ui/input";
 
 /**
  * Onboarding Step 7
  * 
- * Zip code collection and service area check
+ * Meal challenge selection
  */
 export default function OnboardingStep7() {
   const navigate = useNavigate();
-  const [zipCode, setZipCode] = useState("");
-  const [status, setStatus] = useState<"initial" | "checking" | "in-service">("initial");
+  const [selectedChallenge, setSelectedChallenge] = useState<string>("");
 
-  // Check service area - always returns in-service
-  const checkServiceArea = async (zip: string) => {
-    setStatus("checking");
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    setStatus("in-service");
-  };
+  const challenges = [
+    { value: "picky-eaters", label: "Picky eaters won't try new things" },
+    { value: "boring-meals", label: "Same boring meals on repeat" },
+    { value: "dont-know-healthy", label: "Don't know what's healthy" },
+    { value: "takes-too-long", label: "Takes too long to plan" },
+    { value: "dietary-restrictions", label: "Dietary restrictions limit options" },
+    { value: "everyone-different", label: "Everyone wants something different" },
+  ];
 
-  const handleCheckZip = () => {
-    if (zipCode.length === 5) {
-      checkServiceArea(zipCode);
-    }
-  };
-
-  const handleContinue = () => {
-    navigate("/onboarding/step-8");
+  const handleSelect = (value: string) => {
+    setSelectedChallenge(value);
+    // Navigate to next step after a brief delay
+    setTimeout(() => {
+      navigate("/onboarding/step-8", { state: { selectedChallenge: value } });
+    }, 300);
   };
 
   return (
@@ -52,70 +47,23 @@ export default function OnboardingStep7() {
             />
           </div>
 
-          {status === "initial" && (
-            <>
-              {/* Header */}
-              <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-                Let's see if we're in your area!
-              </h1>
+          {/* Header */}
+          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
+            What's your biggest challenge choosing meals for your family?
+          </h1>
 
-              {/* Zip Code Input */}
-              <div className="mb-8">
-                <Input
-                  type="text"
-                  placeholder="Enter your zip code"
-                  value={zipCode}
-                  onChange={(e) => setZipCode(e.target.value.replace(/\D/g, "").slice(0, 5))}
-                  className="h-16 text-lg rounded-2xl border-2 border-primary/30 focus:border-primary"
-                  maxLength={5}
-                />
-              </div>
-
-              {/* Continue Button */}
-              <div className="flex justify-end">
-                <Button 
-                  variant="primary" 
-                  size="lg"
-                  onClick={handleCheckZip}
-                  disabled={zipCode.length !== 5}
-                >
-                  Continue
-                </Button>
-              </div>
-            </>
-          )}
-
-          {status === "checking" && (
-            <div className="text-center py-12">
-              <p className="text-xl text-muted-foreground">Checking availability...</p>
-            </div>
-          )}
-
-          {status === "in-service" && (
-            <>
-              {/* Success Message */}
-              <div className="mb-8 p-8 bg-primary/10 rounded-3xl border-2 border-primary/20">
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">
-                  Great news! We serve your area.
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  Let's continue setting up your account.
-                </p>
-              </div>
-
-              {/* Continue Button */}
-              <div className="flex justify-end">
-                <Button 
-                  variant="primary" 
-                  size="lg"
-                  onClick={handleContinue}
-                >
-                  Continue
-                </Button>
-              </div>
-            </>
-          )}
-
+          {/* Options */}
+          <div className="space-y-4">
+            {challenges.map((challenge) => (
+              <OnboardingOption
+                key={challenge.value}
+                value={challenge.value}
+                label={challenge.label}
+                selected={selectedChallenge === challenge.value}
+                onClick={() => handleSelect(challenge.value)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

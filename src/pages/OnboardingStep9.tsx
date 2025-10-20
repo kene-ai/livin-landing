@@ -1,33 +1,38 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import OnboardingOption from "@/components/library/OnboardingOption";
+import OnboardingCheckbox from "@/components/library/OnboardingCheckbox";
+import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
 
 /**
  * Onboarding Step 9
  * 
- * Meal challenge selection
+ * Chef preferences selection
  */
 export default function OnboardingStep9() {
   const navigate = useNavigate();
-  const [selectedChallenge, setSelectedChallenge] = useState<string>("");
+  const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
 
-  const challenges = [
-    { value: "picky-eaters", label: "Picky eaters won't try new things" },
-    { value: "boring-meals", label: "Same boring meals on repeat" },
-    { value: "dont-know-healthy", label: "Don't know what's healthy" },
-    { value: "takes-too-long", label: "Takes too long to plan" },
-    { value: "dietary-restrictions", label: "Dietary restrictions limit options" },
-    { value: "everyone-different", label: "Everyone wants something different" },
+  const preferences = [
+    { value: "tons-of-experience", label: "Tons of experience" },
+    { value: "great-with-kids", label: "Great with kids" },
+    { value: "friendly-chatty", label: "Friendly & chatty" },
+    { value: "calm-low-key", label: "Calm & low key" },
+    { value: "creative-with-menus", label: "Creative with menus" },
+    { value: "nutrition-focused", label: "Nutrition focused" },
   ];
 
-  const handleSelect = (value: string) => {
-    setSelectedChallenge(value);
-    // Navigate to next step after a brief delay
-    setTimeout(() => {
-      navigate("/onboarding/step-10", { state: { selectedChallenge: value } });
-    }, 300);
+  const handleToggle = (value: string) => {
+    setSelectedPreferences(prev => 
+      prev.includes(value)
+        ? prev.filter(v => v !== value)
+        : [...prev, value]
+    );
+  };
+
+  const handleNext = () => {
+    navigate("/onboarding/step-10", { state: { selectedPreferences } });
   };
 
   return (
@@ -49,20 +54,32 @@ export default function OnboardingStep9() {
 
           {/* Header */}
           <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-            What's your biggest challenge choosing meals for your family?
+            What do you look for in a personal chef to come cook in your home?
           </h1>
 
-          {/* Options */}
-          <div className="space-y-4">
-            {challenges.map((challenge) => (
-              <OnboardingOption
-                key={challenge.value}
-                value={challenge.value}
-                label={challenge.label}
-                selected={selectedChallenge === challenge.value}
-                onClick={() => handleSelect(challenge.value)}
+          {/* Checkbox Options */}
+          <div className="space-y-4 mb-10">
+            {preferences.map((preference) => (
+              <OnboardingCheckbox
+                key={preference.value}
+                value={preference.value}
+                label={preference.label}
+                selected={selectedPreferences.includes(preference.value)}
+                onClick={() => handleToggle(preference.value)}
               />
             ))}
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-end">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+              disabled={selectedPreferences.length === 0}
+            >
+              Next
+            </Button>
           </div>
         </div>
       </div>
