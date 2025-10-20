@@ -32,7 +32,7 @@ export default function CategoryCard({
       
       {/* Text content - bottom left */}
       <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
-        <h3 className="text-white font-bold text-2xl md:text-3xl lg:text-4xl mb-2">
+        <h3 className="text-white font-bold text-xl md:text-2xl lg:text-3xl mb-2">
           {name}
         </h3>
         <p className="text-white/90 text-sm md:text-base lg:text-lg">
