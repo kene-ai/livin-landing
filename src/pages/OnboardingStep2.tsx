@@ -105,7 +105,7 @@ export default function OnboardingStep2() {
             <img 
               src="https://images.squarespace-cdn.com/content/v1/675e3993212d3654af70cd12/1734365622541-6JE453E18W7JHX4Y7WPX/2F2A0078_websize+%282%29.jpg?format=2500w" 
               alt="Couple enjoying healthy dinner at home" 
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-[center_65%]"
             />
           </div>
 
