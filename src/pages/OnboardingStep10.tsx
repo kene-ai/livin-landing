@@ -128,7 +128,7 @@ export default function OnboardingStep10() {
             >
               <CarouselContent className="-ml-4">
                 {categories.map((category) => (
-                  <CarouselItem key={category.id} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4">
+                  <CarouselItem key={category.id} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                     <CategoryCard
                       name={category.name}
                       description={category.description}
