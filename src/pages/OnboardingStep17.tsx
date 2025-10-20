@@ -101,15 +101,6 @@ export default function OnboardingStep17() {
     }
   };
 
-  // Generate plate options for dropdown
-  const recommendedPlates = Math.ceil(numAdults + (numChildren * 0.5));
-  const plateOptions = [];
-  for (let i = recommendedPlates; i <= 30; i += 2) {
-    plateOptions.push(i);
-  }
-  if (!plateOptions.includes(recommendedPlates)) {
-    plateOptions.unshift(recommendedPlates);
-  }
 
   // Filter plans based on selected plates per serving
   const filteredPlans = plans.filter(plan => plan.plates >= platesPerServing);
@@ -206,40 +197,6 @@ export default function OnboardingStep17() {
             </div>
           </div>
 
-          {/* Plates per Meal */}
-          <div className="mb-6">
-            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
-              Plates per meal
-            </h2>
-            <div className="max-w-xs">
-              <p className="text-xs text-muted-foreground mb-2">
-                We recommend {recommendedPlates} plates based on your family size
-              </p>
-              <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
-                <div className="flex items-center gap-1 justify-center">
-                  <button
-                    type="button"
-                    onClick={() => setPlatesPerServing(Math.max(recommendedPlates, platesPerServing - 2))}
-                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                    aria-label="Decrease plates"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <div className="w-16 text-center">
-                    <span className="text-xl font-semibold text-foreground">{platesPerServing}</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setPlatesPerServing(Math.min(30, platesPerServing + 2))}
-                    className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                    aria-label="Increase plates"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* Frequency Selection */}
           <div className="mb-6">
