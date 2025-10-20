@@ -18,7 +18,7 @@ export default function OnboardingStep10() {
     { value: "boring-meals", label: "Same boring meals on repeat" },
     { value: "dont-know-healthy", label: "Don't know what's healthy" },
     { value: "takes-too-long", label: "Takes too long to plan" },
-    { value: "dietary-restrictions", label: "Dietary restrictions limit options" },
+    { value: "dietary-restrictions", label: "Help me manage my specific diet" },
     { value: "everyone-different", label: "Everyone wants something different" },
   ];
 
