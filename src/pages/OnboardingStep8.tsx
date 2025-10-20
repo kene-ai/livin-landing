@@ -5,13 +5,6 @@ import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
 import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 /**
  * Onboarding Step 8
@@ -22,7 +15,6 @@ export default function OnboardingStep8() {
   const navigate = useNavigate();
   const [adults, setAdults] = useState(2);
   const [kids, setKids] = useState(1);
-  const [kidAges, setKidAges] = useState<string[]>(["3-5"]);
   const [selectedRestrictions, setSelectedRestrictions] = useState<string[]>([]);
 
   const dietaryRestrictions = [
@@ -39,14 +31,6 @@ export default function OnboardingStep8() {
     "Kosher",
   ];
 
-  const ageRanges = [
-    { value: "0-2", label: "0-2 years" },
-    { value: "3-5", label: "3-5 years" },
-    { value: "6-10", label: "6-10 years" },
-    { value: "11-14", label: "11-14 years" },
-    { value: "15+", label: "15+ years" },
-  ];
-
   const handleAdultsChange = (delta: number) => {
     const newValue = Math.max(0, adults + delta);
     setAdults(newValue);
@@ -55,19 +39,6 @@ export default function OnboardingStep8() {
   const handleKidsChange = (delta: number) => {
     const newValue = Math.max(0, kids + delta);
     setKids(newValue);
-    
-    // Update kid ages array
-    if (newValue > kidAges.length) {
-      setKidAges([...kidAges, "3-5"]);
-    } else if (newValue < kidAges.length) {
-      setKidAges(kidAges.slice(0, newValue));
-    }
-  };
-
-  const handleKidAgeChange = (index: number, age: string) => {
-    const newAges = [...kidAges];
-    newAges[index] = age;
-    setKidAges(newAges);
   };
 
   const toggleRestriction = (restriction: string) => {
@@ -79,7 +50,7 @@ export default function OnboardingStep8() {
   };
 
   const handleNext = () => {
-    navigate("/onboarding/step-9", { state: { adults, kids, kidAges, dietaryRestrictions: selectedRestrictions } });
+    navigate("/onboarding/step-9", { state: { adults, kids, dietaryRestrictions: selectedRestrictions } });
   };
 
   const totalPeople = adults + kids;
@@ -109,7 +80,7 @@ export default function OnboardingStep8() {
           {/* Adults Counter */}
           <div className="mb-6">
             <div className="flex items-center justify-between p-6 rounded-2xl border-2 border-muted">
-              <span className="text-lg md:text-xl font-semibold text-foreground">Adults</span>
+              <span className="text-lg md:text-xl font-semibold text-foreground">Adults (12 or over)</span>
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => handleAdultsChange(-1)}
@@ -132,7 +103,7 @@ export default function OnboardingStep8() {
           {/* Kids Counter */}
           <div className="mb-8">
             <div className="flex items-center justify-between p-6 rounded-2xl border-2 border-muted">
-              <span className="text-lg md:text-xl font-semibold text-foreground">Kids</span>
+              <span className="text-lg md:text-xl font-semibold text-foreground">Kids (Under 12)</span>
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => handleKidsChange(-1)}
@@ -151,29 +122,6 @@ export default function OnboardingStep8() {
               </div>
             </div>
           </div>
-
-          {/* Kid Ages (if kids > 0) */}
-          {kids > 0 && (
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Ages:</h3>
-              <div className="space-y-3">
-                {kidAges.map((age, index) => (
-                  <Select key={index} value={age} onValueChange={(value) => handleKidAgeChange(index, value)}>
-                    <SelectTrigger className="h-14 text-base rounded-2xl border-2 border-muted">
-                      <SelectValue placeholder="Select age range" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-background">
-                      {ageRanges.map((range) => (
-                        <SelectItem key={range.value} value={range.value}>
-                          {range.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Dietary Restrictions */}
           <div className="mb-10">
