@@ -102,7 +102,7 @@ export default function OnboardingStep2() {
           </h1>
 
           {/* Image */}
-          <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md">
+          <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md mx-auto">
             <AspectRatio ratio={6 / 5}>
               <img 
                 src="https://images.squarespace-cdn.com/content/v1/675e3993212d3654af70cd12/1734365622541-6JE453E18W7JHX4Y7WPX/2F2A0078_websize+%282%29.jpg?format=2500w" 
