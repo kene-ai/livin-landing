@@ -53,7 +53,7 @@ export default function OnboardingStep10() {
     },
     {
       id: "4",
-      name: "<Mediterranean",
+      name: "Mediterranean",
       description: "Fresh, flavorful Mediterranean-inspired dishes",
       image: meal4
     },
