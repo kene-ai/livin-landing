@@ -67,7 +67,7 @@ export default function OnboardingStep10() {
       id: "7",
       name: "Calorie Conscious",
       description: "550kcal or less per serving",
-      image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800"
+      image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800"
     },
     {
       id: "8",
