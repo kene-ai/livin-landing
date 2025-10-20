@@ -2,7 +2,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
-import healthyEatingImage from "@/assets/healthy-eating.jpg";
 import { Check } from "lucide-react";
 
 /**
@@ -104,8 +103,8 @@ export default function OnboardingStep2() {
           {/* Image */}
           <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md">
             <img 
-              src={healthyEatingImage} 
-              alt="Person enjoying healthy meal" 
+              src="https://images.squarespace-cdn.com/content/v1/675e3993212d3654af70cd12/1734365622541-6JE453E18W7JHX4Y7WPX/2F2A0078_websize+%282%29.jpg?format=2500w" 
+              alt="Couple enjoying healthy dinner at home" 
               className="w-full h-auto object-cover"
             />
           </div>
