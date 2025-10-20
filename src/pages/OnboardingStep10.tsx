@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
@@ -10,8 +9,6 @@ import meal3 from "@/assets/meals/meal-3.jpg";
 import meal4 from "@/assets/meals/meal-4.jpg";
 import meal5 from "@/assets/meals/meal-5.jpg";
 import meal6 from "@/assets/meals/meal-6.jpg";
-import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
 
 interface Meal {
   id: string;
@@ -28,17 +25,6 @@ interface Meal {
  */
 export default function OnboardingStep10() {
   const navigate = useNavigate();
-  const [selectedFilter, setSelectedFilter] = useState("All");
-  const [favoritedMeals, setFavoritedMeals] = useState<Set<string>>(new Set());
-
-  const filters = [
-    "All",
-    "Kid-Friendly",
-    "Quick Prep",
-    "High Protein",
-    "Vegetarian",
-    "New This Week"
-  ];
 
   const meals: Meal[] = [
     {
@@ -128,30 +114,12 @@ export default function OnboardingStep10() {
     },
   ];
 
-  const filteredMeals = selectedFilter === "All"
-    ? meals
-    : meals.filter(meal => meal.categories.includes(selectedFilter));
-
-  const toggleFavorite = (mealId: string) => {
-    setFavoritedMeals(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(mealId)) {
-        newSet.delete(mealId);
-      } else if (newSet.size < 3) {
-        newSet.add(mealId);
-      }
-      return newSet;
-    });
-  };
-
   const handleContinue = () => {
-    navigate("/onboarding/step-11", { state: { favoritedMeals: Array.from(favoritedMeals) } });
+    navigate("/onboarding/step-11");
   };
-
-  const favoritedCount = favoritedMeals.size;
 
   return (
-    <div className="min-h-screen bg-background pb-32">
+    <div className="min-h-screen bg-background pb-24">
       {/* Progress Bar */}
       <OnboardingProgress currentStep={5} totalSteps={5} />
 
@@ -173,69 +141,38 @@ export default function OnboardingStep10() {
               Meet your new healthy menu
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Livin features 100+ meal options, rotating monthly.
+              Livin features 30+ meal options, rotating weekly.
             </p>
             <p className="text-base md:text-lg text-muted-foreground mt-2">
-              Select 3 meals to add to your rotation. You'll be able to customize your full menu before scheduling your first service.
+              You'll be able to customize your meals every week. Below is a preview of our menu.
             </p>
-          </div>
-
-          {/* Filter Pills */}
-          <div className="mb-8 flex flex-wrap gap-3">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setSelectedFilter(filter)}
-                className={cn(
-                  "px-5 py-2.5 rounded-full font-medium transition-all",
-                  selectedFilter === filter
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-accent text-foreground hover:bg-accent/80"
-                )}
-              >
-                {filter}
-              </button>
-            ))}
           </div>
 
           {/* Meal Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {filteredMeals.map((meal) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+            {meals.map((meal) => (
               <MealCard
                 key={meal.id}
                 id={meal.id}
                 title={meal.title}
                 image={meal.image}
                 tags={meal.tags}
-                favorited={favoritedMeals.has(meal.id)}
-                onToggleFavorite={() => toggleFavorite(meal.id)}
+                favorited={false}
+                onToggleFavorite={() => {}}
               />
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* Sticky Footer with Counter */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background border-t-2 border-muted py-6 px-6 md:px-8 z-40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="text-lg md:text-xl font-semibold text-foreground">
-              {favoritedCount}/3 meals favorited
-            </span>
-            {favoritedCount === 3 && (
-              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary">
-                <Check className="w-4 h-4 text-primary-foreground" strokeWidth={3} />
-              </div>
-            )}
+          {/* Continue Button */}
+          <div className="flex justify-center">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleContinue}
+            >
+              Continue
+            </Button>
           </div>
-          <Button 
-            variant="primary" 
-            size="lg"
-            onClick={handleContinue}
-            disabled={favoritedCount !== 3}
-          >
-            Continue
-          </Button>
         </div>
       </div>
     </div>
