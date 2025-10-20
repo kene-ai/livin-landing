@@ -57,7 +57,7 @@ export default function OnboardingStep15() {
               How Livin subscriptions work
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              Livin subscriptions start at $150 per month. Here's how you can customize them.
+              Livin subscriptions start at $185 per month. Here's how you can customize them.
             </p>
           </div>
 
