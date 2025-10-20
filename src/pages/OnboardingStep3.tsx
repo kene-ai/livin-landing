@@ -17,8 +17,7 @@ export default function OnboardingStep3() {
   const occasions = [
     { value: "weekly-meal-prep", label: "Weekly meal prep" },
     { value: "life-gets-crazy", label: "When life gets crazy (school events, work deadlines, recovery)" },
-    { value: "hosting-guests", label: "Hosting guests or dinner parties" },
-    { value: "date-nights", label: "Date nights at home" },
+    { value: "cooking-while-traveling", label: "Cooking for my family while I'm traveling" },
   ];
 
   const handleToggle = (value: string) => {

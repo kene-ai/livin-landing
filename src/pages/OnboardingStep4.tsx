@@ -20,8 +20,7 @@ export default function OnboardingStep4() {
     const occasionMap: Record<string, string> = {
       "weekly-meal-prep": "weekly meal prep",
       "life-gets-crazy": "those busy, chaotic weeks",
-      "hosting-guests": "dinner parties and special gatherings",
-      "date-nights": "romantic date nights at home"
+      "cooking-while-traveling": "meal prep while you're traveling"
     };
 
     const texts = selectedOccasions.map((occ: string) => occasionMap[occ]).filter(Boolean);
