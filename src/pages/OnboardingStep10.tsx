@@ -118,7 +118,7 @@ export default function OnboardingStep10() {
           </div>
 
           {/* Category Carousel */}
-          <div className="mb-12">
+          <div className="mb-12 px-12 md:px-16">
             <Carousel
               opts={{
                 align: "start",
@@ -128,7 +128,7 @@ export default function OnboardingStep10() {
             >
               <CarouselContent className="-ml-4">
                 {categories.map((category) => (
-                  <CarouselItem key={category.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={category.id} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4">
                     <CategoryCard
                       name={category.name}
                       description={category.description}
@@ -137,8 +137,8 @@ export default function OnboardingStep10() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="left-0" />
-              <CarouselNext className="right-0" />
+              <CarouselPrevious className="-left-12 md:-left-16" />
+              <CarouselNext className="-right-12 md:-right-16" />
             </Carousel>
           </div>
 
