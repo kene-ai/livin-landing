@@ -136,9 +136,6 @@ export default function OnboardingStep17() {
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
               Choose your Livin subscription
             </h1>
-            <p className="text-lg text-muted-foreground">
-              All plans include: Chef service • Groceries • Cleanup • Storage containers
-            </p>
           </div>
 
           {/* Family Size Selection */}
