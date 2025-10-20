@@ -61,15 +61,15 @@ export default function OnboardingStep2() {
       ],
       outcome: "You get: Restaurant-quality meals and exciting new dishes without the work"
     },
-    "special-event": {
-      headline: "Livin creates unforgettable culinary moments",
+    "manage-diet": {
+      headline: "Livin helps you manage your specific dietary needs",
       benefits: [
-        "Personalized menu planning",
-        "Professional presentation",
-        "Stress-free hosting",
-        "Memorable dining experiences"
+        "Custom meal plans for your diet",
+        "Allergen-free & restriction-friendly recipes",
+        "Nutritionist-approved meals",
+        "Consistent portion control"
       ],
-      outcome: "You get: An intimate, restaurant-quality experience in the comfort of your home"
+      outcome: "You get: Stress-free meal management that fits your dietary requirements perfectly"
     }
   };
 

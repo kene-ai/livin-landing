@@ -20,7 +20,7 @@ export default function Onboarding() {
     { value: "healthier-meals", label: "Feed my family healthier meals" },
     { value: "stop-wasting-money", label: "Stop wasting money on delivery/takeout" },
     { value: "try-new-recipes", label: "Try new recipes and cuisines" },
-    { value: "special-event", label: "Create a unique moment for a special event or occasion" },
+    { value: "manage-diet", label: "Help me manage my specific diet" },
   ];
 
   const handleSelect = (value: string) => {
