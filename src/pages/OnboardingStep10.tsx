@@ -3,9 +3,14 @@ import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import ChefCard from "@/components/library/ChefCard";
 import livinLogo from "@/assets/livin-logo.webp";
-import chef1 from "@/assets/chefs/chef-1.jpg";
-import chef2 from "@/assets/chefs/chef-2.jpg";
-import chef3 from "@/assets/chefs/chef-3.jpg";
+import marcusImg from "@/assets/chefs/marcus.jpg";
+import sarahImg from "@/assets/chefs/sarah.jpg";
+import davidImg from "@/assets/chefs/david.jpg";
+import jenniferImg from "@/assets/chefs/jennifer.jpg";
+import robertImg from "@/assets/chefs/robert.jpg";
+import emilyImg from "@/assets/chefs/emily.jpg";
+import michaelImg from "@/assets/chefs/michael.jpg";
+import lisaImg from "@/assets/chefs/lisa.jpg";
 import {
   Carousel,
   CarouselContent,
@@ -37,56 +42,56 @@ export default function OnboardingStep10() {
       name: "Marcus Johnson",
       title: "Culinary Institute Graduate",
       bio: "Specializes in Southern comfort food and healthy meal prep. 8 years experience.",
-      imageSrc: chef1
+      imageSrc: marcusImg
     },
     {
       id: "2",
       name: "Sarah Chen",
       title: "Le Cordon Bleu Certified",
       bio: "Expert in Asian fusion and plant-based cuisine. Passionate about nutrition.",
-      imageSrc: chef2
+      imageSrc: sarahImg
     },
     {
       id: "3",
       name: "David Martinez",
       title: "Italian Cuisine Specialist",
       bio: "Trained in Rome, loves creating family-friendly Italian meals. 10+ years experience.",
-      imageSrc: chef3
+      imageSrc: davidImg
     },
     {
       id: "4",
       name: "Jennifer Lee",
       title: "Plant-Based Expert",
       bio: "Specializes in vegan and vegetarian cuisine. Makes healthy eating delicious.",
-      imageSrc: chef1
+      imageSrc: jenniferImg
     },
     {
       id: "5",
       name: "Robert Thompson",
       title: "Culinary Arts Professional",
       bio: "Loves Mediterranean and Middle Eastern flavors. Great with kids.",
-      imageSrc: chef2
+      imageSrc: robertImg
     },
     {
       id: "6",
       name: "Emily Rodriguez",
       title: "Pastry & Savory Chef",
       bio: "French-trained chef with a knack for elegant, simple meals.",
-      imageSrc: chef3
+      imageSrc: emilyImg
     },
     {
       id: "7",
       name: "Michael Patel",
       title: "Global Cuisine Specialist",
       bio: "Brings flavors from around the world to your kitchen. 12 years experience.",
-      imageSrc: chef1
+      imageSrc: michaelImg
     },
     {
       id: "8",
       name: "Lisa Brown",
       title: "Family Meal Expert",
       bio: "Focuses on kid-friendly, nutritious meals that everyone will love.",
-      imageSrc: chef2
+      imageSrc: lisaImg
     }
   ];
 
