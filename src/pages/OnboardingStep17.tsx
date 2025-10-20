@@ -43,7 +43,7 @@ export default function OnboardingStep17() {
   const plans: PricingPlan[] = [
     {
       id: "lite",
-      name: "Lite",
+      name: "2 meal plan",
       weeklyPrice: 185,
       monthlyPrice: 185,
       meals: 2,
@@ -51,7 +51,7 @@ export default function OnboardingStep17() {
     },
     {
       id: "plus",
-      name: "Plus",
+      name: "3 meal plan",
       weeklyPrice: 248,
       monthlyPrice: 248,
       meals: 3,
@@ -59,7 +59,7 @@ export default function OnboardingStep17() {
     },
     {
       id: "core",
-      name: "Core",
+      name: "4 meal plan",
       weeklyPrice: 301,
       monthlyPrice: 301,
       meals: 4,
@@ -68,7 +68,7 @@ export default function OnboardingStep17() {
     },
     {
       id: "premier",
-      name: "Premier",
+      name: "10 meal plan",
       weeklyPrice: 590,
       monthlyPrice: 590,
       meals: 10,
