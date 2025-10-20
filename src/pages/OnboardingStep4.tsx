@@ -26,7 +26,7 @@ export default function OnboardingStep4() {
       deliveryApps: "Limited",
       diningOut: "Hit or miss",
       cooking: "Yes",
-      livin: "100+ meals"
+      livin: "30+ meals"
     },
     {
       category: "Cooking time",
