@@ -1,7 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
-import MealCard from "@/components/library/MealCard";
+import CategoryCard from "@/components/library/CategoryCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 import livinLogo from "@/assets/livin-logo.webp";
 import meal1 from "@/assets/meals/meal-1.jpg";
 import meal2 from "@/assets/meals/meal-2.jpg";
@@ -10,107 +17,69 @@ import meal4 from "@/assets/meals/meal-4.jpg";
 import meal5 from "@/assets/meals/meal-5.jpg";
 import meal6 from "@/assets/meals/meal-6.jpg";
 
-interface Meal {
+interface Category {
   id: string;
-  title: string;
+  name: string;
+  description: string;
   image: string;
-  tags: string[];
-  categories: string[];
 }
 
 /**
  * Onboarding Step 10
  * 
- * Menu selection - favorite 3 meals
+ * Menu category carousel
  */
 export default function OnboardingStep10() {
   const navigate = useNavigate();
 
-  const meals: Meal[] = [
+  const categories: Category[] = [
     {
       id: "1",
-      title: "Grilled Salmon with Roasted Vegetables",
-      image: meal1,
-      tags: ["GF", "DF", "High Protein"],
-      categories: ["High Protein", "Quick Prep"]
+      name: "High Protein",
+      description: "30 grams of protein or more per serving",
+      image: meal1
     },
     {
       id: "2",
-      title: "Chicken Stir-Fry with Vegetables",
-      image: meal2,
-      tags: ["GF", "DF"],
-      categories: ["Kid-Friendly", "Quick Prep", "High Protein"]
+      name: "Carb Conscious",
+      description: "Low carb, high fat meals",
+      image: meal2
     },
     {
       id: "3",
-      title: "Pasta Primavera",
-      image: meal3,
-      tags: ["Vegetarian"],
-      categories: ["Kid-Friendly", "Vegetarian"]
+      name: "Kid Friendly",
+      description: "Family favorites kids will actually eat",
+      image: meal3
     },
     {
       id: "4",
-      title: "Beef Tacos with Fresh Toppings",
-      image: meal4,
-      tags: ["GF"],
-      categories: ["Kid-Friendly", "New This Week"]
+      name: "Mediterranean Cuisine",
+      description: "Fresh, flavorful Mediterranean-inspired dishes",
+      image: meal4
     },
     {
       id: "5",
-      title: "Mediterranean Buddha Bowl",
-      image: meal5,
-      tags: ["Vegan", "GF"],
-      categories: ["Vegetarian", "High Protein"]
+      name: "Vegetarian",
+      description: "Plant-based meals packed with nutrition",
+      image: meal5
     },
     {
       id: "6",
-      title: "Teriyaki Chicken with Brown Rice",
-      image: meal6,
-      tags: ["DF", "High Protein"],
-      categories: ["Kid-Friendly", "Quick Prep", "High Protein"]
+      name: "Fiber Filled",
+      description: "High fiber meals for digestive health",
+      image: meal6
     },
-    // Duplicate meals to have more options
     {
       id: "7",
-      title: "Grilled Salmon with Quinoa",
-      image: meal1,
-      tags: ["GF", "DF"],
-      categories: ["High Protein", "New This Week"]
+      name: "Calorie Conscious",
+      description: "550kcal or less per serving",
+      image: meal1
     },
     {
       id: "8",
-      title: "Veggie Stir-Fry",
-      image: meal2,
-      tags: ["Vegan", "GF"],
-      categories: ["Vegetarian", "Quick Prep"]
-    },
-    {
-      id: "9",
-      title: "Creamy Pasta with Peas",
-      image: meal3,
-      tags: ["Vegetarian"],
-      categories: ["Kid-Friendly", "Vegetarian"]
-    },
-    {
-      id: "10",
-      title: "Fish Tacos",
-      image: meal4,
-      tags: ["GF", "DF"],
-      categories: ["Quick Prep", "High Protein", "New This Week"]
-    },
-    {
-      id: "11",
-      title: "Quinoa Power Bowl",
-      image: meal5,
-      tags: ["Vegan", "GF", "High Protein"],
-      categories: ["Vegetarian", "High Protein"]
-    },
-    {
-      id: "12",
-      title: "Orange Chicken",
-      image: meal6,
-      tags: ["DF"],
-      categories: ["Kid-Friendly", "High Protein"]
+      name: "GLP-1 Balanced",
+      description: "Optimized for GLP-1 medication users",
+      image: meal2
     },
   ];
 
@@ -148,19 +117,29 @@ export default function OnboardingStep10() {
             </p>
           </div>
 
-          {/* Meal Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
-            {meals.map((meal) => (
-              <MealCard
-                key={meal.id}
-                id={meal.id}
-                title={meal.title}
-                image={meal.image}
-                tags={meal.tags}
-                favorited={false}
-                onToggleFavorite={() => {}}
-              />
-            ))}
+          {/* Category Carousel */}
+          <div className="mb-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {categories.map((category) => (
+                  <CarouselItem key={category.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                    <CategoryCard
+                      name={category.name}
+                      description={category.description}
+                      image={category.image}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0" />
+              <CarouselNext className="right-0" />
+            </Carousel>
           </div>
 
           {/* Continue Button */}
