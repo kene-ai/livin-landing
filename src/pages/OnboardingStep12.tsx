@@ -1,38 +1,105 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import OnboardingCheckbox from "@/components/library/OnboardingCheckbox";
 import Button from "@/components/library/Button";
+import ChefCard from "@/components/library/ChefCard";
 import livinLogo from "@/assets/livin-logo.webp";
+import chef1 from "@/assets/chefs/chef-1.jpg";
+import chef2 from "@/assets/chefs/chef-2.jpg";
+import chef3 from "@/assets/chefs/chef-3.jpg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Check } from "lucide-react";
+
+interface Chef {
+  id: string;
+  name: string;
+  title: string;
+  bio: string;
+  imageSrc: string;
+}
 
 /**
  * Onboarding Step 12
  * 
- * Chef preferences selection
+ * Chef browsing
  */
 export default function OnboardingStep12() {
   const navigate = useNavigate();
-  const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
 
-  const preferences = [
-    { value: "background-checked", label: "Background-checked & insured" },
-    { value: "high-ratings", label: "High ratings and reviews" },
-    { value: "cooking-specialties", label: "Specific cooking specialties" },
-    { value: "personality", label: "Personality & communication" },
-    { value: "flexibility", label: "Flexibility with schedule" },
-    { value: "respectful", label: "Respectful of my home" },
+  const chefs: Chef[] = [
+    {
+      id: "1",
+      name: "Marcus Johnson",
+      title: "Culinary Institute Graduate",
+      bio: "Specializes in Southern comfort food and healthy meal prep. 8 years experience.",
+      imageSrc: chef1
+    },
+    {
+      id: "2",
+      name: "Sarah Chen",
+      title: "Le Cordon Bleu Certified",
+      bio: "Expert in Asian fusion and plant-based cuisine. Passionate about nutrition.",
+      imageSrc: chef2
+    },
+    {
+      id: "3",
+      name: "David Martinez",
+      title: "Italian Cuisine Specialist",
+      bio: "Trained in Rome, loves creating family-friendly Italian meals. 10+ years experience.",
+      imageSrc: chef3
+    },
+    {
+      id: "4",
+      name: "Jennifer Lee",
+      title: "Plant-Based Expert",
+      bio: "Specializes in vegan and vegetarian cuisine. Makes healthy eating delicious.",
+      imageSrc: chef1
+    },
+    {
+      id: "5",
+      name: "Robert Thompson",
+      title: "Culinary Arts Professional",
+      bio: "Loves Mediterranean and Middle Eastern flavors. Great with kids.",
+      imageSrc: chef2
+    },
+    {
+      id: "6",
+      name: "Emily Rodriguez",
+      title: "Pastry & Savory Chef",
+      bio: "French-trained chef with a knack for elegant, simple meals.",
+      imageSrc: chef3
+    },
+    {
+      id: "7",
+      name: "Michael Patel",
+      title: "Global Cuisine Specialist",
+      bio: "Brings flavors from around the world to your kitchen. 12 years experience.",
+      imageSrc: chef1
+    },
+    {
+      id: "8",
+      name: "Lisa Brown",
+      title: "Family Meal Expert",
+      bio: "Focuses on kid-friendly, nutritious meals that everyone will love.",
+      imageSrc: chef2
+    }
   ];
 
-  const handleToggle = (value: string) => {
-    setSelectedPreferences(prev => 
-      prev.includes(value)
-        ? prev.filter(v => v !== value)
-        : [...prev, value]
-    );
-  };
+  const trustIndicators = [
+    "Background-checked & fully insured",
+    "Average rating: 4.9★ from 500+ families",
+    "Professional culinary training",
+    "Specialties: Italian, Asian, Plant-based, Southern, and more",
+    "Shop for groceries, cook, clean, and package meals"
+  ];
 
   const handleNext = () => {
-    navigate("/onboarding/step-13", { state: { selectedPreferences } });
+    navigate("/onboarding/step-13");
   };
 
   return (
@@ -42,7 +109,7 @@ export default function OnboardingStep12() {
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
             <img 
@@ -53,21 +120,56 @@ export default function OnboardingStep12() {
           </div>
 
           {/* Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-            What do you look for in a personal chef to come cook in your home?
-          </h1>
+          <div className="mb-8 md:mb-10">
+            <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
+              Meet our trusted chefs
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Livin has great chefs who are background-checked, insured, and passionate about cooking. You'll be able to choose which chef you want each time you book.
+            </p>
+          </div>
 
-          {/* Checkbox Options */}
-          <div className="space-y-4 mb-10">
-            {preferences.map((preference) => (
-              <OnboardingCheckbox
-                key={preference.value}
-                value={preference.value}
-                label={preference.label}
-                selected={selectedPreferences.includes(preference.value)}
-                onClick={() => handleToggle(preference.value)}
-              />
-            ))}
+          {/* Chef Carousel */}
+          <div className="mb-12 px-4 md:px-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {chefs.map((chef) => (
+                  <CarouselItem key={chef.id} className="md:basis-1/2 lg:basis-1/3">
+                    <ChefCard
+                      id={chef.id}
+                      name={chef.name}
+                      title={chef.title}
+                      bio={chef.bio}
+                      imageSrc={chef.imageSrc}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mb-10 p-8 bg-accent/30 rounded-3xl border-2 border-muted">
+            <div className="space-y-4">
+              {trustIndicators.map((indicator, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                    <Check className="w-4 h-4 text-primary-foreground" strokeWidth={3} />
+                  </div>
+                  <span className="text-base md:text-lg text-foreground font-medium">
+                    {indicator}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Next Button */}
@@ -76,7 +178,6 @@ export default function OnboardingStep12() {
               variant="primary" 
               size="lg"
               onClick={handleNext}
-              disabled={selectedPreferences.length === 0}
             >
               Next
             </Button>

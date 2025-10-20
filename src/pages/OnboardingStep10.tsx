@@ -1,74 +1,163 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
+import MealCard from "@/components/library/MealCard";
 import livinLogo from "@/assets/livin-logo.webp";
-import testimonial1 from "@/assets/testimonial-1.jpg";
-import testimonial2 from "@/assets/testimonial-2.jpg";
-import testimonial3 from "@/assets/testimonial-3.jpg";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import meal1 from "@/assets/meals/meal-1.jpg";
+import meal2 from "@/assets/meals/meal-2.jpg";
+import meal3 from "@/assets/meals/meal-3.jpg";
+import meal4 from "@/assets/meals/meal-4.jpg";
+import meal5 from "@/assets/meals/meal-5.jpg";
+import meal6 from "@/assets/meals/meal-6.jpg";
+import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
+
+interface Meal {
+  id: string;
+  title: string;
+  image: string;
+  tags: string[];
+  categories: string[];
+}
 
 /**
  * Onboarding Step 10
  * 
- * Family reinforcement with testimonials
+ * Menu selection - favorite 3 meals
  */
 export default function OnboardingStep10() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { adults = 2, kids = 0 } = location.state || {};
+  const [selectedFilter, setSelectedFilter] = useState("All");
+  const [favoritedMeals, setFavoritedMeals] = useState<Set<string>>(new Set());
 
-  const testimonials = [
-    {
-      name: "Sarah M.",
-      location: "Atlanta, GA",
-      image: testimonial1,
-      quote: "My kids actually ask for seconds now! The chef makes vegetables fun and delicious. It's been a game-changer for our family dinners."
-    },
-    {
-      name: "Michael P.",
-      location: "Decatur, GA",
-      image: testimonial2,
-      quote: "Finally, meals that everyone enjoys. No more cooking three different dinners. Our Livin chef knows exactly what each family member loves."
-    },
-    {
-      name: "Jennifer L.",
-      location: "Marietta, GA",
-      image: testimonial3,
-      quote: "The variety is incredible. My picky eaters are trying new foods every week, and my husband and I get restaurant-quality meals at home."
-    }
+  const filters = [
+    "All",
+    "Kid-Friendly",
+    "Quick Prep",
+    "High Protein",
+    "Vegetarian",
+    "New This Week"
   ];
 
-  // Dynamic header based on household composition
-  const getHeaderText = () => {
-    if (kids > 0 && adults > 0) {
-      return "Meals your whole family will actually eat";
-    } else if (kids > 0) {
-      return "Meals your kids will actually eat";
-    } else if (adults > 1) {
-      return "Meals you'll both love";
-    } else {
-      return "Meals you'll actually enjoy";
-    }
+  const meals: Meal[] = [
+    {
+      id: "1",
+      title: "Grilled Salmon with Roasted Vegetables",
+      image: meal1,
+      tags: ["GF", "DF", "High Protein"],
+      categories: ["High Protein", "Quick Prep"]
+    },
+    {
+      id: "2",
+      title: "Chicken Stir-Fry with Vegetables",
+      image: meal2,
+      tags: ["GF", "DF"],
+      categories: ["Kid-Friendly", "Quick Prep", "High Protein"]
+    },
+    {
+      id: "3",
+      title: "Pasta Primavera",
+      image: meal3,
+      tags: ["Vegetarian"],
+      categories: ["Kid-Friendly", "Vegetarian"]
+    },
+    {
+      id: "4",
+      title: "Beef Tacos with Fresh Toppings",
+      image: meal4,
+      tags: ["GF"],
+      categories: ["Kid-Friendly", "New This Week"]
+    },
+    {
+      id: "5",
+      title: "Mediterranean Buddha Bowl",
+      image: meal5,
+      tags: ["Vegan", "GF"],
+      categories: ["Vegetarian", "High Protein"]
+    },
+    {
+      id: "6",
+      title: "Teriyaki Chicken with Brown Rice",
+      image: meal6,
+      tags: ["DF", "High Protein"],
+      categories: ["Kid-Friendly", "Quick Prep", "High Protein"]
+    },
+    // Duplicate meals to have more options
+    {
+      id: "7",
+      title: "Grilled Salmon with Quinoa",
+      image: meal1,
+      tags: ["GF", "DF"],
+      categories: ["High Protein", "New This Week"]
+    },
+    {
+      id: "8",
+      title: "Veggie Stir-Fry",
+      image: meal2,
+      tags: ["Vegan", "GF"],
+      categories: ["Vegetarian", "Quick Prep"]
+    },
+    {
+      id: "9",
+      title: "Creamy Pasta with Peas",
+      image: meal3,
+      tags: ["Vegetarian"],
+      categories: ["Kid-Friendly", "Vegetarian"]
+    },
+    {
+      id: "10",
+      title: "Fish Tacos",
+      image: meal4,
+      tags: ["GF", "DF"],
+      categories: ["Quick Prep", "High Protein", "New This Week"]
+    },
+    {
+      id: "11",
+      title: "Quinoa Power Bowl",
+      image: meal5,
+      tags: ["Vegan", "GF", "High Protein"],
+      categories: ["Vegetarian", "High Protein"]
+    },
+    {
+      id: "12",
+      title: "Orange Chicken",
+      image: meal6,
+      tags: ["DF"],
+      categories: ["Kid-Friendly", "High Protein"]
+    },
+  ];
+
+  const filteredMeals = selectedFilter === "All"
+    ? meals
+    : meals.filter(meal => meal.categories.includes(selectedFilter));
+
+  const toggleFavorite = (mealId: string) => {
+    setFavoritedMeals(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(mealId)) {
+        newSet.delete(mealId);
+      } else if (newSet.size < 3) {
+        newSet.add(mealId);
+      }
+      return newSet;
+    });
   };
 
-  const handleNext = () => {
-    navigate("/onboarding/step-11");
+  const handleContinue = () => {
+    navigate("/onboarding/step-11", { state: { favoritedMeals: Array.from(favoritedMeals) } });
   };
+
+  const favoritedCount = favoritedMeals.size;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-32">
       {/* Progress Bar */}
       <OnboardingProgress currentStep={5} totalSteps={5} />
 
       {/* Main Content */}
-      <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-5xl mx-auto">
+      <div className="pt-8 px-6 md:px-8">
+        <div className="max-w-7xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
             <img 
@@ -78,74 +167,75 @@ export default function OnboardingStep10() {
             />
           </div>
 
-          {/* Dynamic Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-12 md:mb-16 text-center leading-tight">
-            {getHeaderText()}
-          </h1>
-
-          {/* Testimonial Carousel */}
-          <div className="mb-12 px-4 md:px-12">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {testimonials.map((testimonial, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-6 bg-accent/30 rounded-3xl border-2 border-muted h-full flex flex-col">
-                      {/* Customer Image */}
-                      <div className="mb-6">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name}
-                          className="w-24 h-24 rounded-full object-cover mx-auto border-4 border-primary/20"
-                        />
-                      </div>
-
-                      {/* Name and Location */}
-                      <div className="text-center mb-4">
-                        <h3 className="font-bold text-lg text-foreground mb-1">
-                          {testimonial.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          {testimonial.location}
-                        </p>
-                      </div>
-
-                      {/* Quote */}
-                      <p className="text-foreground italic text-center flex-grow">
-                        "{testimonial.quote}"
-                      </p>
-
-                      {/* Livin Customer Badge */}
-                      <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                        <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>Livin customer</span>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex" />
-              <CarouselNext className="hidden md:flex" />
-            </Carousel>
+          {/* Header */}
+          <div className="mb-8 md:mb-10">
+            <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
+              Meet your new healthy menu
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Livin features 100+ meal options, rotating monthly.
+            </p>
+            <p className="text-base md:text-lg text-muted-foreground mt-2">
+              Select 3 meals to add to your rotation. You'll be able to customize your full menu before scheduling your first service.
+            </p>
           </div>
 
-          {/* Next Button */}
-          <div className="flex justify-end">
-            <Button 
-              variant="primary" 
-              size="lg"
-              onClick={handleNext}
-            >
-              Next
-            </Button>
+          {/* Filter Pills */}
+          <div className="mb-8 flex flex-wrap gap-3">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setSelectedFilter(filter)}
+                className={cn(
+                  "px-5 py-2.5 rounded-full font-medium transition-all",
+                  selectedFilter === filter
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-accent text-foreground hover:bg-accent/80"
+                )}
+              >
+                {filter}
+              </button>
+            ))}
           </div>
+
+          {/* Meal Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {filteredMeals.map((meal) => (
+              <MealCard
+                key={meal.id}
+                id={meal.id}
+                title={meal.title}
+                image={meal.image}
+                tags={meal.tags}
+                favorited={favoritedMeals.has(meal.id)}
+                onToggleFavorite={() => toggleFavorite(meal.id)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Sticky Footer with Counter */}
+      <div className="fixed bottom-0 left-0 right-0 bg-background border-t-2 border-muted py-6 px-6 md:px-8 z-40">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="text-lg md:text-xl font-semibold text-foreground">
+              {favoritedCount}/3 meals favorited
+            </span>
+            {favoritedCount === 3 && (
+              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary">
+                <Check className="w-4 h-4 text-primary-foreground" strokeWidth={3} />
+              </div>
+            )}
+          </div>
+          <Button 
+            variant="primary" 
+            size="lg"
+            onClick={handleContinue}
+            disabled={favoritedCount !== 3}
+          >
+            Continue
+          </Button>
         </div>
       </div>
     </div>

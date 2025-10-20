@@ -1,31 +1,30 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import OnboardingOption from "@/components/library/OnboardingOption";
+import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
+import { Rocket, Calendar } from "lucide-react";
 
 /**
  * Onboarding Step 14
  * 
- * Scheduling preference
+ * Availability confirmation screen
  */
 export default function OnboardingStep14() {
   const navigate = useNavigate();
-  const [selectedTiming, setSelectedTiming] = useState<string>("");
 
-  const timingOptions = [
-    { value: "this-week", label: "This week" },
-    { value: "next-week", label: "Next week" },
-    { value: "this-month", label: "This month" },
-    { value: "not-sure", label: "Not sure yet" },
+  const benefits = [
+    {
+      icon: Rocket,
+      text: "Book with as little as 48 hours notice"
+    },
+    {
+      icon: Calendar,
+      text: "You'll pick your exact date & time after signup"
+    }
   ];
 
-  const handleSelect = (value: string) => {
-    setSelectedTiming(value);
-    // Navigate to next step after a brief delay
-    setTimeout(() => {
-      navigate("/onboarding/step-15", { state: { selectedTiming: value } });
-    }, 300);
+  const handleNext = () => {
+    navigate("/onboarding/step-15");
   };
 
   return (
@@ -35,7 +34,7 @@ export default function OnboardingStep14() {
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
             <img 
@@ -46,21 +45,36 @@ export default function OnboardingStep14() {
           </div>
 
           {/* Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-            When are you hoping to schedule your first Livin service?
+          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-12 md:mb-16 leading-tight">
+            Great news! We have chefs available this week in Atlanta
           </h1>
 
-          {/* Options */}
-          <div className="space-y-4">
-            {timingOptions.map((option) => (
-              <OnboardingOption
-                key={option.value}
-                value={option.value}
-                label={option.label}
-                selected={selectedTiming === option.value}
-                onClick={() => handleSelect(option.value)}
-              />
-            ))}
+          {/* Benefits with Icons */}
+          <div className="space-y-8 mb-12">
+            {benefits.map((benefit, index) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                    <IconComponent className="w-6 h-6 text-primary" />
+                  </div>
+                  <span className="text-xl md:text-2xl text-foreground font-medium pt-2">
+                    {benefit.text}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-end">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+            >
+              Next
+            </Button>
           </div>
         </div>
       </div>
