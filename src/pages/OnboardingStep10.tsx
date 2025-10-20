@@ -37,7 +37,7 @@ export default function OnboardingStep10() {
       id: "2",
       name: "Carb Conscious",
       description: "Low carb, high fat meals",
-      image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=800&auto=format&fit=crop&crop=entropy&q=80"
+      image: "https://images.unsplash.com/photo-1508170754725-6e9a5cfbcabf?w=800"
     },
     {
       id: "3",
