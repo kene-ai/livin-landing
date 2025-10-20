@@ -38,7 +38,7 @@ export default function OnboardingStep16() {
           </div>
 
           {/* Email Capture Section */}
-          <div className="bg-secondary/30 rounded-3xl p-8 md:p-10">
+          <div className="rounded-3xl p-8 md:p-10">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
               Enter your email to get 20% off of your first month
             </h2>
