@@ -15,12 +15,12 @@ export default function OnboardingStep11() {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
 
   const preferences = [
-    { value: "background-checked", label: "Background-checked & insured" },
-    { value: "high-ratings", label: "High ratings and reviews" },
-    { value: "cooking-specialties", label: "Specific cooking specialties" },
-    { value: "personality", label: "Personality & communication" },
-    { value: "flexibility", label: "Flexibility with schedule" },
-    { value: "respectful", label: "Respectful of my home" },
+    { value: "tons-of-experience", label: "Tons of experience" },
+    { value: "great-with-kids", label: "Great with kids" },
+    { value: "friendly-chatty", label: "Friendly & chatty" },
+    { value: "calm-low-key", label: "Calm & low key" },
+    { value: "creative-with-menus", label: "Creative with menus" },
+    { value: "nutrition-focused", label: "Nutrition focused" },
   ];
 
   const handleToggle = (value: string) => {
