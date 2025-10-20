@@ -40,10 +40,6 @@ export default function OnboardingStep15() {
       text: "Livin chef does grocery shopping, cooking and cleaning"
     },
     {
-      icon: Calendar,
-      text: "Weekly or monthly billing"
-    },
-    {
       icon: RotateCcw,
       text: "Change your plan or cancel at anytime"
     }
