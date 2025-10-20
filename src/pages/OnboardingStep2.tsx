@@ -103,11 +103,12 @@ export default function OnboardingStep2() {
 
           {/* Image */}
           <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md">
-            <AspectRatio ratio={4 / 5}>
+            <AspectRatio ratio={6 / 5}>
               <img 
                 src="https://images.squarespace-cdn.com/content/v1/675e3993212d3654af70cd12/1734365622541-6JE453E18W7JHX4Y7WPX/2F2A0078_websize+%282%29.jpg?format=2500w" 
                 alt="Couple enjoying healthy dinner at home" 
-                className="w-full h-full object-cover object-[50%_70%]"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: "50% 80%" }}
                 loading="lazy"
               />
             </AspectRatio>
