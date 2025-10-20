@@ -16,78 +16,146 @@ import logoAbc from "@/assets/logo-abc.webp";
 import logoRoughDraft from "@/assets/logo-roughdraft.webp";
 import SignupProcess from "@/components/library/SignupProcess";
 import MissionSection from "@/components/library/MissionSection";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 const Homepage = () => {
   const navigate = useNavigate();
   const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
-  const navItems = [
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Menu", href: "#menu" },
-    { label: "Our Chefs", href: "#our-chefs" },
-    { label: "Pricing", href: "#pricing" },
-  ];
-
-  const footerColumns = [
-    {
-      title: "Company",
-      links: [
-        { label: "About", href: "#about" },
-        { label: "Careers", href: "#careers" },
-        { label: "Contact", href: "#contact" },
-      ],
-    },
-    {
-      title: "Support",
-      links: [
-        { label: "Help Center", href: "#help" },
-        { label: "Terms", href: "#terms" },
-        { label: "Privacy", href: "#privacy" },
-      ],
-    },
-  ];
-
+  const navItems = [{
+    label: "How It Works",
+    href: "#how-it-works"
+  }, {
+    label: "Menu",
+    href: "#menu"
+  }, {
+    label: "Our Chefs",
+    href: "#our-chefs"
+  }, {
+    label: "Pricing",
+    href: "#pricing"
+  }];
+  const footerColumns = [{
+    title: "Company",
+    links: [{
+      label: "About",
+      href: "#about"
+    }, {
+      label: "Careers",
+      href: "#careers"
+    }, {
+      label: "Contact",
+      href: "#contact"
+    }]
+  }, {
+    title: "Support",
+    links: [{
+      label: "Help Center",
+      href: "#help"
+    }, {
+      label: "Terms",
+      href: "#terms"
+    }, {
+      label: "Privacy",
+      href: "#privacy"
+    }]
+  }];
   const categories = ["All", "Gluten Free", "Dairy Free", "Vegan", "Kid Friendly"];
-
-  const menuItems = [
-    { name: "Greek Lemon Herbed Grilled Shrimp with Orzo Salad", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1633504581786-316c8002b1b9?w=800" },
-    { name: "Asian Sesame Ginger Beef & Broccoli Stir Fry", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800" },
-    { name: "Wild Caught Salmon with Garlic Roasted Asparagus", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1485704686097-ed47f7263ca4?w=800" },
-    { name: "Classic Italian Chicken Parmesan with Fresh Marinara", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800" },
-    { name: "Mediterranean Quinoa Bowl with Roasted Chickpeas and Tahini", tags: ["V", "GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800" },
-    { name: "Honey Teriyaki Glazed Chicken Bowls with Steamed Vegetables", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
-    { name: "Herb Marinated Grilled Steak with Rosemary Sweet Potato Wedges", tags: ["GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1558030006-450675393462?w=800" },
-    { name: "Baja Style Grilled Shrimp Tacos with Cilantro Lime Slaw", tags: ["DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800" },
-    { name: "Garden Fresh Veggie Pasta Primavera with Basil Pesto", tags: ["V"], kidFriendly: true, image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800" },
-    { name: "Dijon Honey Mustard Glazed Chicken Thighs with Green Beans", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800" },
-    { name: "Tex-Mex Seasoned Beef Tacos with Cilantro Lime Black Beans", tags: ["GF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800" },
-    { name: "Oven Baked Herb Crusted Cod with Meyer Lemon Butter", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800" },
-    { name: "Aromatic Coconut Curry Chickpeas with Basmati Rice", tags: ["V", "GF", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" },
-    { name: "Italian Style Turkey Meatballs with San Marzano Marinara", tags: [], kidFriendly: true, image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800" },
-    { name: "Baja Grilled Mahi Mahi Fish Tacos with Avocado Crema", tags: ["DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800" },
-    { name: "Cajun Spiced Ground Beef Stuffed Bell Peppers", tags: ["GF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=800" },
-    { name: "Ginger Garlic Tofu Stir Fry with Snap Peas and Carrots", tags: ["V", "DF"], kidFriendly: false, image: "https://images.unsplash.com/photo-1546069901-eacef0df6022?w=800" },
-    { name: "Sweet & Smoky BBQ Glazed Chicken Drumsticks", tags: ["GF", "DF"], kidFriendly: true, image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800" },
-  ];
+  const menuItems = [{
+    name: "Greek Lemon Herbed Grilled Shrimp with Orzo Salad",
+    tags: ["GF", "DF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1633504581786-316c8002b1b9?w=800"
+  }, {
+    name: "Asian Sesame Ginger Beef & Broccoli Stir Fry",
+    tags: ["GF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800"
+  }, {
+    name: "Wild Caught Salmon with Garlic Roasted Asparagus",
+    tags: ["GF", "DF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1485704686097-ed47f7263ca4?w=800"
+  }, {
+    name: "Classic Italian Chicken Parmesan with Fresh Marinara",
+    tags: [],
+    kidFriendly: true,
+    image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800"
+  }, {
+    name: "Mediterranean Quinoa Bowl with Roasted Chickpeas and Tahini",
+    tags: ["V", "GF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800"
+  }, {
+    name: "Honey Teriyaki Glazed Chicken Bowls with Steamed Vegetables",
+    tags: ["DF"],
+    kidFriendly: true,
+    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"
+  }, {
+    name: "Herb Marinated Grilled Steak with Rosemary Sweet Potato Wedges",
+    tags: ["GF", "DF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1558030006-450675393462?w=800"
+  }, {
+    name: "Baja Style Grilled Shrimp Tacos with Cilantro Lime Slaw",
+    tags: ["DF"],
+    kidFriendly: true,
+    image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800"
+  }, {
+    name: "Garden Fresh Veggie Pasta Primavera with Basil Pesto",
+    tags: ["V"],
+    kidFriendly: true,
+    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800"
+  }, {
+    name: "Dijon Honey Mustard Glazed Chicken Thighs with Green Beans",
+    tags: ["GF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800"
+  }, {
+    name: "Tex-Mex Seasoned Beef Tacos with Cilantro Lime Black Beans",
+    tags: ["GF"],
+    kidFriendly: true,
+    image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800"
+  }, {
+    name: "Oven Baked Herb Crusted Cod with Meyer Lemon Butter",
+    tags: ["GF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800"
+  }, {
+    name: "Aromatic Coconut Curry Chickpeas with Basmati Rice",
+    tags: ["V", "GF", "DF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800"
+  }, {
+    name: "Italian Style Turkey Meatballs with San Marzano Marinara",
+    tags: [],
+    kidFriendly: true,
+    image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800"
+  }, {
+    name: "Baja Grilled Mahi Mahi Fish Tacos with Avocado Crema",
+    tags: ["DF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1512838243191-e81e8f66f1fd?w=800"
+  }, {
+    name: "Cajun Spiced Ground Beef Stuffed Bell Peppers",
+    tags: ["GF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?w=800"
+  }, {
+    name: "Ginger Garlic Tofu Stir Fry with Snap Peas and Carrots",
+    tags: ["V", "DF"],
+    kidFriendly: false,
+    image: "https://images.unsplash.com/photo-1546069901-eacef0df6022?w=800"
+  }, {
+    name: "Sweet & Smoky BBQ Glazed Chicken Drumsticks",
+    tags: ["GF", "DF"],
+    kidFriendly: true,
+    image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800"
+  }];
 
   // Split menu items into two rows
   const row1Items = menuItems.slice(0, 9);
   const row2Items = menuItems.slice(9, 18);
-
-  return (
-    <div className="min-h-screen bg-[#FAFAF8] scroll-smooth">
-      <NavigationBar
-        logo="livin"
-        navItems={navItems}
-        ctaLabel="Sign Up"
-        onCtaClick={() => navigate("/onboarding")}
-      />
+  return <div className="min-h-screen bg-[#FAFAF8] scroll-smooth">
+      <NavigationBar logo="livin" navItems={navItems} ctaLabel="Sign Up" onCtaClick={() => navigate("/onboarding")} />
       
       {/* Hero Section */}
       <section className="py-8 md:py-16 px-8 md:px-12 lg:px-16 bg-[#F5F1E8]">
@@ -141,11 +209,7 @@ const Homepage = () => {
           
           {/* Right Column - Image */}
           <div className="rounded-3xl overflow-hidden h-full">
-            <img 
-              src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=1600" 
-              alt="Chef cooking in home kitchen"
-              className="w-full h-full object-cover"
-            />
+            <img src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=1600" alt="Chef cooking in home kitchen" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
@@ -154,11 +218,7 @@ const Homepage = () => {
       <section className="py-16 px-8 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <SectionHeading
-              title="How Livin Works"
-              subtitle="Your chef handles everything from grocery shopping to cleanup. You get healthy, customized meals without lifting a finger."
-              centered
-            />
+            <SectionHeading title="How Livin Works" subtitle="Your chef handles everything from grocery shopping to cleanup. You get healthy, customized meals without lifting a finger." centered />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -176,11 +236,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="aspect-[4/3] overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800" 
-                  alt="Fresh healthy meal selection"
-                  className="w-full h-full object-cover"
-                />
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800" alt="Fresh healthy meal selection" className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -218,11 +274,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="aspect-[4/3] overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800" 
-                  alt="Chef cooking in kitchen"
-                  className="w-full h-full object-cover"
-                />
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800" alt="Chef cooking in kitchen" className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -240,11 +292,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="aspect-[4/3] overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800" 
-                  alt="Clean organized kitchen"
-                  className="w-full h-full object-cover"
-                />
+                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800" alt="Clean organized kitchen" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -267,10 +315,7 @@ const Homepage = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Column - Results */}
             <div className="space-y-6">
-              <SectionHeading
-                title="Real Families, Real Results"
-                subtitle="Join 1,000+ families who've transformed their meal routine"
-              />
+              <SectionHeading title="Real Families, Real Results" subtitle="Join 1,000+ families who've transformed their meal routine" />
               
               <div className="space-y-4 pt-4">
                 <p className="text-lg font-semibold text-foreground">
@@ -304,28 +349,13 @@ const Homepage = () => {
               <Carousel className="w-full">
                 <CarouselContent>
                   <CarouselItem>
-                    <TestimonialCard
-                      quote="The best part? I don't step foot in a grocery store anymore. Chef Maria buys everything, cooks meals my kids actually eat, and leaves my kitchen cleaner than I ever could. Game changer."
-                      author="Sarah M., Mom of 2"
-                      role="Los Angeles"
-                      avatarSrc="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
-                    />
+                    <TestimonialCard quote="The best part? I don't step foot in a grocery store anymore. Chef Maria buys everything, cooks meals my kids actually eat, and leaves my kitchen cleaner than I ever could. Game changer." author="Sarah M., Mom of 2" role="Los Angeles" avatarSrc="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" />
                   </CarouselItem>
                   <CarouselItem>
-                    <TestimonialCard
-                      quote="Chef David left our kitchen spotless. I mean SPOTLESS. He even cleaned stuff that was already there. And I never thought about what to buy or cook—just came home to a week of healthy meals."
-                      author="Jennifer L., Busy Professional"
-                      role="Beverly Hills"
-                      avatarSrc="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
-                    />
+                    <TestimonialCard quote="Chef David left our kitchen spotless. I mean SPOTLESS. He even cleaned stuff that was already there. And I never thought about what to buy or cook—just came home to a week of healthy meals." author="Jennifer L., Busy Professional" role="Beverly Hills" avatarSrc="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" />
                   </CarouselItem>
                   <CarouselItem>
-                    <TestimonialCard
-                      quote="I did the math: grocery delivery fees, meal kit ingredients, my time cooking and cleaning—Livin is actually CHEAPER. And I don't touch a dish or visit a store. Best $320/week I spend."
-                      author="Marcus T., Software Engineer"
-                      role="Santa Monica"
-                      avatarSrc="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
-                    />
+                    <TestimonialCard quote="I did the math: grocery delivery fees, meal kit ingredients, my time cooking and cleaning—Livin is actually CHEAPER. And I don't touch a dish or visit a store. Best $320/week I spend." author="Marcus T., Software Engineer" role="Santa Monica" avatarSrc="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" />
                   </CarouselItem>
                 </CarouselContent>
                 <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2" />
@@ -340,11 +370,7 @@ const Homepage = () => {
       <section className="py-16 px-8 md:px-12 lg:px-16 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 max-w-3xl mx-auto">
-            <SectionHeading
-              title="What's On the Menu?"
-              subtitle="Balanced meals with fresh ingredients—think lean protein, veggies, and grains. Don't love something? Swap it out or request your favorites. Menus update monthly, but you keep access to your top picks."
-              centered
-            />
+            <SectionHeading title="What's On the Menu?" subtitle="Balanced meals with fresh ingredients—think lean protein, veggies, and grains. Don't love something? Swap it out or request your favorites. Menus update monthly, but you keep access to your top picks." centered />
           </div>
 
           {/* Category Terms */}
@@ -365,9 +391,7 @@ const Homepage = () => {
 
           {/* Info Text */}
           <div className="text-center space-y-2 mb-6">
-            <p className="text-lg font-semibold text-foreground">
-              100+ rotating menu items • Fully customizable • New meals monthly
-            </p>
+            <p className="text-lg font-semibold text-foreground">30+ rotating menu items per month • Fully customizable based on your diet</p>
             <p className="text-muted-foreground">
               Chef buys all ingredients • Fresh, never frozen
             </p>
@@ -386,62 +410,29 @@ const Homepage = () => {
       <section className="py-16 px-8 md:px-12 lg:px-16 bg-accent/30">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <SectionHeading
-              title="Vetted Chefs You Can Trust"
-              subtitle="Every chef is interviewed, background-checked, and personally reviewed by our Culinary Director."
-            />
+            <SectionHeading title="Vetted Chefs You Can Trust" subtitle="Every chef is interviewed, background-checked, and personally reviewed by our Culinary Director." />
           </div>
 
           <div className="relative">
             <Carousel className="w-full">
               <CarouselContent>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard
-                    name="Chef Maria Rodriguez"
-                    title="Italian & Mediterranean"
-                    bio="12 years professional experience. Mom of two. Expert at kid-friendly meals and kitchen organization."
-                    imageSrc="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=600&h=600&fit=crop"
-                  />
+                  <ProfileCard name="Chef Maria Rodriguez" title="Italian & Mediterranean" bio="12 years professional experience. Mom of two. Expert at kid-friendly meals and kitchen organization." imageSrc="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=600&h=600&fit=crop" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard
-                    name="Chef David Kim"
-                    title="Asian Fusion & Healthy"
-                    bio="Former restaurant chef, specializes in dietary restrictions. Meticulous about kitchen cleanliness."
-                    imageSrc="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=600&fit=crop"
-                  />
+                  <ProfileCard name="Chef David Kim" title="Asian Fusion & Healthy" bio="Former restaurant chef, specializes in dietary restrictions. Meticulous about kitchen cleanliness." imageSrc="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=600&fit=crop" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard
-                    name="Chef Amanda Williams"
-                    title="Southern Comfort & BBQ"
-                    bio="15 years experience in farm-to-table cooking. Passionate about seasonal ingredients and family-style meals."
-                    imageSrc="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&h=600&fit=crop"
-                  />
+                  <ProfileCard name="Chef Amanda Williams" title="Southern Comfort & BBQ" bio="15 years experience in farm-to-table cooking. Passionate about seasonal ingredients and family-style meals." imageSrc="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&h=600&fit=crop" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard
-                    name="Chef Carlos Martinez"
-                    title="Mexican & Latin American"
-                    bio="Culinary school graduate with 10 years experience. Known for authentic flavors and perfectly balanced spices."
-                    imageSrc="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=600&h=600&fit=crop"
-                  />
+                  <ProfileCard name="Chef Carlos Martinez" title="Mexican & Latin American" bio="Culinary school graduate with 10 years experience. Known for authentic flavors and perfectly balanced spices." imageSrc="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=600&h=600&fit=crop" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard
-                    name="Chef Emily Chen"
-                    title="Plant-Based & Vegan"
-                    bio="Certified nutritionist and chef. Specializes in creating delicious vegan meals that even meat-lovers enjoy."
-                    imageSrc="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&h=600&fit=crop"
-                  />
+                  <ProfileCard name="Chef Emily Chen" title="Plant-Based & Vegan" bio="Certified nutritionist and chef. Specializes in creating delicious vegan meals that even meat-lovers enjoy." imageSrc="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&h=600&fit=crop" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard
-                    name="Chef James Thompson"
-                    title="French & European"
-                    bio="Trained in Paris, 14 years experience. Brings restaurant-quality techniques to home cooking with approachable results."
-                    imageSrc="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&h=600&fit=crop"
-                  />
+                  <ProfileCard name="Chef James Thompson" title="French & European" bio="Trained in Paris, 14 years experience. Brings restaurant-quality techniques to home cooking with approachable results." imageSrc="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&h=600&fit=crop" />
                 </CarouselItem>
               </CarouselContent>
               <CarouselPrevious className="hidden md:flex -left-12" />
@@ -471,57 +462,18 @@ const Homepage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
-              <img 
-                src="https://images.unsplash.com/photo-1585759071429-0a3c19c58cbe?w=800&h=400&fit=crop" 
-                alt="Food delivery"
-                className="w-full h-48 object-cover rounded-2xl"
-              />
-              <ServiceCard
-                title="Food Delivery"
-                price="$25+ per serving"
-                features={[
-                  "Hidden fees",
-                  "Unreliable wait times",
-                  "Usually unhealthy"
-                ]}
-                isNegative={true}
-              />
+              <img src="https://images.unsplash.com/photo-1585759071429-0a3c19c58cbe?w=800&h=400&fit=crop" alt="Food delivery" className="w-full h-48 object-cover rounded-2xl" />
+              <ServiceCard title="Food Delivery" price="$25+ per serving" features={["Hidden fees", "Unreliable wait times", "Usually unhealthy"]} isNegative={true} />
             </div>
 
             <div className="space-y-4">
-              <img 
-                src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=400&fit=crop" 
-                alt="Home cooked meal by professional chef"
-                className="w-full h-48 object-cover rounded-2xl"
-              />
-              <ServiceCard
-                title="Livin"
-                price="$20+ per serving"
-                features={[
-                  "Healthy and balanced",
-                  "Cooked by a pro",
-                  "Customized to your needs"
-                ]}
-                highlighted={true}
-              />
+              <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=400&fit=crop" alt="Home cooked meal by professional chef" className="w-full h-48 object-cover rounded-2xl" />
+              <ServiceCard title="Livin" price="$20+ per serving" features={["Healthy and balanced", "Cooked by a pro", "Customized to your needs"]} highlighted={true} />
             </div>
 
             <div className="space-y-4">
-              <img 
-                src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800&h=400&fit=crop" 
-                alt="Fast food"
-                className="w-full h-48 object-cover rounded-2xl"
-              />
-              <ServiceCard
-                title="Fast Food"
-                price="$8 - $10 per serving"
-                features={[
-                  "Unhealthy",
-                  "Artificial and highly processed",
-                  "Leaves a lot of trash"
-                ]}
-                isNegative={true}
-              />
+              <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800&h=400&fit=crop" alt="Fast food" className="w-full h-48 object-cover rounded-2xl" />
+              <ServiceCard title="Fast Food" price="$8 - $10 per serving" features={["Unhealthy", "Artificial and highly processed", "Leaves a lot of trash"]} isNegative={true} />
             </div>
           </div>
         </div>
@@ -548,19 +500,10 @@ const Homepage = () => {
       {/* FAQ Section */}
       <FAQSection />
 
-      <Footer
-        logo="livin"
-        tagline="Fresh meals, made by vetted chefs in your home"
-        contactPhone="1-800-LIVIN"
-        contactEmail="hello@livin.com"
-        columns={footerColumns}
-        socialLinks={{
-          instagram: "https://instagram.com/livin",
-          facebook: "https://facebook.com/livin",
-        }}
-      />
-    </div>
-  );
+      <Footer logo="livin" tagline="Fresh meals, made by vetted chefs in your home" contactPhone="1-800-LIVIN" contactEmail="hello@livin.com" columns={footerColumns} socialLinks={{
+      instagram: "https://instagram.com/livin",
+      facebook: "https://facebook.com/livin"
+    }} />
+    </div>;
 };
-
 export default Homepage;
