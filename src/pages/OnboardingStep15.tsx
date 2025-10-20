@@ -20,7 +20,7 @@ export default function OnboardingStep15() {
     },
     {
       icon: Utensils,
-      title: "Custom number of servings",
+      title: "Number of meals",
       description: "We'll recommend the right amount based on your family size."
     },
     {
