@@ -19,6 +19,7 @@ export default function OnboardingStep5() {
     { value: "dining-out", label: "Dining out at restaurants" },
     { value: "fast-food", label: "Fast food / quick service" },
     { value: "meal-kits", label: "Meal kits (HelloFresh, Blue Apron, etc.)" },
+    { value: "delivered-meals", label: "Delivered Meals (Factor, Cook Unity, Shef, etc.)" },
     { value: "grocery-cooking", label: "Grocery shopping + cooking myself" },
   ];
 
