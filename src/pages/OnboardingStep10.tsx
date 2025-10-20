@@ -143,7 +143,7 @@ export default function OnboardingStep10() {
           </div>
 
           {/* Continue Button */}
-          <div className="flex justify-center">
+          <div className="flex justify-end">
             <Button 
               variant="primary" 
               size="lg"
