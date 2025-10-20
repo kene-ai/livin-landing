@@ -19,7 +19,7 @@ export default function CategoryCard({
   className 
 }: CategoryCardProps) {
   return (
-    <div className={cn("relative overflow-hidden rounded-3xl aspect-square", className)}>
+    <div className={cn("relative overflow-hidden rounded-3xl aspect-[3/4]", className)}>
       {/* Image */}
       <img 
         src={image} 
