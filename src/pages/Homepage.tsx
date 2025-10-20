@@ -410,7 +410,7 @@ const Homepage = () => {
       <section className="py-16 px-8 md:px-12 lg:px-16 bg-accent/30">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <SectionHeading title="Vetted Chefs You Can Trust" subtitle="Every Livin chef" />
+            <SectionHeading title="Vetted Chefs You Can Trust" subtitle="Every chef is interviewed, background-checked, and personally reviewed by our Culinary Director." />
           </div>
 
           <div className="relative">
