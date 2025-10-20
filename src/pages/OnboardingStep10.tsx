@@ -10,12 +10,6 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel";
 import livinLogo from "@/assets/livin-logo.webp";
-import meal1 from "@/assets/meals/meal-1.jpg";
-import meal2 from "@/assets/meals/meal-2.jpg";
-import meal3 from "@/assets/meals/meal-3.jpg";
-import meal4 from "@/assets/meals/meal-4.jpg";
-import meal5 from "@/assets/meals/meal-5.jpg";
-import meal6 from "@/assets/meals/meal-6.jpg";
 
 interface Category {
   id: string;
@@ -37,49 +31,49 @@ export default function OnboardingStep10() {
       id: "1",
       name: "High Protein",
       description: "30 grams of protein or more per serving",
-      image: meal1
+      image: "https://images.unsplash.com/photo-1485704686097-ed47f7263ca4?w=800"
     },
     {
       id: "2",
       name: "Carb Conscious",
       description: "Low carb, high fat meals",
-      image: meal2
+      image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800"
     },
     {
       id: "3",
       name: "Kid Friendly",
       description: "Family favorites kids will actually eat",
-      image: meal3
+      image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800"
     },
     {
       id: "4",
       name: "Mediterranean",
       description: "Fresh, flavorful Mediterranean-inspired dishes",
-      image: meal4
+      image: "https://images.unsplash.com/photo-1633504581786-316c8002b1b9?w=800"
     },
     {
       id: "5",
       name: "Vegetarian",
       description: "Plant-based meals packed with nutrition",
-      image: meal5
+      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800"
     },
     {
       id: "6",
       name: "Fiber Filled",
       description: "High fiber meals for digestive health",
-      image: meal6
+      image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800"
     },
     {
       id: "7",
       name: "Calorie Conscious",
       description: "550kcal or less per serving",
-      image: meal1
+      image: "https://images.unsplash.com/photo-1580959375944-0b5c8e083211?w=800"
     },
     {
       id: "8",
       name: "GLP-1 Balanced",
       description: "Optimized for GLP-1 medication users",
-      image: meal2
+      image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800"
     },
   ];
 
