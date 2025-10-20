@@ -3,7 +3,7 @@ import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
 import chefCookingImage from "@/assets/chef-cooking-home.jpg";
-import { Rocket, Calendar, PartyPopper } from "lucide-react";
+import { Rocket, ChefHat } from "lucide-react";
 
 /**
  * Onboarding Step 4
@@ -44,12 +44,8 @@ export default function OnboardingStep4() {
       text: "Book with as little as 48 hours notice"
     },
     {
-      icon: Calendar,
-      text: "One-time service or recurring—your choice"
-    },
-    {
-      icon: PartyPopper,
-      text: "From intimate dinners to feeding 20 guests"
+      icon: ChefHat,
+      text: "Livin chefs will take care of shopping, cooking and cleaning"
     }
   ];
 
