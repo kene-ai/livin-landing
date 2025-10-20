@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Calendar, Utensils, ShoppingBasket } from "lucide-react";
+import { Calendar, Utensils, ShoppingBasket, ShoppingCart, ChefHat, RotateCcw } from "lucide-react";
 
 /**
  * Onboarding Step 15
@@ -27,6 +27,25 @@ export default function OnboardingStep15() {
       icon: ShoppingBasket,
       title: "Standard or organic groceries",
       description: "The cost of groceries is included in your plan"
+    }
+  ];
+
+  const subscriptionBenefits = [
+    {
+      icon: ShoppingCart,
+      text: "All groceries included in the price of subscription"
+    },
+    {
+      icon: ChefHat,
+      text: "Livin chef does grocery shopping, cooking and cleaning"
+    },
+    {
+      icon: Calendar,
+      text: "Weekly or monthly billing"
+    },
+    {
+      icon: RotateCcw,
+      text: "Change your plan or cancel at anytime"
     }
   ];
 
@@ -85,11 +104,27 @@ export default function OnboardingStep15() {
             })}
           </div>
 
-          {/* Bottom Note */}
-          <div className="bg-accent/30 rounded-3xl p-6 md:p-8 mb-8">
-            <p className="text-base md:text-lg text-foreground text-center">
-              You'll always be able to choose your menu and chef each time you book a Livin service.
-            </p>
+          {/* Subscription Benefits */}
+          <div className="mb-10">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-6">
+              Every Livin subscription also includes:
+            </h2>
+            
+            <div className="space-y-6">
+              {subscriptionBenefits.map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-lg md:text-xl text-foreground font-medium pt-0.5">
+                      {benefit.text}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Next Button */}
