@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
-
 interface PricingPlan {
   id: string;
   name: string;
@@ -36,75 +35,64 @@ export default function OnboardingStep15() {
 
   // Calculate recommended plates based on family size
   useEffect(() => {
-    const recommended = Math.ceil(numAdults + (numChildren * 0.5));
+    const recommended = Math.ceil(numAdults + numChildren * 0.5);
     setPlatesPerServing(recommended);
   }, [numAdults, numChildren]);
-
-  const plans: PricingPlan[] = [
-    {
-      id: "lite",
-      name: "2 meal plan",
-      weeklyPrice: 185,
-      monthlyPrice: 185,
-      meals: 2,
-      plates: 4,
-    },
-    {
-      id: "plus",
-      name: "3 meal plan",
-      weeklyPrice: 248,
-      monthlyPrice: 248,
-      meals: 3,
-      plates: 6,
-    },
-    {
-      id: "core",
-      name: "4 meal plan",
-      weeklyPrice: 301,
-      monthlyPrice: 301,
-      meals: 4,
-      plates: 8,
-      popular: true,
-    },
-    {
-      id: "premier",
-      name: "10 meal plan",
-      weeklyPrice: 590,
-      monthlyPrice: 590,
-      meals: 10,
-      plates: 20,
-    },
-  ];
-
+  const plans: PricingPlan[] = [{
+    id: "lite",
+    name: "2 meal plan",
+    weeklyPrice: 185,
+    monthlyPrice: 185,
+    meals: 2,
+    plates: 4
+  }, {
+    id: "plus",
+    name: "3 meal plan",
+    weeklyPrice: 248,
+    monthlyPrice: 248,
+    meals: 3,
+    plates: 6
+  }, {
+    id: "core",
+    name: "4 meal plan",
+    weeklyPrice: 301,
+    monthlyPrice: 301,
+    meals: 4,
+    plates: 8,
+    popular: true
+  }, {
+    id: "premier",
+    name: "10 meal plan",
+    weeklyPrice: 590,
+    monthlyPrice: 590,
+    meals: 10,
+    plates: 20
+  }];
   const getPrice = (plan: PricingPlan) => {
     const basePrice = frequency === "weekly" ? plan.weeklyPrice : plan.monthlyPrice;
     const groceryCost = groceryType === "organic" ? 30 : 0;
     return basePrice + groceryCost;
   };
-
   const getPricePerPlate = (plan: PricingPlan) => {
     const totalPrice = getPrice(plan);
     return Math.round(totalPrice / plan.plates);
   };
-
   const handleContinue = () => {
     if (selectedPlan) {
-      console.log("Selected plan:", { 
-        plan: selectedPlan, 
-        frequency, 
-        groceryType, 
-        numAdults, 
-        numChildren, 
-        platesPerServing 
+      console.log("Selected plan:", {
+        plan: selectedPlan,
+        frequency,
+        groceryType,
+        numAdults,
+        numChildren,
+        platesPerServing
       });
       navigate("/checkout");
     }
   };
-
   const getFamilyDescription = () => {
     const adultText = numAdults === 1 ? "1 adult" : `${numAdults} adults`;
     const childText = numChildren === 1 ? "1 child" : `${numChildren} children`;
-    
     if (numChildren === 0) {
       return adultText;
     }
@@ -113,9 +101,7 @@ export default function OnboardingStep15() {
 
   // Filter plans based on selected plates per serving
   const filteredPlans = plans.filter(plan => plan.plates >= platesPerServing);
-
-  return (
-    <div className="min-h-screen bg-background pb-24">
+  return <div className="min-h-screen bg-background pb-24">
       {/* Progress Bar */}
       <OnboardingProgress currentStep={15} totalSteps={15} />
 
@@ -124,11 +110,7 @@ export default function OnboardingStep15() {
         <div className="max-w-7xl mx-auto">
           {/* Logo */}
           <div className="mb-12">
-            <img 
-              src={livinLogo} 
-              alt="Livin" 
-              className="h-8 md:h-10"
-            />
+            <img src={livinLogo} alt="Livin" className="h-8 md:h-10" />
           </div>
 
           {/* Header */}
@@ -151,23 +133,13 @@ export default function OnboardingStep15() {
                 </Label>
                 <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
                   <div className="flex items-center gap-1 justify-center">
-                    <button
-                      type="button"
-                      onClick={() => setNumAdults(Math.max(1, numAdults - 1))}
-                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                      aria-label="Decrease adults"
-                    >
+                    <button type="button" onClick={() => setNumAdults(Math.max(1, numAdults - 1))} className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors" aria-label="Decrease adults">
                       <Minus className="h-4 w-4" />
                     </button>
                     <div className="w-16 text-center">
                       <span className="text-xl font-semibold text-foreground">{numAdults}</span>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => setNumAdults(Math.min(10, numAdults + 1))}
-                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                      aria-label="Increase adults"
-                    >
+                    <button type="button" onClick={() => setNumAdults(Math.min(10, numAdults + 1))} className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors" aria-label="Increase adults">
                       <Plus className="h-4 w-4" />
                     </button>
                   </div>
@@ -181,23 +153,13 @@ export default function OnboardingStep15() {
                 </Label>
                 <div className="rounded-2xl border-2 border-border bg-card px-5 py-3.5">
                   <div className="flex items-center gap-1 justify-center">
-                    <button
-                      type="button"
-                      onClick={() => setNumChildren(Math.max(0, numChildren - 1))}
-                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                      aria-label="Decrease children"
-                    >
+                    <button type="button" onClick={() => setNumChildren(Math.max(0, numChildren - 1))} className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors" aria-label="Decrease children">
                       <Minus className="h-4 w-4" />
                     </button>
                     <div className="w-16 text-center">
                       <span className="text-xl font-semibold text-foreground">{numChildren}</span>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => setNumChildren(Math.min(10, numChildren + 1))}
-                      className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors"
-                      aria-label="Increase children"
-                    >
+                    <button type="button" onClick={() => setNumChildren(Math.min(10, numChildren + 1))} className="h-9 w-9 rounded-md border border-input bg-background hover:bg-accent flex items-center justify-center transition-colors" aria-label="Increase children">
                       <Plus className="h-4 w-4" />
                     </button>
                   </div>
@@ -216,18 +178,8 @@ export default function OnboardingStep15() {
               Livin chefs will cook for your family once a {frequency === "weekly" ? "week" : "month"}
             </p>
             <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
-              <OnboardingOption
-                value="weekly"
-                label="Once a week"
-                selected={frequency === "weekly"}
-                onClick={() => setFrequency("weekly")}
-              />
-              <OnboardingOption
-                value="monthly"
-                label="Once a month"
-                selected={frequency === "monthly"}
-                onClick={() => setFrequency("monthly")}
-              />
+              <OnboardingOption value="weekly" label="Once a week" selected={frequency === "weekly"} onClick={() => setFrequency("weekly")} />
+              <OnboardingOption value="monthly" label="Once a month" selected={frequency === "monthly"} onClick={() => setFrequency("monthly")} />
             </div>
           </div>
 
@@ -236,53 +188,27 @@ export default function OnboardingStep15() {
             <h2 className="text-lg md:text-xl font-semibold text-foreground mb-2">
               Grocery tier
             </h2>
-            {groceryType === "organic" && (
-              <p className="text-xs text-muted-foreground mb-3">
+            {groceryType === "organic" && <p className="text-xs text-muted-foreground mb-3">
                 Livin chefs will purchase organic groceries from premium stores like Whole Foods.
-              </p>
-            )}
+              </p>}
             <div className="grid md:grid-cols-2 gap-3 max-w-2xl">
-              <OnboardingOption
-                value="standard"
-                label="Standard groceries"
-                selected={groceryType === "standard"}
-                onClick={() => setGroceryType("standard")}
-              />
-              <OnboardingOption
-                value="organic"
-                label="Organic groceries (+$30)"
-                selected={groceryType === "organic"}
-                onClick={() => setGroceryType("organic")}
-              />
+              <OnboardingOption value="standard" label="Standard groceries" selected={groceryType === "standard"} onClick={() => setGroceryType("standard")} />
+              <OnboardingOption value="organic" label="Organic groceries (+$30)" selected={groceryType === "organic"} onClick={() => setGroceryType("organic")} />
             </div>
           </div>
 
           {/* Family Plan Selection Headline */}
           <div className="mb-6">
-            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
-              Choose a plan for your family:
-            </h2>
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">Choose a plan for your family</h2>
           </div>
 
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {filteredPlans.map((plan) => (
-              <div
-                key={plan.id}
-                className={cn(
-                  "relative rounded-3xl border-2 p-6 space-y-4 transition-all duration-200 cursor-pointer hover:shadow-lg text-center",
-                  selectedPlan === plan.id
-                    ? "border-primary bg-primary/5"
-                    : "border-border bg-card hover:border-primary/50"
-                )}
-                onClick={() => setSelectedPlan(plan.id)}
-              >
+            {filteredPlans.map(plan => <div key={plan.id} className={cn("relative rounded-3xl border-2 p-6 space-y-4 transition-all duration-200 cursor-pointer hover:shadow-lg text-center", selectedPlan === plan.id ? "border-primary bg-primary/5" : "border-border bg-card hover:border-primary/50")} onClick={() => setSelectedPlan(plan.id)}>
                 {/* Popular Badge */}
-                {plan.popular && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
+                {plan.popular && <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
                     ⭐ MOST POPULAR
-                  </Badge>
-                )}
+                  </Badge>}
 
                 {/* Plan Name */}
                 <h3 className="text-2xl font-bold text-foreground">
@@ -308,19 +234,13 @@ export default function OnboardingStep15() {
                 </div>
 
                 {/* Select Button */}
-                <Button
-                  variant={selectedPlan === plan.id ? "primary" : "outline"}
-                  size="md"
-                  className="w-full"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedPlan(plan.id);
-                  }}
-                >
+                <Button variant={selectedPlan === plan.id ? "primary" : "outline"} size="md" className="w-full" onClick={e => {
+              e.stopPropagation();
+              setSelectedPlan(plan.id);
+            }}>
                   Select Plan
                 </Button>
-              </div>
-            ))}
+              </div>)}
           </div>
 
           {/* Fine Print */}
@@ -330,18 +250,11 @@ export default function OnboardingStep15() {
 
           {/* Continue Button */}
           <div className="flex justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={handleContinue}
-              disabled={!selectedPlan}
-              className="px-12"
-            >
+            <Button variant="primary" size="lg" onClick={handleContinue} disabled={!selectedPlan} className="px-12">
               Continue to Checkout
             </Button>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 }
