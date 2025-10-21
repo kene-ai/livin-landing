@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import livinLogo from "@/assets/livin-logo.webp";
-import { format, addMonths } from "date-fns";
+import { format, addMonths, addDays } from "date-fns";
 
 /**
  * Checkout Page
@@ -21,7 +21,28 @@ export default function Checkout() {
   const [saveInfo, setSaveInfo] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
 
-  const nextBillDate = format(addMonths(new Date(), 1), "MMMM d, yyyy");
+  // Load selected plan from localStorage
+  const [planData] = useState(() => {
+    const stored = localStorage.getItem('checkout_plan');
+    if (stored) {
+      return JSON.parse(stored);
+    }
+    // Fallback defaults if no data found
+    return {
+      planName: '4 meal plan',
+      meals: 4,
+      price: 301,
+      frequency: 'monthly',
+      groceryType: 'standard'
+    };
+  });
+
+  const nextBillDate = format(
+    planData.frequency === 'weekly' 
+      ? addDays(new Date(), 7)
+      : addMonths(new Date(), 1),
+    "MMMM d, yyyy"
+  );
 
   const handleSubscribe = () => {
     if (email && phone && agreeToTerms) {
@@ -58,11 +79,20 @@ export default function Checkout() {
 
                 {/* Plan Details Card */}
                 <div className="bg-accent rounded-2xl p-6 space-y-4 mb-8">
-                  <h2 className="text-2xl font-bold text-foreground">Core</h2>
-                  <p className="text-lg text-foreground">4 meals • 8 plates per week</p>
-                  <p className="text-base text-muted-foreground">Standard groceries</p>
+                  <h2 className="text-2xl font-bold text-foreground">{planData.planName}</h2>
+                  <p className="text-lg text-foreground">
+                    {planData.meals} meals per {planData.frequency === 'weekly' ? 'week' : 'month'}
+                  </p>
+                  <p className="text-base text-muted-foreground">
+                    {planData.groceryType === 'organic' ? 'Organic' : 'Standard'} groceries
+                  </p>
                   <div className="pt-2 border-t border-border">
-                    <p className="text-3xl font-bold text-primary">$301 <span className="text-base text-muted-foreground font-normal">per month</span></p>
+                    <p className="text-3xl font-bold text-primary">
+                      ${planData.price} 
+                      <span className="text-base text-muted-foreground font-normal">
+                        {' '}per {planData.frequency === 'weekly' ? 'week' : 'month'}
+                      </span>
+                    </p>
                   </div>
                 </div>
 
@@ -70,7 +100,7 @@ export default function Checkout() {
                 <div className="space-y-4 mb-8">
                   <div className="flex justify-between items-center text-lg">
                     <span className="font-semibold text-foreground">Total Billed Today:</span>
-                    <span className="font-bold text-foreground">$301</span>
+                    <span className="font-bold text-foreground">${planData.price}</span>
                   </div>
                   <div className="flex justify-between items-center text-base text-muted-foreground">
                     <span>Next Bill Date:</span>

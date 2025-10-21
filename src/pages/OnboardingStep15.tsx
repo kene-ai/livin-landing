@@ -116,15 +116,21 @@ export default function OnboardingStep15() {
   };
   const handleContinue = () => {
     if (selectedPlan) {
-      console.log("Selected plan:", {
-        plan: selectedPlan,
-        frequency,
-        groceryType,
-        numAdults,
-        numChildren,
-        platesPerServing
-      });
-      navigate("/checkout");
+      const plan = plans.find(p => p.id === selectedPlan);
+      if (plan) {
+        const selectedPlanData = {
+          planName: plan.name,
+          meals: plan.meals,
+          price: getPrice(plan),
+          frequency,
+          groceryType
+        };
+        
+        localStorage.setItem('checkout_plan', JSON.stringify(selectedPlanData));
+        
+        console.log("Selected plan:", selectedPlanData);
+        navigate("/checkout");
+      }
     }
   };
   const getFamilyDescription = () => {
