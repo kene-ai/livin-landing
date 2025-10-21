@@ -101,6 +101,15 @@ export default function OnboardingStep15() {
     }
   };
 
+  const getFamilyDescription = () => {
+    const adultText = numAdults === 1 ? "1 adult" : `${numAdults} adults`;
+    const childText = numChildren === 1 ? "1 child" : `${numChildren} children`;
+    
+    if (numChildren === 0) {
+      return adultText;
+    }
+    return `${adultText} and ${childText}`;
+  };
 
   // Filter plans based on selected plates per serving
   const filteredPlans = plans.filter(plan => plan.plates >= platesPerServing);
@@ -246,6 +255,13 @@ export default function OnboardingStep15() {
                 onClick={() => setGroceryType("organic")}
               />
             </div>
+          </div>
+
+          {/* Family Plan Selection Headline */}
+          <div className="mb-6">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
+              Choose a plan for your family of {getFamilyDescription()}
+            </h2>
           </div>
 
           {/* Pricing Cards */}
