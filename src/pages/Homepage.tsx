@@ -469,7 +469,7 @@ const Homepage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
-              <img src="https://images.unsplash.com/photo-1585759071429-0a3c19c58cbe?w=800&h=400&fit=crop" alt="Food delivery" className="w-full h-48 object-cover rounded-2xl" />
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="Food delivery takeout containers" className="w-full h-48 object-cover rounded-2xl" />
               <ServiceCard title="Food Delivery" price="$25+ per serving" features={["Hidden fees", "Unreliable wait times", "Usually unhealthy"]} isNegative={true} />
             </div>
 
