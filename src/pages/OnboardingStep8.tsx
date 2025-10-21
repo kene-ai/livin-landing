@@ -84,7 +84,7 @@ export default function OnboardingStep8() {
   return (
     <div className="min-h-screen bg-background pb-24">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={5} totalSteps={5} />
+      <OnboardingProgress currentStep={8} totalSteps={15} />
 
       {/* Main Content */}
       <div className="pt-8 px-6 md:px-8">
