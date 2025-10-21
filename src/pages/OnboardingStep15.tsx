@@ -221,7 +221,7 @@ export default function OnboardingStep15() {
                 </h3>
 
                 {/* Price */}
-                <div className="text-xl font-semibold text-foreground">
+                <div className="text-xl font-normal text-foreground">
                   ${getPrice(plan)} per {frequency === "weekly" ? "week" : "month"}
                 </div>
 
