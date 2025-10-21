@@ -17,7 +17,7 @@ import logoRoughDraft from "@/assets/logo-roughdraft.webp";
 import SignupProcess from "@/components/library/SignupProcess";
 import MissionSection from "@/components/library/MissionSection";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import heroChef from "@/assets/hero-chef.png";
+import heroChef from "@/assets/chefs/chef image 7.png";
 const Homepage = () => {
   const navigate = useNavigate();
   const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
@@ -210,7 +210,7 @@ const Homepage = () => {
           
           {/* Right Column - Image */}
           <div className="rounded-3xl overflow-hidden h-full">
-            <img src={heroChef} alt="Chef presenting freshly prepared meal" className="w-full h-full object-cover" />
+            <img src={heroChef} alt="Chef Angela presenting roasted chicken" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
