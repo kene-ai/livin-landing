@@ -3,14 +3,14 @@ import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import ChefCard from "@/components/library/ChefCard";
 import livinLogo from "@/assets/livin-logo.webp";
-import marcusImg from "@/assets/chefs/marcus.jpg";
-import sarahImg from "@/assets/chefs/sarah.jpg";
-import davidImg from "@/assets/chefs/david.jpg";
-import jenniferImg from "@/assets/chefs/jennifer.jpg";
-import robertImg from "@/assets/chefs/robert.jpg";
-import emilyImg from "@/assets/chefs/emily.jpg";
-import michaelImg from "@/assets/chefs/michael.jpg";
-import lisaImg from "@/assets/chefs/lisa.jpg";
+import marcusImg from "@/assets/chefs/marcus.png";
+import sarahImg from "@/assets/chefs/sarah.png";
+import davidImg from "@/assets/chefs/david.png";
+import jenniferImg from "@/assets/chefs/jennifer.png";
+import robertImg from "@/assets/chefs/robert.png";
+import emilyImg from "@/assets/chefs/emily.png";
+import michaelImg from "@/assets/chefs/michael.png";
+import lisaImg from "@/assets/chefs/lisa.png";
 import {
   Carousel,
   CarouselContent,
