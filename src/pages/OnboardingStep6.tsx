@@ -50,6 +50,10 @@ export default function OnboardingStep6() {
   };
 
   const handleNext = () => {
+    // Save to localStorage for later steps (like step 15)
+    localStorage.setItem('onboarding_adults', adults.toString());
+    localStorage.setItem('onboarding_kids', kids.toString());
+    
     navigate("/onboarding/step-7", { state: { adults, kids, dietaryRestrictions: selectedRestrictions } });
   };
 

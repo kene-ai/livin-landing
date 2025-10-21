@@ -29,8 +29,14 @@ export default function OnboardingStep15() {
   const [frequency, setFrequency] = useState<"weekly" | "monthly">("weekly");
   const [groceryType, setGroceryType] = useState<"standard" | "organic">("standard");
   const [selectedPlan, setSelectedPlan] = useState<string>("");
-  const [numAdults, setNumAdults] = useState<number>(2);
-  const [numChildren, setNumChildren] = useState<number>(0);
+  const [numAdults, setNumAdults] = useState<number>(() => {
+    const stored = localStorage.getItem('onboarding_adults');
+    return stored ? parseInt(stored, 10) : 2;
+  });
+  const [numChildren, setNumChildren] = useState<number>(() => {
+    const stored = localStorage.getItem('onboarding_kids');
+    return stored ? parseInt(stored, 10) : 0;
+  });
   const [platesPerServing, setPlatesPerServing] = useState<number>(4);
 
   // Calculate recommended plates based on family size
