@@ -25,6 +25,7 @@ import chefImage5 from "@/assets/chefs/chef image 5.png";
 import chefImage6 from "@/assets/chefs/chef image 6.png";
 import chefImageMain from "@/assets/chefs/chef image.png";
 import foodDeliveryImg from "@/assets/food-delivery.png";
+import chefShoppingImg from "@/assets/chef-shopping.png";
 const Homepage = () => {
   const navigate = useNavigate();
   const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
@@ -261,10 +262,8 @@ const Homepage = () => {
                   </p>
                 </div>
               </div>
-              <div className="aspect-[4/3] bg-muted flex items-center justify-center">
-                <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-5xl">🛒</span>
-                </div>
+              <div className="aspect-[4/3] overflow-hidden">
+                <img src={chefShoppingImg} alt="Chef shopping for fresh groceries" className="w-full h-full object-cover" />
               </div>
             </div>
 
