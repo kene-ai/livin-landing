@@ -262,8 +262,13 @@ const Homepage = () => {
                   </p>
                 </div>
               </div>
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={chefShoppingImg} alt="Chef shopping for fresh groceries" className="w-full h-full object-cover object-center" />
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img 
+                  src={chefShoppingImg} 
+                  alt="Chef shopping for fresh groceries" 
+                  className="absolute inset-0 block w-full h-full object-cover object-center"
+                  draggable={false}
+                />
               </div>
             </div>
 
