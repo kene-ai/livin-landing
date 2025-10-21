@@ -77,6 +77,11 @@ export default function OnboardingStep15() {
     const totalPrice = getPrice(plan);
     return Math.round(totalPrice / plan.plates);
   };
+  
+  const getPricePerMeal = (plan: PricingPlan) => {
+    const totalPrice = getPrice(plan);
+    return Math.round(totalPrice / plan.meals);
+  };
   const handleContinue = () => {
     if (selectedPlan) {
       console.log("Selected plan:", {
@@ -226,10 +231,7 @@ export default function OnboardingStep15() {
                 {/* Details */}
                 <div className="space-y-1 text-foreground">
                   <p className="text-lg">
-                    {plan.meals} meals • {plan.plates} total plates
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    ~${getPricePerPlate(plan)}/plate
+                    ${getPricePerMeal(plan)} per meal
                   </p>
                 </div>
 
