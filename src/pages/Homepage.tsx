@@ -24,6 +24,7 @@ import chefImage4 from "@/assets/chefs/chef image 4.png";
 import chefImage5 from "@/assets/chefs/chef image 5.png";
 import chefImage6 from "@/assets/chefs/chef image 6.png";
 import chefImageMain from "@/assets/chefs/chef image.png";
+import foodDeliveryImg from "@/assets/food-delivery.webp";
 const Homepage = () => {
   const navigate = useNavigate();
   const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
@@ -469,7 +470,7 @@ const Homepage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="Food delivery takeout containers" className="w-full h-48 object-cover rounded-2xl" />
+              <img src={foodDeliveryImg} alt="Food delivery on doorstep" className="w-full h-48 object-cover rounded-2xl" />
               <ServiceCard title="Food Delivery" price="$25+ per serving" features={["Hidden fees", "Unreliable wait times", "Usually unhealthy"]} isNegative={true} />
             </div>
 
