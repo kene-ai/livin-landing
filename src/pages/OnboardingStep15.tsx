@@ -260,7 +260,7 @@ export default function OnboardingStep15() {
           {/* Family Plan Selection Headline */}
           <div className="mb-6">
             <h2 className="text-lg md:text-xl font-semibold text-foreground mb-3">
-              Choose a plan for your family of {getFamilyDescription()}
+              Choose a plan for your family:
             </h2>
           </div>
 
