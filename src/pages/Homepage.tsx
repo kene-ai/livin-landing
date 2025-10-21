@@ -17,13 +17,7 @@ import logoRoughDraft from "@/assets/logo-roughdraft.webp";
 import SignupProcess from "@/components/library/SignupProcess";
 import MissionSection from "@/components/library/MissionSection";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import heroChef from "@/assets/chefs/chef-image-7.png";
-import chefImage2 from "@/assets/chefs/chef-image-2.png";
-import chefImage3 from "@/assets/chefs/chef-image-3.png";
-import chefImage4 from "@/assets/chefs/chef-image-4.png";
-import chefImage5 from "@/assets/chefs/chef-image-5.png";
-import chefImage6 from "@/assets/chefs/chef-image-6.png";
-import chefImageMain from "@/assets/chefs/chef-image.png";
+// Chef images now loaded from public folder
 import foodDeliveryImg from "@/assets/food-delivery.png";
 import chefShoppingImg from "@/assets/chef-shopping.jpg";
 const Homepage = () => {
@@ -218,7 +212,7 @@ const Homepage = () => {
           
           {/* Right Column - Image */}
           <div className="rounded-3xl overflow-hidden h-full">
-            <img src={heroChef} alt="Chef Angela presenting roasted chicken" className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/placeholder.svg'; e.currentTarget.onerror = null; }} />
+            <img src="/chefs/chef-image-7.png" alt="Chef Angela presenting roasted chicken" className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/placeholder.svg'; e.currentTarget.onerror = null; }} />
           </div>
         </div>
       </section>
@@ -429,22 +423,22 @@ const Homepage = () => {
             <Carousel className="w-full">
               <CarouselContent>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard name="Chef Maria Rodriguez" title="Italian & Mediterranean" bio="12 years professional experience. Mom of two. Expert at kid-friendly meals and kitchen organization." imageSrc={chefImage2} />
+                  <ProfileCard name="Chef Maria Rodriguez" title="Italian & Mediterranean" bio="12 years professional experience. Mom of two. Expert at kid-friendly meals and kitchen organization." imageSrc="/chefs/chef-image-2.png" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard name="Chef David Kim" title="Asian Fusion & Healthy" bio="Former restaurant chef, specializes in dietary restrictions. Meticulous about kitchen cleanliness." imageSrc={chefImage3} />
+                  <ProfileCard name="Chef David Kim" title="Asian Fusion & Healthy" bio="Former restaurant chef, specializes in dietary restrictions. Meticulous about kitchen cleanliness." imageSrc="/chefs/chef-image-3.png" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard name="Chef Amanda Williams" title="Southern Comfort & BBQ" bio="15 years experience in farm-to-table cooking. Passionate about seasonal ingredients and family-style meals." imageSrc={chefImage5} />
+                  <ProfileCard name="Chef Amanda Williams" title="Southern Comfort & BBQ" bio="15 years experience in farm-to-table cooking. Passionate about seasonal ingredients and family-style meals." imageSrc="/chefs/chef-image-5.png" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard name="Chef Carlos Martinez" title="Mexican & Latin American" bio="Culinary school graduate with 10 years experience. Known for authentic flavors and perfectly balanced spices." imageSrc={chefImage4} />
+                  <ProfileCard name="Chef Carlos Martinez" title="Mexican & Latin American" bio="Culinary school graduate with 10 years experience. Known for authentic flavors and perfectly balanced spices." imageSrc="/chefs/chef-image-4.png" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard name="Chef Emily Chen" title="Plant-Based & Vegan" bio="Certified nutritionist and chef. Specializes in creating delicious vegan meals that even meat-lovers enjoy." imageSrc={chefImage6} />
+                  <ProfileCard name="Chef Emily Chen" title="Plant-Based & Vegan" bio="Certified nutritionist and chef. Specializes in creating delicious vegan meals that even meat-lovers enjoy." imageSrc="/chefs/chef-image-6.png" />
                 </CarouselItem>
                 <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                  <ProfileCard name="Chef James Thompson" title="French & European" bio="Trained in Paris, 14 years experience. Brings restaurant-quality techniques to home cooking with approachable results." imageSrc={chefImageMain} />
+                  <ProfileCard name="Chef James Thompson" title="French & European" bio="Trained in Paris, 14 years experience. Brings restaurant-quality techniques to home cooking with approachable results." imageSrc="/chefs/chef-image.png" />
                 </CarouselItem>
               </CarouselContent>
               <CarouselPrevious className="hidden md:flex -left-12" />
