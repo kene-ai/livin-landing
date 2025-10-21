@@ -38,6 +38,23 @@ export default function OnboardingStep15() {
     const recommended = Math.ceil(numAdults + numChildren * 0.5);
     setPlatesPerServing(recommended);
   }, [numAdults, numChildren]);
+
+  // Pricing table based on family size (adults + children * 0.5, rounded up)
+  const pricingTable: Record<number, Record<string, number>> = {
+    3: { // 3 adults equivalent
+      lite: 187,    // 2 meal
+      plus: 227,    // 3 meal
+      core: 289,    // 4 meal
+      premier: 644  // 10 meal
+    },
+    4: { // 4 adults equivalent
+      lite: 223,    // 2 meal
+      plus: 282,    // 3 meal
+      core: 352,    // 4 meal
+      premier: 818  // 10 meal
+    }
+  };
+
   const plans: PricingPlan[] = [{
     id: "lite",
     name: "2 meal plan",
@@ -69,7 +86,12 @@ export default function OnboardingStep15() {
     plates: 20
   }];
   const getPrice = (plan: PricingPlan) => {
-    const basePrice = frequency === "weekly" ? plan.weeklyPrice : plan.monthlyPrice;
+    const familySize = Math.ceil(numAdults + numChildren * 0.5);
+    
+    // Get base price from pricing table, fallback to plan's default if not found
+    const basePrice = pricingTable[familySize]?.[plan.id] || 
+                     (frequency === "weekly" ? plan.weeklyPrice : plan.monthlyPrice);
+    
     const groceryCost = groceryType === "organic" ? 30 : 0;
     return basePrice + groceryCost;
   };
