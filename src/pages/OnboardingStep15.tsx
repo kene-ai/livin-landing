@@ -221,16 +221,13 @@ export default function OnboardingStep15() {
                 </h3>
 
                 {/* Price */}
-                <div className="text-xl font-bold text-primary">
-                  ${getPrice(plan)}
-                  <span className="text-base text-muted-foreground font-normal">
-                    {" "}per {frequency === "weekly" ? "week" : "month"}
-                  </span>
+                <div className="text-xl font-semibold text-foreground">
+                  ${getPrice(plan)} per {frequency === "weekly" ? "week" : "month"}
                 </div>
 
                 {/* Details */}
-                <div className="space-y-1 text-foreground">
-                  <p className="text-lg">
+                <div className="space-y-1">
+                  <p className="text-sm text-muted-foreground">
                     ${getPricePerMeal(plan)} per meal
                   </p>
                 </div>
