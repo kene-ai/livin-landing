@@ -24,7 +24,7 @@ import chefImage4 from "@/assets/chefs/chef image 4.png";
 import chefImage5 from "@/assets/chefs/chef image 5.png";
 import chefImage6 from "@/assets/chefs/chef image 6.png";
 import chefImageMain from "@/assets/chefs/chef image.png";
-import foodDeliveryImg from "@/assets/food-delivery.webp";
+import foodDeliveryImg from "@/assets/food-delivery.png";
 const Homepage = () => {
   const navigate = useNavigate();
   const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
