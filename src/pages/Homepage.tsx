@@ -263,7 +263,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={chefShoppingImg} alt="Chef shopping for fresh groceries" className="w-full h-full object-cover" />
+                <img src={chefShoppingImg} alt="Chef shopping for fresh groceries" className="w-full h-full object-cover object-center" />
               </div>
             </div>
 
