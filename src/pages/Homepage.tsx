@@ -218,7 +218,7 @@ const Homepage = () => {
           
           {/* Right Column - Image */}
           <div className="rounded-3xl overflow-hidden h-full">
-            <img src={heroChef} alt="Chef Angela presenting roasted chicken" className="w-full h-full object-cover" />
+            <img src={heroChef} alt="Chef Angela presenting roasted chicken" className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/placeholder.svg'; e.currentTarget.onerror = null; }} />
           </div>
         </div>
       </section>

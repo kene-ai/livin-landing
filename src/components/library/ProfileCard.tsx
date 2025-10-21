@@ -24,7 +24,16 @@ export default function ProfileCard({
     <div className={cn("rounded-3xl overflow-hidden bg-card border border-border", className)}>
       {imageSrc && (
         <div className="aspect-square overflow-hidden">
-          <img src={imageSrc} alt={name} className="w-full h-full object-cover" />
+          <img
+            src={imageSrc}
+            alt={name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            onError={(e) => {
+              e.currentTarget.src = '/placeholder.svg';
+              e.currentTarget.onerror = null;
+            }}
+          />
         </div>
       )}
       <div className="p-6 space-y-2">

@@ -31,7 +31,16 @@ export default function ChefCard({
     <div className={cn("rounded-3xl overflow-hidden bg-card border-2 border-border hover:border-primary/30 transition-all", className)}>
       {imageSrc && (
         <div className="aspect-square overflow-hidden relative">
-          <img src={imageSrc} alt={name} className="w-full h-full object-cover" />
+          <img 
+            src={imageSrc} 
+            alt={name} 
+            className="w-full h-full object-cover" 
+            loading="lazy"
+            onError={(e) => {
+              e.currentTarget.src = '/placeholder.svg';
+              e.currentTarget.onerror = null;
+            }}
+          />
           
           {/* Favorite Button */}
           {onToggleFavorite && (
