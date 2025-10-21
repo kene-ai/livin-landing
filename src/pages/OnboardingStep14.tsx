@@ -62,7 +62,7 @@ export default function OnboardingStep14() {
                 onClick={handleContinue}
                 disabled={!email || !email.includes("@")}
               >
-                Continue
+                Choose subscription
               </Button>
             </div>
           </div>
