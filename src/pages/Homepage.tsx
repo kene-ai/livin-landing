@@ -463,9 +463,7 @@ const Homepage = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Livin makes healthy, home-cooked meals affordable for your family
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Improve your health and save time and money -- all for less than you currently spend on food delivery. Starting at $150 per week.
-            </p>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">Improve your health and save time and money -- all for less than you currently spend on food delivery. Starting at $185 per week.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
