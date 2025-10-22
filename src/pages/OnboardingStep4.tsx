@@ -15,7 +15,7 @@ export default function OnboardingStep4() {
 
   const comparisonData = [
     {
-      category: "Cost per meal",
+      category: "Cost per plate",
       deliveryApps: "$25-40",
       diningOut: "$30+",
       cooking: "$12 + time",
