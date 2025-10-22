@@ -19,7 +19,7 @@ export default function OnboardingStep4() {
       deliveryApps: "$25-40",
       diningOut: "$30+",
       cooking: "$12 + time",
-      livin: "starting at $20"
+      livin: "starting at $30"
     },
     {
       category: "Healthy options",
