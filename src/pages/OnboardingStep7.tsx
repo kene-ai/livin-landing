@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import OnboardingOption from "@/components/library/OnboardingOption";
+import OnboardingCheckbox from "@/components/library/OnboardingCheckbox";
+import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
 
 /**
@@ -11,7 +12,7 @@ import livinLogo from "@/assets/livin-logo.webp";
  */
 export default function OnboardingStep7() {
   const navigate = useNavigate();
-  const [selectedChallenge, setSelectedChallenge] = useState<string>("");
+  const [selectedChallenges, setSelectedChallenges] = useState<string[]>([]);
 
   const challenges = [
     { value: "picky-eaters", label: "Picky eaters won't try new things" },
@@ -22,12 +23,16 @@ export default function OnboardingStep7() {
     { value: "everyone-different", label: "Everyone wants something different" },
   ];
 
-  const handleSelect = (value: string) => {
-    setSelectedChallenge(value);
-    // Navigate to next step after a brief delay
-    setTimeout(() => {
-      navigate("/onboarding/step-8", { state: { selectedChallenge: value } });
-    }, 300);
+  const handleToggle = (value: string) => {
+    setSelectedChallenges(prev => 
+      prev.includes(value)
+        ? prev.filter(v => v !== value)
+        : [...prev, value]
+    );
+  };
+
+  const handleNext = () => {
+    navigate("/onboarding/step-8", { state: { selectedChallenges } });
   };
 
   return (
@@ -49,20 +54,32 @@ export default function OnboardingStep7() {
 
           {/* Header */}
           <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-            What's your biggest challenge choosing meals for your family?
+            What are your biggest challenges choosing meals for your family?
           </h1>
 
           {/* Options */}
           <div className="space-y-4">
             {challenges.map((challenge) => (
-              <OnboardingOption
+              <OnboardingCheckbox
                 key={challenge.value}
                 value={challenge.value}
                 label={challenge.label}
-                selected={selectedChallenge === challenge.value}
-                onClick={() => handleSelect(challenge.value)}
+                selected={selectedChallenges.includes(challenge.value)}
+                onClick={() => handleToggle(challenge.value)}
               />
             ))}
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-end mt-10">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+              disabled={selectedChallenges.length === 0}
+            >
+              Next
+            </Button>
           </div>
         </div>
       </div>
