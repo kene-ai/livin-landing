@@ -470,7 +470,7 @@ const Homepage = () => {
 
             <div className="space-y-4">
               <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=400&fit=crop" alt="Home cooked meal by professional chef" className="w-full h-48 object-cover rounded-2xl" />
-              <ServiceCard title="Livin" price="$20+ per serving" features={["Healthy and balanced", "Cooked by a pro", "Customized to your needs"]} highlighted={true} />
+              <ServiceCard title="Livin" price="$30+ per serving" features={["Healthy and balanced", "Cooked by a pro", "Customized to your needs"]} highlighted={true} />
             </div>
 
             <div className="space-y-4">
