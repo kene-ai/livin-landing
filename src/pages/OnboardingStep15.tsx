@@ -268,6 +268,12 @@ export default function OnboardingStep15() {
                   <p className="text-sm text-muted-foreground">
                     ${getPricePerMeal(plan)} per meal
                   </p>
+                  <p className="text-sm text-muted-foreground">
+                    {plan.meals === 2 && "3hrs of in-home service"}
+                    {plan.meals === 3 && "3hr30min of in-home service"}
+                    {plan.meals === 4 && "4hrs of in-home service"}
+                    {plan.meals === 10 && "9hrs30min of in-home service"}
+                  </p>
                 </div>
 
                 {/* Select Button */}
