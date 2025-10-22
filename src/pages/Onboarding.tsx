@@ -54,7 +54,7 @@ export default function Onboarding() {
 
           {/* Header */}
           <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-8 md:mb-10">
-            What are your reasons for hiring a personal chef?
+            What are your top reasons for hiring a personal chef?
           </h1>
 
           {/* Options */}
