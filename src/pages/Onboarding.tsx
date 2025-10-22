@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import OnboardingOption from "@/components/library/OnboardingOption";
+import OnboardingCheckbox from "@/components/library/OnboardingCheckbox";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
 
@@ -13,7 +13,7 @@ import livinLogo from "@/assets/livin-logo.webp";
  */
 export default function Onboarding() {
   const navigate = useNavigate();
-  const [selectedReason, setSelectedReason] = useState<string>("");
+  const [selectedReasons, setSelectedReasons] = useState<string[]>([]);
 
   const reasons = [
     { value: "save-time", label: "Save time (no shopping, cooking, or cleanup)" },
@@ -23,12 +23,16 @@ export default function Onboarding() {
     { value: "manage-diet", label: "Help me manage my specific diet" },
   ];
 
-  const handleSelect = (value: string) => {
-    setSelectedReason(value);
-    // Navigate to next step after a brief delay
-    setTimeout(() => {
-      navigate("/onboarding/step-2", { state: { selectedReason: value } });
-    }, 300);
+  const handleToggle = (value: string) => {
+    setSelectedReasons(prev => 
+      prev.includes(value)
+        ? prev.filter(v => v !== value)
+        : [...prev, value]
+    );
+  };
+
+  const handleNext = () => {
+    navigate("/onboarding/step-2", { state: { selectedReasons } });
   };
 
   return (
@@ -50,20 +54,32 @@ export default function Onboarding() {
 
           {/* Header */}
           <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-8 md:mb-10">
-            What is your top reason for hiring a personal chef?
+            What are your reasons for hiring a personal chef?
           </h1>
 
           {/* Options */}
           <div className="space-y-4">
             {reasons.map((reason) => (
-              <OnboardingOption
+              <OnboardingCheckbox
                 key={reason.value}
                 value={reason.value}
                 label={reason.label}
-                selected={selectedReason === reason.value}
-                onClick={() => handleSelect(reason.value)}
+                selected={selectedReasons.includes(reason.value)}
+                onClick={() => handleToggle(reason.value)}
               />
             ))}
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-end mt-10">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+              disabled={selectedReasons.length === 0}
+            >
+              Next
+            </Button>
           </div>
         </div>
       </div>
