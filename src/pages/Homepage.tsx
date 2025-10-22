@@ -166,12 +166,12 @@ const Homepage = () => {
           {/* Left Column - Text Content */}
           <div className="space-y-4 flex flex-col justify-start py-8 pl-8 md:pl-12 lg:pl-16">
             {/* Main Headline */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
               Your Personal Chef,<br />In Your Kitchen
             </h1>
             
             {/* Description */}
-            <p className="text-base text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground">
               Find a local chef who prepares customized, healthy meals in your kitchen
             </p>
             
@@ -181,24 +181,24 @@ const Homepage = () => {
                 <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
                   <span className="text-primary text-xs">✓</span>
                 </div>
-                <span className="text-sm">Select meals and your dietary preferences</span>
+                <span className="text-base md:text-lg">Select meals and your dietary preferences</span>
               </div>
               <div className="flex items-center gap-2.5 text-foreground">
                 <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
                   <span className="text-primary text-xs">✓</span>
                 </div>
-                <span className="text-sm">Your Chef prepares the meal in your kitchen</span>
+                <span className="text-base md:text-lg">Your Chef prepares the meal in your kitchen</span>
               </div>
               <div className="flex items-center gap-2.5 text-foreground">
                 <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
                   <span className="text-primary text-xs">✓</span>
                 </div>
-                <span className="text-sm">Groceries and cleanup included</span>
+                <span className="text-base md:text-lg">Groceries and cleanup included</span>
               </div>
             </div>
             
             {/* Pricing */}
-            <p className="text-lg font-bold text-foreground">
+            <p className="text-xl md:text-2xl font-bold text-foreground">
               Starting at <span className="text-primary">$20 per plate</span>
             </p>
             
