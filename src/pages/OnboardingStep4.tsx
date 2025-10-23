@@ -1,57 +1,48 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Check, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 
 /**
  * Onboarding Step 4
  * 
- * Comparison table showing Livin's value proposition
+ * Zip code collection and service area check
  */
 export default function OnboardingStep4() {
   const navigate = useNavigate();
+  const [zipCode, setZipCode] = useState("");
+  const [status, setStatus] = useState<"initial" | "checking" | "in-service">("initial");
 
-  const comparisonData = [
-    {
-      category: "Cost per plate",
-      deliveryApps: "$25-40",
-      diningOut: "$30+",
-      livin: "starting at $30"
-    },
-    {
-      category: "Healthy options",
-      deliveryApps: "Limited",
-      diningOut: "Hit or miss",
-      livin: "30+ meals"
-    },
-    {
-      category: "Quality",
-      deliveryApps: "Reheated",
-      diningOut: "Variable",
-      livin: "Chef-made"
-    },
-    {
-      category: "Preparation",
-      deliveryApps: "Cooked offsite with ingredients you didn't choose",
-      diningOut: "Cooked offsite with ingredients you didn't choose",
-      livin: "Made in your kitchen with fresh-bought groceries"
+  // Check service area - always returns in-service
+  const checkServiceArea = async (zip: string) => {
+    setStatus("checking");
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    setStatus("in-service");
+  };
+
+  const handleCheckZip = () => {
+    if (zipCode.length === 5) {
+      checkServiceArea(zipCode);
     }
-  ];
+  };
 
-  const handleNext = () => {
+  const handleContinue = () => {
     navigate("/onboarding/step-5");
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={4} totalSteps={14} />
+      <OnboardingProgress currentStep={4} totalSteps={13} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
             <img 
@@ -61,74 +52,70 @@ export default function OnboardingStep4() {
             />
           </div>
 
-          {/* Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-            Livin is an affordable and easy way to eat healthy throughout the week
-          </h1>
+          {status === "initial" && (
+            <>
+              {/* Header */}
+              <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
+                Let's see if we're in your area!
+              </h1>
 
-          {/* Comparison Table */}
-          <div className="overflow-x-auto mb-8">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th className="p-4 text-left font-semibold text-foreground border-b-2 border-muted"></th>
-                  <th className="p-4 text-center font-bold text-primary-foreground bg-primary border-b-2 border-primary rounded-t-xl">Livin</th>
-                  <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Delivery Apps</th>
-                  <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Dining Out</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonData.map((row, index) => (
-                  <tr key={index} className="border-b border-muted">
-                    <td className="p-4 font-semibold text-foreground">{row.category}</td>
-                    <td className={cn(
-                      "p-4 text-center font-semibold bg-primary/10",
-                      index === comparisonData.length - 1 && "rounded-b-xl"
-                    )}>
-                      <span className="text-foreground">{row.livin}</span>
-                    </td>
-                    <td className="p-4 text-center text-muted-foreground">{row.deliveryApps}</td>
-                    <td className="p-4 text-center text-muted-foreground">{row.diningOut}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* What's Included */}
-          <div className="mb-10 space-y-4">
-            {[
-              "Meal planning & recipes",
-              "All grocery shopping",
-              "Cooking multiple meals in one session",
-              "Complete cleanup"
-            ].map((item, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Check className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-base md:text-lg text-foreground">{item}</span>
+              {/* Zip Code Input */}
+              <div className="mb-8">
+                <Input
+                  type="text"
+                  placeholder="Enter your zip code"
+                  value={zipCode}
+                  onChange={(e) => setZipCode(e.target.value.replace(/\D/g, "").slice(0, 5))}
+                  className="h-16 text-lg rounded-2xl border-2 border-primary/30 focus:border-primary"
+                  maxLength={5}
+                />
               </div>
-            ))}
-          </div>
 
-          {/* Summary Text */}
-          <div className="mb-10 p-6 bg-secondary/30 rounded-2xl">
-            <p className="text-lg md:text-xl font-bold text-foreground text-center">
-              Get chef-quality meals at home for less than dining out—without the cooking, shopping, or cleanup
-            </p>
-          </div>
+              {/* Continue Button */}
+              <div className="flex justify-end">
+                <Button 
+                  variant="primary" 
+                  size="lg"
+                  onClick={handleCheckZip}
+                  disabled={zipCode.length !== 5}
+                >
+                  Continue
+                </Button>
+              </div>
+            </>
+          )}
 
-          {/* Next Button */}
-          <div className="flex justify-end">
-            <Button 
-              variant="primary" 
-              size="lg"
-              onClick={handleNext}
-            >
-              Next
-            </Button>
-          </div>
+          {status === "checking" && (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground">Checking availability...</p>
+            </div>
+          )}
+
+          {status === "in-service" && (
+            <>
+              {/* Success Message */}
+              <div className="mb-8 p-8 bg-primary/10 rounded-3xl border-2 border-primary/20">
+                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">
+                  Great news! We serve your area.
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Let's continue setting up your account.
+                </p>
+              </div>
+
+              {/* Continue Button */}
+              <div className="flex justify-end">
+                <Button 
+                  variant="primary" 
+                  size="lg"
+                  onClick={handleContinue}
+                >
+                  Continue
+                </Button>
+              </div>
+            </>
+          )}
+
         </div>
       </div>
     </div>

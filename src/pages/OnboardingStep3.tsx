@@ -1,65 +1,136 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
-import OnboardingCheckbox from "@/components/library/OnboardingCheckbox";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
+import { Check, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /**
  * Onboarding Step 3
  * 
- * Multi-select meal services used in the last month
+ * Comparison table showing Livin's value proposition
  */
 export default function OnboardingStep3() {
   const navigate = useNavigate();
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const services = [{
-    value: "delivery-apps",
-    label: "Delivery apps (DoorDash, Uber Eats, etc.)"
-  }, {
-    value: "dining-out",
-    label: "Dining out at restaurants"
-  }, {
-    value: "fast-food",
-    label: "Fast food / quick service"
-  }];
-  const handleToggle = (value: string) => {
-    setSelectedServices(prev => prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]);
-  };
+
+  const comparisonData = [
+    {
+      category: "Cost per plate",
+      deliveryApps: "$25-40",
+      diningOut: "$30+",
+      livin: "starting at $30"
+    },
+    {
+      category: "Healthy options",
+      deliveryApps: "Limited",
+      diningOut: "Hit or miss",
+      livin: "30+ meals"
+    },
+    {
+      category: "Quality",
+      deliveryApps: "Reheated",
+      diningOut: "Variable",
+      livin: "Chef-made"
+    },
+    {
+      category: "Preparation",
+      deliveryApps: "Cooked offsite with ingredients you didn't choose",
+      diningOut: "Cooked offsite with ingredients you didn't choose",
+      livin: "Made in your kitchen with fresh-bought groceries"
+    }
+  ];
+
   const handleNext = () => {
-    navigate("/onboarding/step-4", {
-      state: {
-        selectedServices
-      }
-    });
+    navigate("/onboarding/step-4");
   };
-  return <div className="min-h-screen bg-background">
+
+  return (
+    <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={3} totalSteps={14} />
+      <OnboardingProgress currentStep={3} totalSteps={13} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
-            <img src={livinLogo} alt="Livin" className="h-8 md:h-10" />
+            <img 
+              src={livinLogo} 
+              alt="Livin" 
+              className="h-8 md:h-10"
+            />
           </div>
 
-          {/* Header - Serif Font */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">Which of the following meal services have you used in the last month?</h1>
+          {/* Header */}
+          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
+            Livin is an affordable and easy way to eat healthy throughout the week
+          </h1>
 
-          {/* Checkbox Options */}
-          <div className="space-y-4 mb-10">
-            {services.map(service => <OnboardingCheckbox key={service.value} value={service.value} label={service.label} selected={selectedServices.includes(service.value)} onClick={() => handleToggle(service.value)} />)}
+          {/* Comparison Table */}
+          <div className="overflow-x-auto mb-8">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th className="p-4 text-left font-semibold text-foreground border-b-2 border-muted"></th>
+                  <th className="p-4 text-center font-bold text-primary-foreground bg-primary border-b-2 border-primary rounded-t-xl">Livin</th>
+                  <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Delivery Apps</th>
+                  <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Dining Out</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((row, index) => (
+                  <tr key={index} className="border-b border-muted">
+                    <td className="p-4 font-semibold text-foreground">{row.category}</td>
+                    <td className={cn(
+                      "p-4 text-center font-semibold bg-primary/10",
+                      index === comparisonData.length - 1 && "rounded-b-xl"
+                    )}>
+                      <span className="text-foreground">{row.livin}</span>
+                    </td>
+                    <td className="p-4 text-center text-muted-foreground">{row.deliveryApps}</td>
+                    <td className="p-4 text-center text-muted-foreground">{row.diningOut}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* What's Included */}
+          <div className="mb-10 space-y-4">
+            {[
+              "Meal planning & recipes",
+              "All grocery shopping",
+              "Cooking multiple meals in one session",
+              "Complete cleanup"
+            ].map((item, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <span className="text-base md:text-lg text-foreground">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Summary Text */}
+          <div className="mb-10 p-6 bg-secondary/30 rounded-2xl">
+            <p className="text-lg md:text-xl font-bold text-foreground text-center">
+              Get chef-quality meals at home for less than dining out—without the cooking, shopping, or cleanup
+            </p>
           </div>
 
           {/* Next Button */}
           <div className="flex justify-end">
-            <Button variant="primary" size="lg" onClick={handleNext} disabled={selectedServices.length === 0}>
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+            >
               Next
             </Button>
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 }

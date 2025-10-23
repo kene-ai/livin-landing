@@ -2,24 +2,46 @@ import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Rocket, Calendar } from "lucide-react";
+import { Calendar, Utensils, ShoppingBasket, ShoppingCart, ChefHat, RotateCcw } from "lucide-react";
 
 /**
  * Onboarding Step 11
  * 
- * Availability confirmation screen
+ * Subscription customization overview
  */
 export default function OnboardingStep11() {
   const navigate = useNavigate();
 
-  const benefits = [
-    {
-      icon: Rocket,
-      text: "Book with as little as 48 hours notice"
-    },
+  const customizationOptions = [
     {
       icon: Calendar,
-      text: "You'll pick your exact date & time after signup"
+      title: "Weekly or monthly service",
+      description: "Livin chefs can come to your house once a week or once a month"
+    },
+    {
+      icon: Utensils,
+      title: "Number of meals",
+      description: "We'll recommend the right amount based on your family size."
+    },
+    {
+      icon: ShoppingBasket,
+      title: "Standard or organic groceries",
+      description: "The cost of groceries is included in your plan"
+    }
+  ];
+
+  const subscriptionBenefits = [
+    {
+      icon: ShoppingCart,
+      text: "All groceries included in the price of subscription"
+    },
+    {
+      icon: ChefHat,
+      text: "Livin chef does grocery shopping, cooking and cleaning"
+    },
+    {
+      icon: RotateCcw,
+      text: "Change your plan or cancel at anytime"
     }
   ];
 
@@ -30,7 +52,7 @@ export default function OnboardingStep11() {
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={11} totalSteps={14} />
+      <OnboardingProgress currentStep={11} totalSteps={13} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
@@ -45,25 +67,60 @@ export default function OnboardingStep11() {
           </div>
 
           {/* Header */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-12 md:mb-16 leading-tight">
-            Great news! We have chefs available this week in Atlanta
-          </h1>
+          <div className="mb-10 md:mb-12">
+            <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
+              How Livin subscriptions work
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground">
+              Livin subscriptions start at $185 per month. Here's how you can customize them.
+            </p>
+          </div>
 
-          {/* Benefits with Icons */}
-          <div className="space-y-8 mb-12">
-            {benefits.map((benefit, index) => {
-              const IconComponent = benefit.icon;
+          {/* Customization Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {customizationOptions.map((option, index) => {
+              const IconComponent = option.icon;
               return (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                    <IconComponent className="w-6 h-6 text-primary" />
+                <div key={index} className="bg-card border border-border rounded-3xl p-6 md:p-8 space-y-4">
+                  <div className="flex flex-col items-center text-center gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground">
+                      {option.title}
+                    </h3>
                   </div>
-                  <span className="text-xl md:text-2xl text-foreground font-medium pt-2">
-                    {benefit.text}
-                  </span>
+                  <div className="space-y-2 text-center">
+                    <p className="text-sm md:text-base text-muted-foreground">
+                      {option.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* Subscription Benefits */}
+          <div className="mb-10">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-6">
+              Every Livin subscription also includes:
+            </h2>
+            
+            <div className="space-y-6">
+              {subscriptionBenefits.map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-lg md:text-xl text-foreground font-medium pt-0.5">
+                      {benefit.text}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Next Button */}

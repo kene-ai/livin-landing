@@ -3,42 +3,66 @@ import { useNavigate } from "react-router-dom";
 import OnboardingProgress from "@/components/library/OnboardingProgress";
 import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
-import { Input } from "@/components/ui/input";
+import { Minus, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /**
  * Onboarding Step 5
  * 
- * Zip code collection and service area check
+ * Household size and dietary preferences
  */
 export default function OnboardingStep5() {
   const navigate = useNavigate();
-  const [zipCode, setZipCode] = useState("");
-  const [status, setStatus] = useState<"initial" | "checking" | "in-service">("initial");
+  const [adults, setAdults] = useState(2);
+  const [kids, setKids] = useState(1);
+  const [selectedRestrictions, setSelectedRestrictions] = useState<string[]>([]);
 
-  // Check service area - always returns in-service
-  const checkServiceArea = async (zip: string) => {
-    setStatus("checking");
+  const dietaryRestrictions = [
+    "Vegetarian",
+    "Vegan",
+    "Gluten-free",
+    "Dairy-free",
+    "Nut allergy",
+    "Pescatarian",
+    "Keto",
+    "Paleo",
+    "Low-carb",
+    "Halal",
+    "Kosher",
+  ];
+
+  const handleAdultsChange = (delta: number) => {
+    const newValue = Math.max(0, adults + delta);
+    setAdults(newValue);
+  };
+
+  const handleKidsChange = (delta: number) => {
+    const newValue = Math.max(0, kids + delta);
+    setKids(newValue);
+  };
+
+  const toggleRestriction = (restriction: string) => {
+    setSelectedRestrictions(prev =>
+      prev.includes(restriction)
+        ? prev.filter(r => r !== restriction)
+        : [...prev, restriction]
+    );
+  };
+
+  const handleNext = () => {
+    // Save to localStorage for later steps (like step 15)
+    localStorage.setItem('onboarding_adults', adults.toString());
+    localStorage.setItem('onboarding_kids', kids.toString());
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    setStatus("in-service");
+    navigate("/onboarding/step-6", { state: { adults, kids, dietaryRestrictions: selectedRestrictions } });
   };
 
-  const handleCheckZip = () => {
-    if (zipCode.length === 5) {
-      checkServiceArea(zipCode);
-    }
-  };
-
-  const handleContinue = () => {
-    navigate("/onboarding/step-6");
-  };
+  const totalPeople = adults + kids;
 
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={5} totalSteps={14} />
+      <OnboardingProgress currentStep={5} totalSteps={13} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">
@@ -52,70 +76,91 @@ export default function OnboardingStep5() {
             />
           </div>
 
-          {status === "initial" && (
-            <>
-              {/* Header */}
-              <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-                Let's see if we're in your area!
-              </h1>
+          {/* Header */}
+          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
+            Tell us whose eating
+          </h1>
 
-              {/* Zip Code Input */}
-              <div className="mb-8">
-                <Input
-                  type="text"
-                  placeholder="Enter your zip code"
-                  value={zipCode}
-                  onChange={(e) => setZipCode(e.target.value.replace(/\D/g, "").slice(0, 5))}
-                  className="h-16 text-lg rounded-2xl border-2 border-primary/30 focus:border-primary"
-                  maxLength={5}
-                />
-              </div>
-
-              {/* Continue Button */}
-              <div className="flex justify-end">
-                <Button 
-                  variant="primary" 
-                  size="lg"
-                  onClick={handleCheckZip}
-                  disabled={zipCode.length !== 5}
+          {/* Adults Counter */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between p-6 rounded-2xl border-2 border-muted">
+              <span className="text-lg md:text-xl font-semibold text-foreground">Adults (12 or over)</span>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => handleAdultsChange(-1)}
+                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={adults === 0}
                 >
-                  Continue
-                </Button>
+                  <Minus className="w-5 h-5 text-primary" />
+                </button>
+                <span className="text-2xl font-bold text-foreground w-12 text-center">{adults}</span>
+                <button
+                  onClick={() => handleAdultsChange(1)}
+                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors"
+                >
+                  <Plus className="w-5 h-5 text-primary" />
+                </button>
               </div>
-            </>
-          )}
-
-          {status === "checking" && (
-            <div className="text-center py-12">
-              <p className="text-xl text-muted-foreground">Checking availability...</p>
             </div>
-          )}
+          </div>
 
-          {status === "in-service" && (
-            <>
-              {/* Success Message */}
-              <div className="mb-8 p-8 bg-primary/10 rounded-3xl border-2 border-primary/20">
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">
-                  Great news! We serve your area.
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  Let's continue setting up your account.
-                </p>
-              </div>
-
-              {/* Continue Button */}
-              <div className="flex justify-end">
-                <Button 
-                  variant="primary" 
-                  size="lg"
-                  onClick={handleContinue}
+          {/* Kids Counter */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between p-6 rounded-2xl border-2 border-muted">
+              <span className="text-lg md:text-xl font-semibold text-foreground">Kids (Under 12)</span>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => handleKidsChange(-1)}
+                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={kids === 0}
                 >
-                  Continue
-                </Button>
+                  <Minus className="w-5 h-5 text-primary" />
+                </button>
+                <span className="text-2xl font-bold text-foreground w-12 text-center">{kids}</span>
+                <button
+                  onClick={() => handleKidsChange(1)}
+                  className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary/10 transition-colors"
+                >
+                  <Plus className="w-5 h-5 text-primary" />
+                </button>
               </div>
-            </>
-          )}
+            </div>
+          </div>
 
+          {/* Dietary Restrictions */}
+          <div className="mb-10">
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Any allergies or dietary restrictions?
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {dietaryRestrictions.map((restriction) => (
+                <button
+                  key={restriction}
+                  onClick={() => toggleRestriction(restriction)}
+                  className={cn(
+                    "px-5 py-2.5 rounded-full border-2 transition-all font-medium",
+                    selectedRestrictions.includes(restriction)
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background text-foreground border-muted hover:border-primary/50"
+                  )}
+                >
+                  {restriction}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-end">
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={handleNext}
+              disabled={totalPeople === 0}
+            >
+              Next
+            </Button>
+          </div>
         </div>
       </div>
     </div>
