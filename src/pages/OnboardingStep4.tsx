@@ -27,12 +27,6 @@ export default function OnboardingStep4() {
       livin: "30+ meals"
     },
     {
-      category: "Cooking time",
-      deliveryApps: "0 min",
-      diningOut: "60-90 min",
-      livin: "0 min"
-    },
-    {
       category: "Quality",
       deliveryApps: "Reheated",
       diningOut: "Variable",
