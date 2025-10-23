@@ -95,6 +95,23 @@ export default function OnboardingStep4() {
             </table>
           </div>
 
+          {/* What's Included */}
+          <div className="mb-10 space-y-4">
+            {[
+              "Meal planning & recipes",
+              "All grocery shopping",
+              "Cooking multiple meals in one session",
+              "Complete cleanup"
+            ].map((item, index) => (
+              <div key={index} className="flex items-center gap-3">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Check className="w-4 h-4 text-primary" />
+                </div>
+                <span className="text-base md:text-lg text-foreground">{item}</span>
+              </div>
+            ))}
+          </div>
+
           {/* Summary Text */}
           <div className="mb-10 p-6 bg-secondary/30 rounded-2xl">
             <p className="text-lg md:text-xl font-bold text-foreground text-center">
