@@ -13,30 +13,36 @@ import livinLogo from "@/assets/livin-logo.webp";
 export default function OnboardingStep3() {
   const navigate = useNavigate();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-
-  const services = [
-    { value: "delivery-apps", label: "Delivery apps (DoorDash, Uber Eats, etc.)" },
-    { value: "dining-out", label: "Dining out at restaurants" },
-    { value: "fast-food", label: "Fast food / quick service" },
-    { value: "meal-kits", label: "Meal kits (HelloFresh, Blue Apron, etc.)" },
-    { value: "delivered-meals", label: "Delivered Meals (Factor, Cook Unity, Shef, etc.)" },
-    { value: "grocery-cooking", label: "Grocery shopping + cooking myself" },
-  ];
-
+  const services = [{
+    value: "delivery-apps",
+    label: "Delivery apps (DoorDash, Uber Eats, etc.)"
+  }, {
+    value: "dining-out",
+    label: "Dining out at restaurants"
+  }, {
+    value: "fast-food",
+    label: "Fast food / quick service"
+  }, {
+    value: "meal-kits",
+    label: "Meal kits (HelloFresh, Blue Apron, etc.)"
+  }, {
+    value: "delivered-meals",
+    label: "Delivered Meals (Factor, Cook Unity, Shef, etc.)"
+  }, {
+    value: "grocery-cooking",
+    label: "Grocery shopping + cooking myself"
+  }];
   const handleToggle = (value: string) => {
-    setSelectedServices(prev => 
-      prev.includes(value)
-        ? prev.filter(v => v !== value)
-        : [...prev, value]
-    );
+    setSelectedServices(prev => prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]);
   };
-
   const handleNext = () => {
-    navigate("/onboarding/step-4", { state: { selectedServices } });
+    navigate("/onboarding/step-4", {
+      state: {
+        selectedServices
+      }
+    });
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Progress Bar */}
       <OnboardingProgress currentStep={3} totalSteps={14} />
 
@@ -45,44 +51,24 @@ export default function OnboardingStep3() {
         <div className="max-w-2xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12">
-            <img 
-              src={livinLogo} 
-              alt="Livin" 
-              className="h-8 md:h-10"
-            />
+            <img src={livinLogo} alt="Livin" className="h-8 md:h-10" />
           </div>
 
           {/* Header - Serif Font */}
-          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
-            Which meal services have you used in the last month?
-          </h1>
+          <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">Which of the following meal services have you used in the last month?</h1>
 
           {/* Checkbox Options */}
           <div className="space-y-4 mb-10">
-            {services.map((service) => (
-              <OnboardingCheckbox
-                key={service.value}
-                value={service.value}
-                label={service.label}
-                selected={selectedServices.includes(service.value)}
-                onClick={() => handleToggle(service.value)}
-              />
-            ))}
+            {services.map(service => <OnboardingCheckbox key={service.value} value={service.value} label={service.label} selected={selectedServices.includes(service.value)} onClick={() => handleToggle(service.value)} />)}
           </div>
 
           {/* Next Button */}
           <div className="flex justify-end">
-            <Button 
-              variant="primary" 
-              size="lg"
-              onClick={handleNext}
-              disabled={selectedServices.length === 0}
-            >
+            <Button variant="primary" size="lg" onClick={handleNext} disabled={selectedServices.length === 0}>
               Next
             </Button>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 }
