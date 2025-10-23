@@ -16,14 +16,14 @@ export default function OnboardingStep14() {
   const handleContinue = () => {
     if (email && email.includes("@")) {
       console.log("Email captured:", email);
-      navigate("/onboarding/step-15");
+      navigate("/onboarding/step-14");
     }
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={14} totalSteps={15} />
+      <OnboardingProgress currentStep={13} totalSteps={14} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">

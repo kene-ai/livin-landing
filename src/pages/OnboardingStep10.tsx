@@ -104,13 +104,13 @@ export default function OnboardingStep10() {
   ];
 
   const handleNext = () => {
-    navigate("/onboarding/step-11");
+    navigate("/onboarding/step-10");
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={10} totalSteps={15} />
+      <OnboardingProgress currentStep={9} totalSteps={14} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">

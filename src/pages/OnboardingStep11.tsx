@@ -24,14 +24,14 @@ export default function OnboardingStep11() {
     setSelectedTiming(value);
     // Navigate to next step after a brief delay
     setTimeout(() => {
-      navigate("/onboarding/step-12", { state: { selectedTiming: value } });
+      navigate("/onboarding/step-11", { state: { selectedTiming: value } });
     }, 300);
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={11} totalSteps={15} />
+      <OnboardingProgress currentStep={10} totalSteps={14} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">

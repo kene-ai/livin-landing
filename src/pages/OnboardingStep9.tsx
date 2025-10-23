@@ -32,13 +32,13 @@ export default function OnboardingStep9() {
   };
 
   const handleNext = () => {
-    navigate("/onboarding/step-10", { state: { selectedPreferences } });
+    navigate("/onboarding/step-9", { state: { selectedPreferences } });
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <OnboardingProgress currentStep={9} totalSteps={15} />
+      <OnboardingProgress currentStep={8} totalSteps={14} />
 
       {/* Main Content */}
       <div className="pt-8 pb-12 px-6 md:px-8">

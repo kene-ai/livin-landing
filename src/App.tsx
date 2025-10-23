@@ -10,7 +10,6 @@ import OnboardingStep3 from "./pages/OnboardingStep3";
 import OnboardingStep4 from "./pages/OnboardingStep4";
 import OnboardingStep5 from "./pages/OnboardingStep5";
 import OnboardingStep6 from "./pages/OnboardingStep6";
-import OnboardingStep7 from "./pages/OnboardingStep7";
 import OnboardingStep8 from "./pages/OnboardingStep8";
 import OnboardingStep9 from "./pages/OnboardingStep9";
 import OnboardingStep10 from "./pages/OnboardingStep10";
@@ -39,15 +38,14 @@ const App = () => (
           <Route path="/onboarding/step-4" element={<OnboardingStep4 />} />
           <Route path="/onboarding/step-5" element={<OnboardingStep5 />} />
           <Route path="/onboarding/step-6" element={<OnboardingStep6 />} />
-          <Route path="/onboarding/step-7" element={<OnboardingStep7 />} />
-          <Route path="/onboarding/step-8" element={<OnboardingStep8 />} />
-          <Route path="/onboarding/step-9" element={<OnboardingStep9 />} />
-          <Route path="/onboarding/step-10" element={<OnboardingStep10 />} />
-          <Route path="/onboarding/step-11" element={<OnboardingStep11 />} />
-          <Route path="/onboarding/step-12" element={<OnboardingStep12 />} />
-          <Route path="/onboarding/step-13" element={<OnboardingStep13 />} />
-          <Route path="/onboarding/step-14" element={<OnboardingStep14 />} />
-          <Route path="/onboarding/step-15" element={<OnboardingStep15 />} />
+          <Route path="/onboarding/step-7" element={<OnboardingStep8 />} />
+          <Route path="/onboarding/step-8" element={<OnboardingStep9 />} />
+          <Route path="/onboarding/step-9" element={<OnboardingStep10 />} />
+          <Route path="/onboarding/step-10" element={<OnboardingStep11 />} />
+          <Route path="/onboarding/step-11" element={<OnboardingStep12 />} />
+          <Route path="/onboarding/step-12" element={<OnboardingStep13 />} />
+          <Route path="/onboarding/step-13" element={<OnboardingStep14 />} />
+          <Route path="/onboarding/step-14" element={<OnboardingStep15 />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/onboarding/success" element={<OnboardingSuccess />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
