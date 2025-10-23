@@ -22,15 +22,6 @@ export default function OnboardingStep3() {
   }, {
     value: "fast-food",
     label: "Fast food / quick service"
-  }, {
-    value: "meal-kits",
-    label: "Meal kits (HelloFresh, Blue Apron, etc.)"
-  }, {
-    value: "delivered-meals",
-    label: "Delivered Meals (Factor, Cook Unity, Shef, etc.)"
-  }, {
-    value: "grocery-cooking",
-    label: "Grocery shopping + cooking myself"
   }];
   const handleToggle = (value: string) => {
     setSelectedServices(prev => prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]);
