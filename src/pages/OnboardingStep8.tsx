@@ -46,7 +46,7 @@ export default function OnboardingStep8() {
     {
       id: "meal-rec-2",
       title: "Mac & Cheese with Steamed Broccoli",
-      image: "https://images.unsplash.com/photo-1543826173-e9deb7da5084?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=600&h=600&fit=crop",
       tags: ["Kid Friendly", "Vegetarian"],
       category: "recommended"
     },
@@ -67,7 +67,7 @@ export default function OnboardingStep8() {
     {
       id: "meal-rec-5",
       title: "Grilled Chicken Breast with Rice & Veggies",
-      image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&h=600&fit=crop",
       tags: ["High Protein", "Balanced"],
       category: "recommended"
     },
@@ -139,14 +139,14 @@ export default function OnboardingStep8() {
     {
       id: "meal-kid-2",
       title: "Cheese Quesadillas with Salsa",
-      image: "https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1599974364258-ada6ab9338d5?w=600&h=600&fit=crop",
       tags: ["Kid Friendly", "Vegetarian"],
       category: "kid-friendly"
     },
     {
       id: "meal-kid-3",
       title: "Spaghetti & Marinara Sauce",
-      image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&h=600&fit=crop",
       tags: ["Kid Friendly", "Vegetarian"],
       category: "kid-friendly"
     },
@@ -167,7 +167,7 @@ export default function OnboardingStep8() {
     {
       id: "meal-kid-6",
       title: "Grilled Cheese with Tomato Soup",
-      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1619740455993-557c2f48d3e4?w=600&h=600&fit=crop",
       tags: ["Kid Friendly", "Vegetarian"],
       category: "kid-friendly"
     },
@@ -231,7 +231,7 @@ export default function OnboardingStep8() {
     {
       id: "meal-veg-2",
       title: "Vegetable Stir-Fry with Crispy Tofu",
-      image: "https://images.unsplash.com/photo-1546975490-e8b92a360b24?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=600&h=600&fit=crop",
       tags: ["Vegetarian", "High Protein"],
       category: "vegetarian"
     },
@@ -270,7 +270,7 @@ export default function OnboardingStep8() {
     {
       id: "meal-cc-1",
       title: "Zucchini Noodles with Turkey Meatballs",
-      image: "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1558030089-6e1f0175fbbb?w=600&h=600&fit=crop",
       tags: ["Carb Conscious", "High Protein"],
       category: "carb-conscious"
     },
@@ -305,7 +305,7 @@ export default function OnboardingStep8() {
     {
       id: "meal-cc-6",
       title: "Spaghetti Squash Carbonara",
-      image: "https://images.unsplash.com/photo-1621510456681-2330135e5871?w=600&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1588013273468-315fd88ea34c?w=600&h=600&fit=crop",
       tags: ["Carb Conscious", "High Protein"],
       category: "carb-conscious"
     },
