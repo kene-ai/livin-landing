@@ -18,28 +18,24 @@ export default function OnboardingStep4() {
       category: "Cost per plate",
       deliveryApps: "$25-40",
       diningOut: "$30+",
-      cooking: "$12 + time",
       livin: "starting at $30"
     },
     {
       category: "Healthy options",
       deliveryApps: "Limited",
       diningOut: "Hit or miss",
-      cooking: "Yes",
       livin: "30+ meals"
     },
     {
       category: "Cooking time",
       deliveryApps: "0 min",
       diningOut: "60-90 min",
-      cooking: "120+ min",
       livin: "0 min"
     },
     {
       category: "Quality",
       deliveryApps: "Reheated",
       diningOut: "Variable",
-      cooking: "Depends",
       livin: "Chef-made"
     }
   ];
@@ -79,7 +75,6 @@ export default function OnboardingStep4() {
                   <th className="p-4 text-center font-bold text-primary-foreground bg-primary border-b-2 border-primary rounded-t-xl">Livin</th>
                   <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Delivery Apps</th>
                   <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Dining Out</th>
-                  <th className="p-4 text-center font-semibold text-foreground border-b-2 border-muted">Cooking</th>
                 </tr>
               </thead>
               <tbody>
@@ -94,7 +89,6 @@ export default function OnboardingStep4() {
                     </td>
                     <td className="p-4 text-center text-muted-foreground">{row.deliveryApps}</td>
                     <td className="p-4 text-center text-muted-foreground">{row.diningOut}</td>
-                    <td className="p-4 text-center text-muted-foreground">{row.cooking}</td>
                   </tr>
                 ))}
               </tbody>
