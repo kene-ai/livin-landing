@@ -471,10 +471,9 @@ export default function OnboardingStep15() {
               {/* Meal Cards Grid */}
             <div className={cn(
               "grid gap-4",
-              selectedMealsForPreview.length === 2 && "grid-cols-1 sm:grid-cols-2",
-              selectedMealsForPreview.length === 3 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
-              selectedMealsForPreview.length === 4 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
-              selectedMealsForPreview.length >= 10 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+              selectedMealsForPreview.length <= 2 && "grid-cols-1 sm:grid-cols-2",
+              selectedMealsForPreview.length === 3 && "grid-cols-1 sm:grid-cols-2 md:grid-cols-3",
+              selectedMealsForPreview.length >= 4 && "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
             )}>
                 {selectedMealsForPreview.map((meal) => (
                   <div key={meal.id} className="bg-background rounded-2xl overflow-hidden border border-border hover:shadow-md transition-shadow">
