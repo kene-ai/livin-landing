@@ -4,6 +4,7 @@ import Button from "@/components/library/Button";
 import livinLogo from "@/assets/livin-logo.webp";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 /**
  * Onboarding Step 4
@@ -65,6 +66,19 @@ export default function OnboardingStep4() {
           <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-8 md:mb-10 leading-tight">
             Livin is an affordable and easy way to eat healthy throughout the week
           </h1>
+
+          {/* Image */}
+          <div className="mb-8 md:mb-10 rounded-3xl overflow-hidden max-w-md">
+            <AspectRatio ratio={6 / 5}>
+              <img 
+                src="https://images.squarespace-cdn.com/content/v1/675e3993212d3654af70cd12/1734365622541-6JE453E18W7JHX4Y7WPX/2F2A0078_websize+%282%29.jpg?format=2500w" 
+                alt="Couple enjoying healthy dinner at home" 
+                className="w-full h-full object-cover"
+                style={{ objectPosition: "50% 35%" }}
+                loading="lazy"
+              />
+            </AspectRatio>
+          </div>
 
           {/* Comparison Table */}
           <div className="overflow-x-auto mb-8">
