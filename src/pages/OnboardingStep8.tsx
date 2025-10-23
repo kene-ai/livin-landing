@@ -34,30 +34,6 @@ export default function OnboardingStep8() {
     { id: "mediterranean", label: "Mediterranean" },
   ];
 
-  // Load favorites from localStorage on mount
-  useEffect(() => {
-    const stored = localStorage.getItem('favoritedMeals');
-    if (stored) {
-      try {
-        setFavoritedMeals(JSON.parse(stored));
-      } catch (e) {
-        console.error('Failed to load favorited meals:', e);
-      }
-    }
-  }, []);
-
-  // Toggle favorite and save to localStorage
-  const handleToggleFavorite = (mealId: string) => {
-    setFavoritedMeals(prev => {
-      const newFavorites = prev.includes(mealId)
-        ? prev.filter(id => id !== mealId)
-        : [...prev, mealId];
-      
-      localStorage.setItem('favoritedMeals', JSON.stringify(newFavorites));
-      return newFavorites;
-    });
-  };
-
   // Recommended meals (8+ items, 4+ kid-friendly)
   const recommendedMeals: MenuItem[] = [
     {
@@ -117,6 +93,39 @@ export default function OnboardingStep8() {
       category: "recommended"
     },
   ];
+
+  // Load favorites from localStorage on mount and auto-favorite recommended meals
+  useEffect(() => {
+    const stored = localStorage.getItem('favoritedMeals');
+    let favorites: string[] = [];
+    
+    if (stored) {
+      try {
+        favorites = JSON.parse(stored);
+      } catch (e) {
+        console.error('Failed to load favorited meals:', e);
+      }
+    }
+    
+    // Auto-favorite all recommended meals
+    const recommendedIds = recommendedMeals.map(meal => meal.id);
+    const combined = [...new Set([...favorites, ...recommendedIds])];
+    
+    setFavoritedMeals(combined);
+    localStorage.setItem('favoritedMeals', JSON.stringify(combined));
+  }, []);
+
+  // Toggle favorite and save to localStorage
+  const handleToggleFavorite = (mealId: string) => {
+    setFavoritedMeals(prev => {
+      const newFavorites = prev.includes(mealId)
+        ? prev.filter(id => id !== mealId)
+        : [...prev, mealId];
+      
+      localStorage.setItem('favoritedMeals', JSON.stringify(newFavorites));
+      return newFavorites;
+    });
+  };
 
   // Kid Friendly meals
   const kidFriendlyMeals: MenuItem[] = [
