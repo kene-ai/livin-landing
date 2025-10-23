@@ -37,6 +37,12 @@ export default function OnboardingStep4() {
       deliveryApps: "Reheated",
       diningOut: "Variable",
       livin: "Chef-made"
+    },
+    {
+      category: "Preparation",
+      deliveryApps: "Cooked offsite with ingredients you didn't choose",
+      diningOut: "Cooked offsite with ingredients you didn't choose",
+      livin: "Made in your kitchen with fresh-bought groceries"
     }
   ];
 
