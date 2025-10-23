@@ -146,12 +146,22 @@ export default function OnboardingStep15() {
       title: "Baked Salmon with Quinoa & Asparagus",
       image: "https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=600&h=600&fit=crop",
     },
-    {
-      id: "meal-rec-8",
-      title: "Mediterranean Chicken Bowl with Hummus",
-      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=600&fit=crop",
-    },
-  ];
+  {
+    id: "meal-rec-8",
+    title: "Mediterranean Chicken Bowl with Hummus",
+    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=600&fit=crop",
+  },
+  {
+    id: "meal-rec-9",
+    title: "Beef Stir-Fry with Mixed Vegetables",
+    image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&h=600&fit=crop",
+  },
+  {
+    id: "meal-rec-10",
+    title: "Lemon Herb Roasted Chicken with Green Beans",
+    image: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&h=600&fit=crop",
+  },
+];
 
   // Load chef and meals when a plan is selected
   useEffect(() => {
