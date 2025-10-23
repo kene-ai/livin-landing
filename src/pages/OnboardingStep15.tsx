@@ -9,6 +9,14 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import marcusImg from "@/assets/chefs/marcus.png";
+import davidImg from "@/assets/chefs/david.png";
+import emilyImg from "@/assets/chefs/emily.png";
+import sarahImg from "@/assets/chefs/sarah.png";
+import jenniferImg from "@/assets/chefs/jennifer.png";
+import robertImg from "@/assets/chefs/robert.png";
+import michaelImg from "@/assets/chefs/michael.png";
+import lisaImg from "@/assets/chefs/lisa.png";
 interface PricingPlan {
   id: string;
   name: string;
@@ -38,12 +46,152 @@ export default function OnboardingStep15() {
     return stored ? parseInt(stored, 10) : 0;
   });
   const [platesPerServing, setPlatesPerServing] = useState<number>(4);
+  const [selectedChef, setSelectedChef] = useState<any>(null);
+  const [selectedMealsForPreview, setSelectedMealsForPreview] = useState<any[]>([]);
 
   // Calculate recommended plates based on family size
   useEffect(() => {
     const recommended = Math.ceil(numAdults + numChildren * 0.5);
     setPlatesPerServing(recommended);
   }, [numAdults, numChildren]);
+
+  // Chef data (from OnboardingStep10.tsx)
+  const allChefs = [
+    {
+      id: "1",
+      name: "Marcus Johnson",
+      title: "Culinary Institute Graduate, specializing in Southern comfort & healthy meal prep",
+      imageSrc: marcusImg,
+    },
+    {
+      id: "2",
+      name: "David Chen",
+      title: "Expert in Asian fusion cuisine with 15 years of experience",
+      imageSrc: davidImg,
+    },
+    {
+      id: "3",
+      name: "Emily Rodriguez",
+      title: "Italian cuisine specialist with plant-based expertise",
+      imageSrc: emilyImg,
+    },
+    {
+      id: "4",
+      name: "Sarah Williams",
+      title: "Mediterranean diet expert, certified nutritionist",
+      imageSrc: sarahImg,
+    },
+    {
+      id: "5",
+      name: "Jennifer Lee",
+      title: "Korean and Japanese cuisine specialist",
+      imageSrc: jenniferImg,
+    },
+    {
+      id: "6",
+      name: "Robert Anderson",
+      title: "BBQ and Southern comfort food master",
+      imageSrc: robertImg,
+    },
+    {
+      id: "7",
+      name: "Michael Brown",
+      title: "French culinary school graduate, fine dining expert",
+      imageSrc: michaelImg,
+    },
+    {
+      id: "8",
+      name: "Lisa Thompson",
+      title: "Plant-based nutrition specialist and meal prep expert",
+      imageSrc: lisaImg,
+    },
+  ];
+
+  const defaultChef = allChefs[0];
+
+  // Meal data (simplified from OnboardingStep8.tsx)
+  const recommendedMeals = [
+    {
+      id: "meal-rec-1",
+      title: "Chicken Tenders with Sweet Potato Fries",
+      image: "https://images.unsplash.com/photo-1562967914-608f82629710?w=600&h=600&fit=crop",
+    },
+    {
+      id: "meal-rec-2",
+      title: "Mac & Cheese with Steamed Broccoli",
+      image: "https://images.unsplash.com/photo-1543826173-e9deb7da5084?w=600&h=600&fit=crop",
+    },
+    {
+      id: "meal-rec-3",
+      title: "Turkey Meatballs with Whole Wheat Pasta",
+      image: "https://images.unsplash.com/photo-1551782450-17144efb9c50?w=600&h=600&fit=crop",
+    },
+    {
+      id: "meal-rec-4",
+      title: "Mini Cheese Pizzas with Side Salad",
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=600&fit=crop",
+    },
+    {
+      id: "meal-rec-5",
+      title: "Grilled Chicken Breast with Rice & Veggies",
+      image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&h=600&fit=crop",
+    },
+    {
+      id: "meal-rec-6",
+      title: "Beef Tacos with Black Beans",
+      image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&h=600&fit=crop",
+    },
+    {
+      id: "meal-rec-7",
+      title: "Baked Salmon with Quinoa & Asparagus",
+      image: "https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=600&h=600&fit=crop",
+    },
+    {
+      id: "meal-rec-8",
+      title: "Mediterranean Chicken Bowl with Hummus",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=600&fit=crop",
+    },
+  ];
+
+  // Load chef and meals when a plan is selected
+  useEffect(() => {
+    if (selectedPlan) {
+      // Load chef
+      const favoritedChefIds = JSON.parse(localStorage.getItem('favoritedChefs') || '[]');
+      const chefId = favoritedChefIds.length > 0 ? favoritedChefIds[0] : "1";
+      const chef = allChefs.find(c => c.id === chefId) || defaultChef;
+      setSelectedChef(chef);
+
+      // Load meals
+      const plan = plans.find(p => p.id === selectedPlan);
+      if (plan) {
+        const favoritedMealIds = JSON.parse(localStorage.getItem('favoritedMeals') || '[]');
+        
+        // Get favorited meals first
+        const favoritedMealObjects = recommendedMeals.filter(m => 
+          favoritedMealIds.includes(m.id)
+        );
+        
+        // If we need more meals, add random ones
+        const mealsNeeded = plan.meals;
+        let selectedMeals = [...favoritedMealObjects];
+        
+        if (selectedMeals.length < mealsNeeded) {
+          const remainingMeals = recommendedMeals.filter(m => 
+            !favoritedMealIds.includes(m.id)
+          );
+          const additionalMeals = remainingMeals
+            .sort(() => Math.random() - 0.5)
+            .slice(0, mealsNeeded - selectedMeals.length);
+          selectedMeals = [...selectedMeals, ...additionalMeals];
+        }
+        
+        // Limit to the exact number needed
+        selectedMeals = selectedMeals.slice(0, mealsNeeded);
+        setSelectedMealsForPreview(selectedMeals);
+      }
+    }
+  }, [selectedPlan, numAdults, numChildren]);
 
   // Pricing table based on family size (adults + children * 0.5, rounded up)
   const pricingTable: Record<number, Record<string, number>> = {
@@ -290,6 +438,78 @@ export default function OnboardingStep15() {
           <p className="text-sm text-muted-foreground text-center mb-8">
             You can change your mealplan at any time
           </p>
+
+          {/* Your First Service Preview */}
+          {selectedPlan && selectedChef && selectedMealsForPreview.length > 0 && (
+            <div className="mb-10 p-6 md:p-8 bg-accent/30 rounded-3xl border-2 border-muted">
+              {/* Header */}
+              <div className="mb-6">
+                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+                  Your first Livin service preview
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  (Here's a preview of what your first Livin service might look like. You'll have the ability to edit and confirm your choices up to 48 hours before your service)
+                </p>
+              </div>
+
+              {/* Chef Display */}
+              <div className="mb-6 flex items-center gap-4 p-4 bg-background/50 rounded-2xl">
+                <div className="flex-shrink-0">
+                  <img 
+                    src={selectedChef.imageSrc} 
+                    alt={selectedChef.name}
+                    className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-border"
+                  />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">👨‍🍳 Chef:</p>
+                  <h3 className="text-lg font-semibold text-foreground">{selectedChef.name}</h3>
+                  <p className="text-sm text-muted-foreground">{selectedChef.title}</p>
+                </div>
+              </div>
+
+              {/* Meal Cards Grid */}
+              <div className={cn(
+                "grid gap-4",
+                selectedMealsForPreview.length === 2 && "grid-cols-1 sm:grid-cols-2",
+                selectedMealsForPreview.length === 3 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+                selectedMealsForPreview.length === 4 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+                selectedMealsForPreview.length >= 10 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              )}>
+                {selectedMealsForPreview.map((meal) => (
+                  <div key={meal.id} className="bg-background rounded-2xl overflow-hidden border border-border hover:shadow-md transition-shadow">
+                    {/* Meal Image */}
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={meal.image} 
+                        alt={meal.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    
+                    {/* Meal Info */}
+                    <div className="p-4">
+                      <h4 className="text-base font-semibold text-foreground mb-2">
+                        {meal.title}
+                      </h4>
+                      
+                      {/* Plate Icons */}
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-1">
+                          {Array.from({ length: Math.min(platesPerServing, 5) }).map((_, i) => (
+                            <span key={i} className="text-lg">🍽️</span>
+                          ))}
+                        </div>
+                        <span className="text-sm text-muted-foreground">
+                          {platesPerServing} plate{platesPerServing !== 1 ? 's' : ''}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Continue Button */}
           <div className="flex justify-center">
