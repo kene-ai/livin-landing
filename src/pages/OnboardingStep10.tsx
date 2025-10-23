@@ -13,6 +13,7 @@ import emilyImg from "@/assets/chefs/emily.png";
 import michaelImg from "@/assets/chefs/michael.png";
 import lisaImg from "@/assets/chefs/lisa.png";
 import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
 
 interface Chef {
   id: string;
@@ -270,6 +271,14 @@ export default function OnboardingStep10() {
     });
   };
 
+  const trustIndicators = [
+    "Background-checked & fully insured",
+    "Average rating: 4.9★ from 500+ families",
+    "Professional culinary training",
+    "Specialties: Italian, Asian, Plant-based, Southern, and more",
+    "Shop for groceries, cook, clean, and package meals"
+  ];
+
   const displayedChefs = allChefs.filter(chef => chef.category === selectedCategory);
 
   const handleNext = () => {
@@ -349,6 +358,22 @@ export default function OnboardingStep10() {
               ))}
             </div>
           </section>
+
+          {/* Trust Indicators */}
+          <div className="mb-10 p-8 bg-accent/30 rounded-3xl border-2 border-muted">
+            <div className="space-y-4">
+              {trustIndicators.map((indicator, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                    <Check className="w-4 h-4 text-primary-foreground" strokeWidth={3} />
+                  </div>
+                  <span className="text-base md:text-lg text-foreground font-medium">
+                    {indicator}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Continue Button + Counter */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-border">
