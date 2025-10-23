@@ -394,7 +394,7 @@ export default function OnboardingStep8() {
           {/* Header */}
           <div className="mb-6">
             <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
-              Explore our menu and favorite dishes you'd like to try
+              Meet your new healthy menu
             </h1>
             <p className="text-base md:text-lg text-muted-foreground">
               Select meals you're interested in, or skip and customize later.
