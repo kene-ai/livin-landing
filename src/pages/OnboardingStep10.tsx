@@ -305,7 +305,7 @@ export default function OnboardingStep10() {
           {/* Header */}
           <div className="mb-6">
             <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
-              Explore our chefs and favorite the ones you'd like to work with
+              Meet our trusted, vetted chefs
             </h1>
             <p className="text-base md:text-lg text-muted-foreground">
               We've pre-selected some recommended chefs for you, but feel free to explore and favorite others.
