@@ -23,6 +23,16 @@ interface MenuItem {
 export default function OnboardingStep8() {
   const navigate = useNavigate();
   const [favoritedMeals, setFavoritedMeals] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("recommended");
+
+  const categories = [
+    { id: "recommended", label: "Recommended For You" },
+    { id: "kid-friendly", label: "Kid Friendly" },
+    { id: "high-protein", label: "High Protein" },
+    { id: "vegetarian", label: "Vegetarian" },
+    { id: "carb-conscious", label: "Carb Conscious" },
+    { id: "mediterranean", label: "Mediterranean" },
+  ];
 
   // Load favorites from localStorage on mount
   useEffect(() => {
@@ -338,6 +348,19 @@ export default function OnboardingStep8() {
     },
   ];
 
+  // Combine all meals
+  const allMeals: MenuItem[] = [
+    ...recommendedMeals,
+    ...kidFriendlyMeals,
+    ...highProteinMeals,
+    ...vegetarianMeals,
+    ...carbConsciousMeals,
+    ...mediterraneanMeals,
+  ];
+
+  // Filter meals by selected category
+  const displayedMeals = allMeals.filter(meal => meal.category === selectedCategory);
+
   const handleContinue = () => {
     navigate("/onboarding/step-9");
   };
@@ -360,7 +383,7 @@ export default function OnboardingStep8() {
           </div>
 
           {/* Header */}
-          <div className="mb-8 md:mb-10">
+          <div className="mb-6">
             <h1 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground mb-4 leading-tight">
               Explore our menu and favorite dishes you'd like to try
             </h1>
@@ -372,131 +395,38 @@ export default function OnboardingStep8() {
             </p>
           </div>
 
-          {/* RECOMMENDED SECTION */}
-          <section className="mb-12">
-            <h2 className="text-xl font-semibold text-foreground mb-2">
-              Recommended For You
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              Based on your preferences • {recommendedMeals.length} dishes
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {recommendedMeals.map(meal => (
-                <MealCard
-                  key={meal.id}
-                  id={meal.id}
-                  title={meal.title}
-                  image={meal.image}
-                  tags={meal.tags}
-                  favorited={favoritedMeals.includes(meal.id)}
-                  onToggleFavorite={() => handleToggleFavorite(meal.id)}
-                />
+          {/* CATEGORY PILLS */}
+          <div className="mb-8 overflow-x-auto">
+            <div className="flex gap-2 pb-2">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`
+                    px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap
+                    transition-colors duration-200
+                    ${selectedCategory === category.id
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                    }
+                  `}
+                >
+                  {category.label}
+                </button>
               ))}
             </div>
-          </section>
+          </div>
 
-          {/* KID FRIENDLY SECTION */}
+          {/* FILTERED MEAL SECTION */}
           <section className="mb-12">
             <h2 className="text-xl font-semibold text-foreground mb-2">
-              Kid Friendly
+              {categories.find(c => c.id === selectedCategory)?.label}
             </h2>
             <p className="text-sm text-muted-foreground mb-6">
-              {kidFriendlyMeals.length} dishes
+              {displayedMeals.length} dishes
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {kidFriendlyMeals.map(meal => (
-                <MealCard
-                  key={meal.id}
-                  id={meal.id}
-                  title={meal.title}
-                  image={meal.image}
-                  tags={meal.tags}
-                  favorited={favoritedMeals.includes(meal.id)}
-                  onToggleFavorite={() => handleToggleFavorite(meal.id)}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* HIGH PROTEIN SECTION */}
-          <section className="mb-12">
-            <h2 className="text-xl font-semibold text-foreground mb-2">
-              High Protein
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              {highProteinMeals.length} dishes
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {highProteinMeals.map(meal => (
-                <MealCard
-                  key={meal.id}
-                  id={meal.id}
-                  title={meal.title}
-                  image={meal.image}
-                  tags={meal.tags}
-                  favorited={favoritedMeals.includes(meal.id)}
-                  onToggleFavorite={() => handleToggleFavorite(meal.id)}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* VEGETARIAN SECTION */}
-          <section className="mb-12">
-            <h2 className="text-xl font-semibold text-foreground mb-2">
-              Vegetarian
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              {vegetarianMeals.length} dishes
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {vegetarianMeals.map(meal => (
-                <MealCard
-                  key={meal.id}
-                  id={meal.id}
-                  title={meal.title}
-                  image={meal.image}
-                  tags={meal.tags}
-                  favorited={favoritedMeals.includes(meal.id)}
-                  onToggleFavorite={() => handleToggleFavorite(meal.id)}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* CARB CONSCIOUS SECTION */}
-          <section className="mb-12">
-            <h2 className="text-xl font-semibold text-foreground mb-2">
-              Carb Conscious
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              {carbConsciousMeals.length} dishes
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {carbConsciousMeals.map(meal => (
-                <MealCard
-                  key={meal.id}
-                  id={meal.id}
-                  title={meal.title}
-                  image={meal.image}
-                  tags={meal.tags}
-                  favorited={favoritedMeals.includes(meal.id)}
-                  onToggleFavorite={() => handleToggleFavorite(meal.id)}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* MEDITERRANEAN SECTION */}
-          <section className="mb-12">
-            <h2 className="text-xl font-semibold text-foreground mb-2">
-              Mediterranean
-            </h2>
-            <p className="text-sm text-muted-foreground mb-6">
-              {mediterraneanMeals.length} dishes
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-              {mediterraneanMeals.map(meal => (
+              {displayedMeals.map((meal) => (
                 <MealCard
                   key={meal.id}
                   id={meal.id}
